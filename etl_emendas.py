@@ -14,12 +14,6 @@ ARQUIVOS_CHAVE = {
     "tabela_completa_pix.csv": "PIX",
     "tabela_completa_direta.csv": "DIRETA",
     "tabela_completa_gtv.csv": "GTV",
-    "anulacao_empenho_pix.csv": "ANUL_EMP_PIX",
-    "anulacao_empenho_direta.csv": "ANUL_EMP_DIRETA",
-    "anulacao_empenho_gtv.csv": "ANUL_EMP_GTV",
-    "ordem_bancaria_pix.csv": "OB_PIX",
-    "ordem_bancaria_direta.csv": "OB_DIRETA",
-    "ordem_bancaria_gtv.csv": "OB_GTV",
 }
 
 def obter_urls_recursos():
@@ -81,16 +75,26 @@ def processar_dados():
 
     df_final = pd.concat(dfs_consolidados, ignore_index=True)
 
-    # Limpeza e padronização
-    df_final["codigo_alepe"] = df_final["codigo_alepe"].fillna("SEM_COD").astype(str).str.strip()
-    df_final["autor"] = df_final["autor"].fillna("Não informado").str.upper().str.strip()
-    df_final["municipio"] = df_final["municipio"].fillna("Estadual / Não regionalizado").str.title().str.strip()
-    df_final["beneficiario"] = df_final["beneficiario"].fillna("Prefeitura / Não informado").str.strip()
-    df_final["tematica"] = df_final["tematica"].fillna("Outros").str.strip()
+    # 1. Limpeza textual e remoção de valores espúrios
+    df_final = df_final.fillna("")
+    for col in df_final.columns:
+        df_final[col] = df_final[col].astype(str).str.strip()
 
+    # Filtra linhas quebradas de metadados ou cabeçalhos repetidos
+    df_final = df_final[~df_final["codigo_alepe"].str.startswith("EMPENHO", na=False)]
+
+    df_final["codigo_alepe"] = df_final["codigo_alepe"].replace({"": "SEM_COD", "nan": "SEM_COD"})
+    df_final["autor"] = df_final["autor"].replace({"": "NÃO INFORMADO", "nan": "NÃO INFORMADO"}).str.upper()
+    df_final["municipio"] = df_final["municipio"].replace({"": "Estadual / Não Regionalizado", "nan": "Estadual / Não Regionalizado"}).str.title()
+    df_final["beneficiario"] = df_final["beneficiario"].replace({"": "Não Informado", "nan": "Não Informado", "-": "Não Informado"})
+    df_final["tematica"] = df_final["tematica"].replace({"": "Outros", "nan": "Outros"}).str.upper()
+    df_final["condicao_saneamento_impedimento_tecnico"] = df_final["condicao_saneamento_impedimento_tecnico"].replace({"-": "", "nan": ""})
+    df_final["numero_empenho"] = df_final["numero_empenho"].replace({"-": "", "nan": ""})
+
+    # 2. Conversão numérica segura de valores
     for col in ["valor_empenhado", "valor_liquidado", "valor_pago"]:
         df_final[col] = (
-            df_final[col].astype(str)
+            df_final[col]
             .str.replace("R$", "", regex=False)
             .str.replace(".", "", regex=False)
             .str.replace(",", ".", regex=False)
@@ -98,28 +102,31 @@ def processar_dados():
         )
         df_final[col] = pd.to_numeric(df_final[col], errors="coerce").fillna(0.0)
 
-    # Identificação de impedimentos e status de execução
+    # 3. Lógica orçamentária apurada de status
     def definir_status(linha):
-        if str(linha["condicao_saneamento_impedimento_tecnico"]).strip() not in ["", "nan", "None"]:
-            return "Impedimento Técnico"
+        st_tce = linha["status_resolucao_tce"].upper()
+        if "DESCONTINUADA" in st_tce:
+            return "Descontinuada"
         if linha["valor_pago"] > 0:
             return "Paga"
         if linha["valor_liquidado"] > 0:
             return "Liquidada (Aguardando Pagamento)"
         if linha["valor_empenhado"] > 0:
             return "Empenhada"
+        if "IMPEDIMENTO" in st_tce or linha["condicao_saneamento_impedimento_tecnico"] != "":
+            return "Impedimento Técnico"
         return "Indicada (Sem Execução)"
 
     df_final["status_calculado"] = df_final.apply(definir_status, axis=1)
 
-    # Chave única para rastrear modificações diárias
+    # Chave única de identificação
     df_final["id_registro"] = (
         df_final["codigo_alepe"] + "_" + 
         df_final["modalidade"] + "_" + 
         df_final["municipio"]
     )
 
-    # Leitura do histórico do dia anterior para detecção de diff
+    # Leitura do histórico existente
     historico_anterior = {}
     if os.path.exists("dados_emendas.json"):
         try:
@@ -144,8 +151,8 @@ def processar_dados():
             atualizadas_hoje += 1
         else:
             mudou_estagio = (
-                abs(item["valor_pago"] - registro_antigo.get("valor_pago", 0.0)) > 0.01 or
-                abs(item["valor_liquidado"] - registro_antigo.get("valor_liquidado", 0.0)) > 0.01 or
+                abs(item["valor_pago"] - float(registro_antigo.get("valor_pago", 0.0))) > 0.01 or
+                abs(item["valor_liquidado"] - float(registro_antigo.get("valor_liquidado", 0.0))) > 0.01 or
                 item["status_calculado"] != registro_antigo.get("status_calculado")
             )
             if mudou_estagio:
@@ -167,8 +174,9 @@ def processar_dados():
         "emendas": lista_emendas
     }
 
+    # Garante que nenhum NaN seja escrito no JSON final
     with open("dados_emendas.json", "w", encoding="utf-8") as f:
-        json.dump(arquivo_saida, f, ensure_ascii=False, indent=2)
+        json.dump(arquivo_saida, f, ensure_ascii=False, indent=2, allow_nan=False)
 
     print(f"Base gerada com sucesso: {len(lista_emendas)} emendas processadas ({atualizadas_hoje} modificadas hoje).")
 
