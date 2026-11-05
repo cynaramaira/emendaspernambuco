@@ -24,100 +24,119 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Inter', sans-serif;
+    
+    html, body {
+      height: 100%;
       background-color: var(--bg);
       color: var(--text);
-      line-height: 1.5;
-      padding: 16px;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.4;
     }
 
+    body {
+      padding: 10px;
+    }
+
+    /* Container preparado para Embed de 728px */
     .container {
       max-width: 1200px;
       margin: 0 auto;
       background: var(--card-bg);
-      border-radius: 12px;
+      border-radius: 10px;
       border: 1px solid var(--border);
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      max-height: 708px; /* Ajuste milimétrico para o iframe de 728px */
       overflow: hidden;
     }
 
+    /* Header Compacto */
     header {
       background: #ffffff;
       border-bottom: 3px solid var(--accent);
-      padding: 20px 24px;
+      padding: 12px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 10px;
+      flex-shrink: 0;
     }
 
     .brand img {
-      max-height: 42px;
+      max-height: 34px;
       display: block;
     }
 
     .header-info h1 {
-      font-size: 1.25rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: var(--primary);
+      line-height: 1.2;
     }
 
     .header-info p {
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       color: var(--text-muted);
     }
 
-    /* Cards de Resumo */
+    /* Métricas */
     .metrics-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 12px;
-      padding: 20px 24px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      padding: 10px 16px;
       background: #f1f5f9;
       border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
     }
 
     .metric-card {
       background: #fff;
-      padding: 14px;
-      border-radius: 8px;
+      padding: 8px 12px;
+      border-radius: 6px;
       border: 1px solid var(--border);
     }
 
     .metric-card span {
-      font-size: 0.75rem;
+      font-size: 0.68rem;
       text-transform: uppercase;
       font-weight: 600;
       color: var(--text-muted);
+      display: block;
     }
 
     .metric-card strong {
       display: block;
-      font-size: 1.2rem;
+      font-size: 1.02rem;
       color: var(--primary);
-      margin-top: 4px;
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     /* Filtros */
     .filters-section {
-      padding: 20px 24px;
+      padding: 10px 16px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
       background: #ffffff;
       border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
     }
 
     .filter-group {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
     }
 
     .filter-group label {
-      font-size: 0.82rem;
+      font-size: 0.75rem;
       font-weight: 600;
       color: var(--text);
       display: flex;
@@ -125,84 +144,112 @@
       gap: 4px;
     }
 
-    .filter-group select, .filter-group input {
-      padding: 9px 12px;
+    .filter-group select {
+      padding: 6px 10px;
       border: 1px solid var(--border);
       border-radius: 6px;
-      font-size: 0.88rem;
+      font-size: 0.8rem;
       color: var(--text);
       outline: none;
       background: #fff;
       font-family: inherit;
+      width: 100%;
     }
 
-    .filter-group select:focus, .filter-group input:focus {
+    .filter-group select:focus {
       border-color: var(--primary);
     }
 
-    /* Tooltips */
+    /* Tooltips Universais */
     .tooltip-icon {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 16px;
-      height: 16px;
+      width: 15px;
+      height: 15px;
       background: #e2e8f0;
       color: #334155;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
       border-radius: 50%;
       cursor: help;
       position: relative;
     }
 
-    .tooltip-icon:hover::after,
-    .tooltip-icon:focus::after {
+    /* Tooltips dos Filtros (abrem para cima) */
+    .filter-group .tooltip-icon:hover::after,
+    .filter-group .tooltip-icon:focus::after {
       content: attr(data-tooltip);
       position: absolute;
-      bottom: 125%;
+      bottom: 130%;
       left: 50%;
       transform: translateX(-50%);
       background: #0f172a;
       color: #fff;
-      padding: 8px 12px;
-      font-size: 0.75rem;
+      padding: 8px 10px;
+      font-size: 0.72rem;
       line-height: 1.3;
       border-radius: 6px;
       white-space: normal;
-      width: 220px;
-      z-index: 50;
+      width: 200px;
+      z-index: 9999;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
       font-weight: 400;
+      pointer-events: none;
     }
 
-    /* Tabela */
+    /* Tooltips da Tabela (abrem para baixo, evitando corte no scroll) */
+    th .tooltip-icon:hover::after,
+    th .tooltip-icon:focus::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      top: 130%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #0f172a;
+      color: #fff;
+      padding: 8px 10px;
+      font-size: 0.72rem;
+      line-height: 1.3;
+      border-radius: 6px;
+      white-space: normal;
+      width: 200px;
+      z-index: 9999;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+      font-weight: 400;
+      pointer-events: none;
+    }
+
+    /* Tabela e Rolagem Interna */
     .table-container {
+      flex: 1 1 auto;
+      overflow-y: auto;
       overflow-x: auto;
-      max-height: 600px;
+      position: relative;
+      background: #ffffff;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
       text-align: left;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
     }
 
     th {
       background: #f8fafc;
       color: #475569;
       font-weight: 600;
-      padding: 12px 16px;
+      padding: 10px 12px;
       border-bottom: 2px solid var(--border);
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 100;
       white-space: nowrap;
     }
 
     td {
-      padding: 12px 16px;
+      padding: 10px 12px;
       border-bottom: 1px solid var(--border);
       vertical-align: top;
     }
@@ -214,9 +261,9 @@
     /* Badges */
     .badge {
       display: inline-block;
-      padding: 3px 8px;
+      padding: 2px 6px;
       border-radius: 4px;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 600;
       white-space: nowrap;
     }
@@ -227,27 +274,28 @@
     .status-analise { background: #e0e7ff; color: #4338ca; }
     .status-impedimento { background: #fee2e2; color: #b91c1c; }
 
-    /* Paginação */
+    /* Paginação Fixa no Rodapé */
     .pagination {
-      padding: 14px 24px;
+      padding: 8px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-top: 1px solid var(--border);
       background: #fff;
+      flex-shrink: 0;
     }
 
     .pagination-buttons {
       display: flex;
-      gap: 8px;
+      gap: 6px;
     }
 
     .pagination-buttons button {
-      padding: 6px 14px;
+      padding: 5px 12px;
       border: 1px solid var(--border);
       background: #fff;
-      border-radius: 6px;
-      font-size: 0.85rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
       cursor: pointer;
       font-weight: 500;
     }
@@ -257,9 +305,72 @@
       cursor: not-allowed;
     }
 
-    .pagination-buttons button:hover:not(:disabled) {
-      background: #f1f5f9;
-      border-color: #cbd5e1;
+    /* ADAPTAÇÃO MOBILE / IPHONE (Card View) */
+    @media (max-width: 768px) {
+      body { padding: 4px; }
+      
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+      }
+      
+      .brand img { max-height: 28px; }
+      .header-info h1 { font-size: 0.95rem; }
+
+      .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+        padding: 8px;
+      }
+
+      .filters-section {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 8px;
+      }
+
+      /* Converte as linhas da tabela em cards independentes */
+      table thead {
+        display: none; /* Oculta o cabeçalho no mobile */
+      }
+
+      table, tbody, tr, td {
+        display: block;
+        width: 100%;
+      }
+
+      tbody tr {
+        margin: 8px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: #ffffff;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        padding: 10px;
+      }
+
+      td {
+        padding: 4px 0;
+        border-bottom: none;
+      }
+
+      td:last-child {
+        margin-top: 6px;
+        padding-top: 6px;
+        border-top: 1px dashed var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .mobile-label {
+        font-weight: 600;
+        color: var(--text-muted);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 2px;
+      }
     }
   </style>
 </head>
@@ -280,14 +391,14 @@
     <section class="metrics-grid">
       <div class="metric-card">
         <span>Total de Emendas</span>
-        <strong id="card-total-emendas">Carregando...</strong>
+        <strong id="card-total-emendas">0</strong>
       </div>
       <div class="metric-card">
-        <span>Valor Total Indicado</span>
+        <span>Valor Indicado</span>
         <strong id="card-valor-total">R$ 0,00</strong>
       </div>
       <div class="metric-card">
-        <span>Valor Efetivamente Pago</span>
+        <span>Valor Pago</span>
         <strong id="card-valor-pago">R$ 0,00</strong>
       </div>
       <div class="metric-card">
@@ -296,12 +407,12 @@
       </div>
     </section>
 
-    <!-- Filtros avançados com Tooltips de ajuda -->
+    <!-- Filtros avançados -->
     <section class="filters-section">
       <div class="filter-group">
         <label for="filtro-autor">
           Deputado Autor
-          <span class="tooltip-icon" tabindex="0" data-tooltip="Parlamentar da ALEPE responsável pela indicação da emenda no orçamento estadual.">?</span>
+          <span class="tooltip-icon" tabindex="0" data-tooltip="Parlamentar da ALEPE responsável pela indicação da emenda.">?</span>
         </label>
         <select id="filtro-autor">
           <option value="">Todos os deputados</option>
@@ -311,7 +422,7 @@
       <div class="filter-group">
         <label for="filtro-municipio">
           Cidade / Destino
-          <span class="tooltip-icon" tabindex="0" data-tooltip="Município pernambucano ou entidade que recebe o recurso orçamentário.">?</span>
+          <span class="tooltip-icon" tabindex="0" data-tooltip="Município pernambucano ou órgão que recebe o recurso.">?</span>
         </label>
         <select id="filtro-municipio">
           <option value="">Todas as cidades</option>
@@ -321,7 +432,7 @@
       <div class="filter-group">
         <label for="filtro-modalidade">
           Modalidade
-          <span class="tooltip-icon" tabindex="0" data-tooltip="Forma de repasse: Transferência Especial (Pix Direto à prefeitura), Aplicação Direta (órgão do Estado executa) ou GTV (convênios e entidades).">?</span>
+          <span class="tooltip-icon" tabindex="0" data-tooltip="Transferência Especial (Pix Direto), Execução Direta (órgão estadual) ou GTV (convênios).">?</span>
         </label>
         <select id="filtro-modalidade">
           <option value="">Todas as modalidades</option>
@@ -334,20 +445,21 @@
       <div class="filter-group">
         <label for="filtro-status">
           Status de Execução
-          <span class="tooltip-icon" tabindex="0" data-tooltip="Fase orçamentária: Em Análise técnica, Executada/Paga, Parcialmente Paga ou com Impedimento Técnico.">?</span>
+          <span class="tooltip-icon" tabindex="0" data-tooltip="Situação orçamentária: Paga, Empenhada, Em Análise ou com Impedimento Técnico.">?</span>
         </label>
         <select id="filtro-status">
           <option value="">Todos os status</option>
-          <option value="TOTALMENTE EXECUTADA">Paga / Concluída</option>
-          <option value="PARCIALMENTE EXECUTADA">Parcialmente Paga</option>
-          <option value="EM ANALISE">Em Análise / Tramitação</option>
-          <option value="IMPEDIMENTO TECNICO">Com Impedimento Técnico</option>
-          <option value="EMENDA DESCONTINUADA">Descontinuada / Cancelada</option>
+          <option value="PAGA">Paga / Concluída</option>
+          <option value="LIQUIDADA">Liquidada (Aguardando Pagamento)</option>
+          <option value="EMPENHADA">Empenhada</option>
+          <option value="EM ANÁLISE">Em Análise / Tramitação</option>
+          <option value="IMPEDIMENTO">Com Impedimento Técnico</option>
+          <option value="DESCONTINUADA">Descontinuada / Cancelada</option>
         </select>
       </div>
     </section>
 
-    <!-- Tabela de Dados -->
+    <!-- Tabela responsiva com rolagem protegida -->
     <div class="table-container">
       <table>
         <thead>
@@ -356,12 +468,12 @@
             <th>Município / Beneficiário</th>
             <th>
               Modalidade
-              <span class="tooltip-icon" tabindex="0" data-tooltip="Instrumento orçamentário utilizado para transferir o recurso.">?</span>
+              <span class="tooltip-icon" tabindex="0" data-tooltip="Forma do repasse (Transferência Especial, Execução Direta ou Convênio).">?</span>
             </th>
             <th>Objeto / Destinação</th>
             <th>
               Status
-              <span class="tooltip-icon" tabindex="0" data-tooltip="Situação orçamentária e financeira consolidada da emenda.">?</span>
+              <span class="tooltip-icon" tabindex="0" data-tooltip="Fase orçamentária e financeira consolidada da emenda.">?</span>
             </th>
             <th>Valores (Indicado / Pago)</th>
           </tr>
@@ -378,7 +490,7 @@
 
     <!-- Paginação -->
     <div class="pagination">
-      <span id="paginacao-info" style="font-size: 0.85rem; color: var(--text-muted);">Mostrando 0 de 0 emendas</span>
+      <span id="paginacao-info" style="font-size: 0.78rem; color: var(--text-muted);">Mostrando 0 registros</span>
       <div class="pagination-buttons">
         <button id="btn-anterior" disabled>Anterior</button>
         <button id="btn-proximo" disabled>Próximo</button>
@@ -389,9 +501,8 @@
   <script>
     let dadosCompletos = [];
     let dadosFiltrados = [];
-    let metaExecucao = {};
     let paginaAtual = 1;
-    const itensPorPagina = 20;
+    const itensPorPagina = 15;
 
     const formatarMoeda = (valor) => {
       const num = parseFloat(valor) || 0;
@@ -412,28 +523,16 @@
         if (!resposta.ok) throw new Error('Falha ao baixar dados_emendas.json');
         
         const json = await resposta.json();
-        
-        // Trata os dois formatos: se o JSON contiver o array em "emendas" ou se for o array puro
-        if (Array.isArray(json)) {
-          dadosCompletos = json;
-        } else if (json && Array.isArray(json.emendas)) {
-          dadosCompletos = json.emendas;
-          metaExecucao = {
-            ultima_execucao: json.ultima_execucao,
-            total_atualizadas_hoje: json.total_atualizadas_hoje
-          };
-        } else {
-          dadosCompletos = [];
-        }
+        dadosCompletos = Array.isArray(json) ? json : (json.emendas || []);
 
         povoarFiltrosSelect();
         aplicarFiltros();
       } catch (erro) {
-        console.error("Erro no carregamento:", erro);
+        console.error("Erro ao carregar dados:", erro);
         document.getElementById('tabela-corpo').innerHTML = `
           <tr>
             <td colspan="6" style="text-align: center; color: var(--danger); padding: 30px;">
-              Erro ao processar dados. Verifique a estrutura do arquivo dados_emendas.json.
+              Erro ao carregar o arquivo dados_emendas.json.
             </td>
           </tr>
         `;
@@ -441,12 +540,10 @@
     }
 
     function povoarFiltrosSelect() {
-      // Coleta autores e municípios únicos e remove vazios/nulos
       const autores = [...new Set(dadosCompletos.map(d => d.autor).filter(Boolean))].sort((a, b) => a.localeCompare(b));
       const municipios = [...new Set(dadosCompletos.map(d => d.municipio).filter(Boolean))].sort((a, b) => a.localeCompare(b));
 
       const selectAutor = document.getElementById('filtro-autor');
-      // Limpa opções antigas mantendo a primeira neutra
       selectAutor.innerHTML = '<option value="">Todos os deputados</option>';
       autores.forEach(autor => {
         const opt = document.createElement('option');
@@ -496,7 +593,6 @@
       let totalImpedimentos = 0;
 
       dados.forEach(item => {
-        // Usa o valor indicado/empenhado conforme a base da SEPLAG
         const vIndicado = parseFloat(item.valor) || parseFloat(item.valor_empenhado) || 0;
         const vPago = parseFloat(item.valor_pago) || 0;
         
@@ -522,7 +618,7 @@
       const corpo = document.getElementById('tabela-corpo');
 
       if (itensPagina.length === 0) {
-        corpo.innerHTML = `<tr><td colspan="6" style="text-align: center; padding: 30px;">Nenhuma emenda encontrada para estes filtros.</td></tr>`;
+        corpo.innerHTML = `<tr><td colspan="6" style="text-align: center; padding: 30px;">Nenhuma emenda encontrada.</td></tr>`;
         atualizarBotoesPagina(0);
         return;
       }
@@ -533,20 +629,36 @@
         
         return `
           <tr>
-            <td><strong>${item.autor || 'Não informado'}</strong></td>
             <td>
-              <div>${item.municipio || 'Não informado'}</div>
-              <small style="color: var(--text-muted); font-size: 0.75rem;">${item.beneficiario || ''}</small>
+              <span class="mobile-label">Deputado</span>
+              <strong>${item.autor || 'Não informado'}</strong>
             </td>
-            <td><span class="badge badge-modalidade">${item.modalidade || 'Transferência'}</span></td>
-            <td style="max-width: 320px; font-size: 0.8rem; color: #334155;">
-              ${item.objeto || 'Objeto não detalhado.'}
+            <td>
+              <span class="mobile-label">Destino</span>
+              <div>${item.municipio || 'Não informado'}</div>
+              <small style="color: var(--text-muted); font-size: 0.73rem;">${item.beneficiario || ''}</small>
+            </td>
+            <td>
+              <span class="mobile-label">Modalidade</span>
+              <span class="badge badge-modalidade">${item.modalidade || 'Emenda'}</span>
+            </td>
+            <td style="max-width: 320px; font-size: 0.78rem; color: #334155;">
+              <span class="mobile-label">Objeto</span>
+              ${item.objeto || 'Não informado'}
               ${item.condicao_saneamento_impedimento_tecnico ? `<div style="margin-top: 4px; color: var(--danger); font-size: 0.72rem;"><strong>Motivo:</strong> ${item.condicao_saneamento_impedimento_tecnico}</div>` : ''}
             </td>
-            <td><span class="badge ${obterClasseBadgeStatus(statusExibido)}">${statusExibido}</span></td>
+            <td>
+              <span class="mobile-label">Status</span>
+              <span class="badge ${obterClasseBadgeStatus(statusExibido)}">${statusExibido}</span>
+            </td>
             <td style="white-space: nowrap;">
-              <div><strong>${formatarMoeda(vIndicado)}</strong></div>
-              <small style="color: var(--success); font-size: 0.78rem;">Pago: ${formatarMoeda(item.valor_pago)}</small>
+              <div>
+                <span class="mobile-label">Valor Indicado</span>
+                <strong>${formatarMoeda(vIndicado)}</strong>
+              </div>
+              <div style="color: var(--success); font-size: 0.76rem; margin-top: 2px;">
+                Pago: <strong>${formatarMoeda(item.valor_pago)}</strong>
+              </div>
             </td>
           </tr>
         `;
@@ -561,12 +673,11 @@
       const btnAnt = document.getElementById('btn-anterior');
       const btnProx = document.getElementById('btn-proximo');
 
-      info.textContent = `Página ${paginaAtual} de ${totalPaginas} (${totalItens.toLocaleString('pt-BR')} registros)`;
+      info.textContent = `Pág. ${paginaAtual} de ${totalPaginas} (${totalItens.toLocaleString('pt-BR')} emendas)`;
       btnAnt.disabled = paginaAtual <= 1;
       btnProx.disabled = paginaAtual >= totalPaginas;
     }
 
-    // Registra os filtros
     document.getElementById('filtro-autor').addEventListener('change', aplicarFiltros);
     document.getElementById('filtro-municipio').addEventListener('change', aplicarFiltros);
     document.getElementById('filtro-modalidade').addEventListener('change', aplicarFiltros);
@@ -576,6 +687,7 @@
       if (paginaAtual > 1) {
         paginaAtual--;
         renderizarTabela();
+        document.querySelector('.table-container').scrollTop = 0;
       }
     });
 
@@ -584,6 +696,7 @@
       if (paginaAtual < totalPaginas) {
         paginaAtual++;
         renderizarTabela();
+        document.querySelector('.table-container').scrollTop = 0;
       }
     });
 
