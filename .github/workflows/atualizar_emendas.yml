@@ -1,0 +1,40 @@
+name: Atualizador Diário de Emendas PE
+
+on:
+  schedule:
+    # Executa diariamente às 09:00 UTC (06:00 horário de Brasília)
+    - cron: '0 7 * * *'
+  workflow_dispatch: # Permite disparar o botão manual de atualização quando quiser
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  executar-etl:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências
+        run: |
+          pip install requests pandas
+
+      - name: Executar extração e consolidação
+        run: |
+          python etl_emendas.py
+
+      - name: Commit e envio dos dados atualizados
+        run: |
+          git config --global user.name "Robô de Emendas Jamildo.com"
+          git config --global user.email "bot@jamildo.com"
+          git add dados_emendas.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Atualização dos dados de emendas: $(date +'%Y-%m-%d')" && git push)
