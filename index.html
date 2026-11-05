@@ -2,10 +2,10 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Painel de Emendas Parlamentares - Jamildo.com</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" barcode>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
@@ -26,19 +26,33 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
-    html, body {
-      height: 100%;
+    body {
       background-color: var(--bg);
       color: var(--text);
       font-family: 'Inter', sans-serif;
       line-height: 1.4;
-    }
-
-    body {
       padding: 10px;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Container para embed fixo de 728px */
+    /* Em desktop: trava em 708px para o iframe de 728px */
+    @media (min-width: 769px) {
+      html, body {
+        height: 100%;
+        overflow: hidden;
+      }
+      .container {
+        height: 100%;
+        max-height: 708px;
+        display: flex;
+        flex-direction: column;
+      }
+      .table-container {
+        flex: 1 1 auto;
+        overflow-y: auto;
+      }
+    }
+
     .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -46,18 +60,14 @@
       border-radius: 10px;
       border: 1px solid var(--border);
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      max-height: 708px;
-      overflow: hidden;
+      position: relative;
     }
 
-    /* Header Compacto */
+    /* Header */
     header {
       background: #ffffff;
       border-bottom: 3px solid var(--accent);
-      padding: 10px 16px;
+      padding: 12px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -117,7 +127,7 @@
       text-overflow: ellipsis;
     }
 
-    /* Barra de Botões Interativos / Abas */
+    /* Barra de Botões / Abas */
     .views-toolbar {
       padding: 8px 16px;
       display: flex;
@@ -137,7 +147,7 @@
     }
 
     .view-btn {
-      padding: 5px 12px;
+      padding: 6px 12px;
       border-radius: 6px;
       font-size: 0.78rem;
       font-weight: 600;
@@ -181,18 +191,19 @@
       color: var(--accent);
       font-weight: 800;
       cursor: pointer;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
     }
 
-    /* Painel de Estatísticas e Explicações (Drawer/Toggle) */
+    /* Painel de Estatísticas */
     .insights-panel {
       display: none;
-      padding: 14px 16px;
+      padding: 12px 16px;
       background: #fdfefe;
       border-bottom: 2px solid var(--border);
-      flex-shrink: 0;
-      max-height: 240px;
+      max-height: 260px;
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      flex-shrink: 0;
     }
 
     .insights-panel.visible {
@@ -210,7 +221,6 @@
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 10px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
     }
 
     .insight-col h3 {
@@ -218,16 +228,6 @@
       text-transform: uppercase;
       font-weight: 700;
       margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .ranking-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
     }
 
     .ranking-item {
@@ -236,7 +236,7 @@
       align-items: center;
       font-size: 0.75rem;
       cursor: pointer;
-      padding: 3px 6px;
+      padding: 4px 6px;
       border-radius: 4px;
       transition: background 0.1s;
     }
@@ -253,7 +253,6 @@
       margin-top: 2px;
     }
 
-    /* Cards explicativos das modalidades */
     .modalidade-card {
       border-left: 3px solid;
       padding: 6px 10px;
@@ -268,7 +267,7 @@
     .m-direta { border-color: var(--primary); }
     .m-gtv { border-color: var(--purple); }
 
-    /* Filtros Compactos */
+    /* Filtros */
     .filters-section {
       padding: 8px 16px;
       display: grid;
@@ -295,10 +294,10 @@
     }
 
     .filter-group select {
-      padding: 5px 8px;
+      padding: 6px 8px;
       border: 1px solid var(--border);
       border-radius: 6px;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: var(--text);
       outline: none;
       background: #fff;
@@ -368,11 +367,9 @@
 
     /* Tabela */
     .table-container {
-      flex: 1 1 auto;
-      overflow-y: auto;
       overflow-x: auto;
-      position: relative;
       background: #ffffff;
+      -webkit-overflow-scrolling: touch;
     }
 
     table {
@@ -390,7 +387,7 @@
       border-bottom: 2px solid var(--border);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 10;
       white-space: nowrap;
     }
 
@@ -404,13 +401,11 @@
       background: #f8fafc;
     }
 
-    /* Links Clicáveis na Tabela */
     .clickable-tag {
       color: var(--primary);
       text-decoration: none;
       cursor: pointer;
       font-weight: 600;
-      transition: color 0.1s;
     }
 
     .clickable-tag:hover {
@@ -462,7 +457,7 @@
     }
 
     .pagination-buttons button {
-      padding: 5px 12px;
+      padding: 6px 14px;
       border: 1px solid var(--border);
       background: #fff;
       border-radius: 4px;
@@ -476,30 +471,73 @@
       cursor: not-allowed;
     }
 
-    /* Mobile / Iframe Compacto */
+    /* CORREÇÃO CRÍTICA PARA CELULAR / IPHONE */
     @media (max-width: 768px) {
-      body { padding: 4px; }
-      header { flex-direction: column; align-items: flex-start; padding: 10px; }
-      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
-      .filters-section { grid-template-columns: 1fr; }
-      .insights-grid { grid-template-columns: 1fr; }
+      html, body {
+        height: auto !important;
+        overflow-y: visible !important; /* Libera a rolagem natural da página */
+        -webkit-overflow-scrolling: touch;
+      }
 
-      table thead { display: none; }
-      table, tbody, tr, td { display: block; width: 100%; }
+      body { 
+        padding: 6px; 
+      }
+
+      .container {
+        height: auto !important;
+        max-height: none !important; /* Destrava a altura fixa que bloqueava a descida */
+        overflow: visible !important;
+      }
+
+      .table-container {
+        overflow: visible !important;
+      }
+
+      header { 
+        flex-direction: column; 
+        align-items: flex-start; 
+        padding: 10px; 
+      }
+
+      .metrics-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+      }
+
+      .filters-section { 
+        grid-template-columns: 1fr; 
+      }
+
+      .insights-grid { 
+        grid-template-columns: 1fr; 
+      }
+
+      /* Tabela vira cartões verticais contínuos */
+      table thead { 
+        display: none; 
+      }
+
+      table, tbody, tr, td { 
+        display: block; 
+        width: 100%; 
+      }
 
       tbody tr {
-        margin: 8px;
+        margin: 8px 0;
         border: 1px solid var(--border);
         border-radius: 8px;
         background: #ffffff;
         box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-        padding: 10px;
+        padding: 12px;
       }
 
-      td { padding: 4px 0; border-bottom: none; }
+      td { 
+        padding: 5px 0; 
+        border-bottom: none; 
+      }
+
       td:last-child {
-        margin-top: 6px;
-        padding-top: 6px;
+        margin-top: 8px;
+        padding-top: 8px;
         border-top: 1px dashed var(--border);
         display: flex;
         justify-content: space-between;
@@ -572,7 +610,6 @@
 
     <!-- Painel Expansível de Insights e Rankings -->
     <div class="insights-panel" id="insights-panel">
-      <!-- Conteúdo inserido dinamicamente via JS -->
       <div class="insights-grid" id="insights-content"></div>
     </div>
 
@@ -628,7 +665,7 @@
       </div>
     </section>
 
-    <!-- Tabela -->
+    <!-- Tabela / Cards -->
     <div class="table-container">
       <table>
         <thead>
@@ -732,7 +769,6 @@
       });
     }
 
-    /* FILTROS RÁPIDOS VIA CLIQUE */
     function filtrarPorDeputado(nomeAutor) {
       document.getElementById('filtro-autor').value = nomeAutor;
       aplicarFiltros();
@@ -814,7 +850,6 @@
       document.getElementById('card-total-impedimentos').textContent = totalImpedimentos.toLocaleString('pt-BR');
     }
 
-    /* CONTROLE DO PAINEL EXPANSÍVEL DE INSIGHTS */
     function alternarPainel(tipo) {
       const panel = document.getElementById('insights-panel');
       const btnCidades = document.getElementById('btn-toggle-cidades');
@@ -854,9 +889,9 @@
           <div class="insight-col" style="grid-column: span 3;">
             <h3 style="color: var(--primary);">
               🏙️ Cidades com maior volume de emendas parlamentares 
-              <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: normal;">(Clique no município para filtrar a tabela)</span>
+              <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: normal;">(Clique para filtrar)</span>
             </h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px;">
               ${ranking.map(([cidade, qtd]) => `
                 <div class="ranking-item" onclick="filtrarPorCidade('${cidade}')">
                   <div style="width: 100%;">
@@ -890,10 +925,10 @@
         container.innerHTML = `
           <div class="insight-col" style="grid-column: span 3;">
             <h3 style="color: var(--primary);">
-              🏛️ Deputados com maior número de indicações e suas prioridades
-              <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: normal;">(Clique no deputado para ver todas as indicações)</span>
+              🏛️ Deputados com maior número de indicações
+              <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: normal;">(Clique para filtrar)</span>
             </h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px;">
               ${ranking.map(([autor, qtd]) => {
                 const principalTema = Object.entries(temasPorAutor[autor] || {}).sort((a, b) => b[1] - a[1])[0];
                 return `
@@ -904,7 +939,7 @@
                         <span style="color: var(--primary); font-weight: 700;">${qtd} emendas</span>
                       </div>
                       <div class="ranking-bar" style="background: var(--primary); width: ${(qtd / maxVal) * 100}%;"></div>
-                      <small style="color: var(--text-muted); font-size: 0.68rem;">Foco principal: <strong>${principalTema ? principalTema[0] : 'Variados'}</strong></small>
+                      <small style="color: var(--text-muted); font-size: 0.68rem;">Principal: <strong>${principalTema ? principalTema[0] : 'Variados'}</strong></small>
                     </div>
                   </div>
                 `;
@@ -917,27 +952,26 @@
         container.innerHTML = `
           <div class="insight-col">
             <div class="modalidade-card m-pix">
-              <strong style="color: var(--teal);">Transferência Especial (PIX Orçamentário)</strong>
-              O dinheiro cai direto na conta da prefeitura sem exigir convênio prévio. A prefeitura tem autonomia de execução, sob fiscalização do Tribunal de Contas de Pernambuco (TCE-PE).
+              <strong style="color: var(--teal);">Transferência Especial (PIX)</strong>
+              Repasse direto ao caixa da prefeitura sem burocracia prévia de convênio. Execução municipal sob controle do TCE-PE.
             </div>
           </div>
           <div class="insight-col">
             <div class="modalidade-card m-direta">
-              <strong style="color: var(--primary);">Execução / Aplicação Direta</strong>
-              O Estado é quem contrata ou adquire. O recurso financia aquisição de ambulâncias pela Secretaria de Saúde, reformas em hospitais da UPE (Procape, Oswaldo Cruz) ou maquinário pelo IPA.
+              <strong style="color: var(--primary);">Execução Direta</strong>
+              O próprio governo estadual compra ou contrata: maquinários pelo IPA, ambulâncias ou reformas nos hospitais da UPE.
             </div>
           </div>
           <div class="insight-col">
             <div class="modalidade-card m-gtv">
               <strong style="color: var(--purple);">Convênios e Entidades (GTV)</strong>
-              Recursos transferidos a organizações sociais, hospitais filantrópicos e fundações comunitárias parceiras por meio de termos formais de colaboração ou fomento.
+              Recursos transferidos a entidades sem fins lucrativos, hospitais filantrópicos ou cooperativas via parceria formal.
             </div>
           </div>
         `;
       }
     }
 
-    /* RENDERIZAÇÃO DA TABELA */
     function renderizarTabela() {
       const inicio = (paginaAtual - 1) * itensPorPagina;
       const fim = inicio + itensPorPagina;
@@ -1011,6 +1045,15 @@
       btnProx.disabled = paginaAtual >= totalPaginas;
     }
 
+    function scrollAteTopo() {
+      if (window.innerWidth <= 768) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        const tc = document.querySelector('.table-container');
+        if (tc) tc.scrollTop = 0;
+      }
+    }
+
     document.getElementById('filtro-autor').addEventListener('change', aplicarFiltros);
     document.getElementById('filtro-municipio').addEventListener('change', aplicarFiltros);
     document.getElementById('filtro-modalidade').addEventListener('change', aplicarFiltros);
@@ -1020,7 +1063,7 @@
       if (paginaAtual > 1) {
         paginaAtual--;
         renderizarTabela();
-        document.querySelector('.table-container').scrollTop = 0;
+        scrollAteTopo();
       }
     });
 
@@ -1029,7 +1072,7 @@
       if (paginaAtual < totalPaginas) {
         paginaAtual++;
         renderizarTabela();
-        document.querySelector('.table-container').scrollTop = 0;
+        scrollAteTopo();
       }
     });
 
