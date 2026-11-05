@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Painel de Emendas Parlamentares - Jamildo.com</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" barcode>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -20,7 +20,8 @@
       --success: #16a34a;
       --warning: #ca8a04;
       --danger: #dc2626;
-      --info: #0284c7;
+      --purple: #7c3aed;
+      --teal: #0d9488;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -37,7 +38,7 @@
       padding: 10px;
     }
 
-    /* Container preparado para Embed de 728px */
+    /* Container para embed fixo de 728px */
     .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -48,7 +49,7 @@
       display: flex;
       flex-direction: column;
       height: 100%;
-      max-height: 708px; /* Ajuste milimétrico para o iframe de 728px */
+      max-height: 708px;
       overflow: hidden;
     }
 
@@ -56,29 +57,27 @@
     header {
       background: #ffffff;
       border-bottom: 3px solid var(--accent);
-      padding: 12px 16px;
+      padding: 10px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
       gap: 10px;
       flex-shrink: 0;
     }
 
     .brand img {
-      max-height: 34px;
+      max-height: 32px;
       display: block;
     }
 
     .header-info h1 {
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 700;
       color: var(--primary);
-      line-height: 1.2;
     }
 
     .header-info p {
-      font-size: 0.75rem;
+      font-size: 0.73rem;
       color: var(--text-muted);
     }
 
@@ -87,7 +86,7 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 8px;
-      padding: 10px 16px;
+      padding: 8px 16px;
       background: #f1f5f9;
       border-bottom: 1px solid var(--border);
       flex-shrink: 0;
@@ -95,13 +94,13 @@
 
     .metric-card {
       background: #fff;
-      padding: 8px 12px;
+      padding: 6px 10px;
       border-radius: 6px;
       border: 1px solid var(--border);
     }
 
     .metric-card span {
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       text-transform: uppercase;
       font-weight: 600;
       color: var(--text-muted);
@@ -110,7 +109,7 @@
 
     .metric-card strong {
       display: block;
-      font-size: 1.02rem;
+      font-size: 0.98rem;
       color: var(--primary);
       margin-top: 2px;
       white-space: nowrap;
@@ -118,12 +117,163 @@
       text-overflow: ellipsis;
     }
 
-    /* Filtros */
+    /* Barra de Botões Interativos / Abas */
+    .views-toolbar {
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .views-buttons {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .view-btn {
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: #f8fafc;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.15s ease;
+    }
+
+    .view-btn:hover {
+      background: #e2e8f0;
+      color: var(--text);
+    }
+
+    .view-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .badge-filter-indicator {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: 600;
+      background: #fff1ee;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid #ffdcd6;
+    }
+
+    .badge-filter-indicator button {
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-weight: 800;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    /* Painel de Estatísticas e Explicações (Drawer/Toggle) */
+    .insights-panel {
+      display: none;
+      padding: 14px 16px;
+      background: #fdfefe;
+      border-bottom: 2px solid var(--border);
+      flex-shrink: 0;
+      max-height: 240px;
+      overflow-y: auto;
+    }
+
+    .insights-panel.visible {
+      display: block;
+    }
+
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .insight-col {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .insight-col h3 {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .ranking-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .ranking-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      cursor: pointer;
+      padding: 3px 6px;
+      border-radius: 4px;
+      transition: background 0.1s;
+    }
+
+    .ranking-item:hover {
+      background: #eef2ff;
+      color: var(--primary);
+    }
+
+    .ranking-bar {
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-top: 2px;
+    }
+
+    /* Cards explicativos das modalidades */
+    .modalidade-card {
+      border-left: 3px solid;
+      padding: 6px 10px;
+      margin-bottom: 8px;
+      border-radius: 0 6px 6px 0;
+      background: #f8fafc;
+      font-size: 0.74rem;
+    }
+
+    .modalidade-card strong { display: block; font-size: 0.77rem; }
+    .m-pix { border-color: var(--teal); }
+    .m-direta { border-color: var(--primary); }
+    .m-gtv { border-color: var(--purple); }
+
+    /* Filtros Compactos */
     .filters-section {
-      padding: 10px 16px;
+      padding: 8px 16px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
+      gap: 8px;
       background: #ffffff;
       border-bottom: 1px solid var(--border);
       flex-shrink: 0;
@@ -132,11 +282,11 @@
     .filter-group {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 3px;
     }
 
     .filter-group label {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 600;
       color: var(--text);
       display: flex;
@@ -145,10 +295,10 @@
     }
 
     .filter-group select {
-      padding: 6px 10px;
+      padding: 5px 8px;
       border: 1px solid var(--border);
       border-radius: 6px;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--text);
       outline: none;
       background: #fff;
@@ -160,13 +310,13 @@
       border-color: var(--primary);
     }
 
-    /* Tooltips Universais */
+    /* Tooltips */
     .tooltip-icon {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 15px;
-      height: 15px;
+      width: 14px;
+      height: 14px;
       background: #e2e8f0;
       color: #334155;
       font-size: 10px;
@@ -176,7 +326,6 @@
       position: relative;
     }
 
-    /* Tooltips dos Filtros (abrem para cima) */
     .filter-group .tooltip-icon:hover::after,
     .filter-group .tooltip-icon:focus::after {
       content: attr(data-tooltip);
@@ -190,7 +339,6 @@
       font-size: 0.72rem;
       line-height: 1.3;
       border-radius: 6px;
-      white-space: normal;
       width: 200px;
       z-index: 9999;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -198,7 +346,6 @@
       pointer-events: none;
     }
 
-    /* Tooltips da Tabela (abrem para baixo, evitando corte no scroll) */
     th .tooltip-icon:hover::after,
     th .tooltip-icon:focus::after {
       content: attr(data-tooltip);
@@ -212,7 +359,6 @@
       font-size: 0.72rem;
       line-height: 1.3;
       border-radius: 6px;
-      white-space: normal;
       width: 200px;
       z-index: 9999;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
@@ -220,7 +366,7 @@
       pointer-events: none;
     }
 
-    /* Tabela e Rolagem Interna */
+    /* Tabela */
     .table-container {
       flex: 1 1 auto;
       overflow-y: auto;
@@ -240,7 +386,7 @@
       background: #f8fafc;
       color: #475569;
       font-weight: 600;
-      padding: 10px 12px;
+      padding: 9px 12px;
       border-bottom: 2px solid var(--border);
       position: sticky;
       top: 0;
@@ -249,13 +395,38 @@
     }
 
     td {
-      padding: 10px 12px;
+      padding: 9px 12px;
       border-bottom: 1px solid var(--border);
       vertical-align: top;
     }
 
     tbody tr:hover {
       background: #f8fafc;
+    }
+
+    /* Links Clicáveis na Tabela */
+    .clickable-tag {
+      color: var(--primary);
+      text-decoration: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: color 0.1s;
+    }
+
+    .clickable-tag:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .clickable-city {
+      cursor: pointer;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .clickable-city:hover {
+      color: var(--accent);
+      text-decoration: underline;
     }
 
     /* Badges */
@@ -274,7 +445,7 @@
     .status-analise { background: #e0e7ff; color: #4338ca; }
     .status-impedimento { background: #fee2e2; color: #b91c1c; }
 
-    /* Paginação Fixa no Rodapé */
+    /* Paginação */
     .pagination {
       padding: 8px 16px;
       display: flex;
@@ -305,40 +476,16 @@
       cursor: not-allowed;
     }
 
-    /* ADAPTAÇÃO MOBILE / IPHONE (Card View) */
+    /* Mobile / Iframe Compacto */
     @media (max-width: 768px) {
       body { padding: 4px; }
-      
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px;
-      }
-      
-      .brand img { max-height: 28px; }
-      .header-info h1 { font-size: 0.95rem; }
+      header { flex-direction: column; align-items: flex-start; padding: 10px; }
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+      .filters-section { grid-template-columns: 1fr; }
+      .insights-grid { grid-template-columns: 1fr; }
 
-      .metrics-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 6px;
-        padding: 8px;
-      }
-
-      .filters-section {
-        grid-template-columns: 1fr;
-        gap: 8px;
-        padding: 8px;
-      }
-
-      /* Converte as linhas da tabela em cards independentes */
-      table thead {
-        display: none; /* Oculta o cabeçalho no mobile */
-      }
-
-      table, tbody, tr, td {
-        display: block;
-        width: 100%;
-      }
+      table thead { display: none; }
+      table, tbody, tr, td { display: block; width: 100%; }
 
       tbody tr {
         margin: 8px;
@@ -349,11 +496,7 @@
         padding: 10px;
       }
 
-      td {
-        padding: 4px 0;
-        border-bottom: none;
-      }
-
+      td { padding: 4px 0; border-bottom: none; }
       td:last-child {
         margin-top: 6px;
         padding-top: 6px;
@@ -366,7 +509,7 @@
       .mobile-label {
         font-weight: 600;
         color: var(--text-muted);
-        font-size: 0.72rem;
+        font-size: 0.7rem;
         text-transform: uppercase;
         display: block;
         margin-bottom: 2px;
@@ -407,7 +550,33 @@
       </div>
     </section>
 
-    <!-- Filtros avançados -->
+    <!-- Barra de Análises e Rankings -->
+    <div class="views-toolbar">
+      <div class="views-buttons">
+        <button class="view-btn" id="btn-toggle-cidades" onclick="alternarPainel('cidades')">
+          🏙️ Cidades com mais emendas
+        </button>
+        <button class="view-btn" id="btn-toggle-deputados" onclick="alternarPainel('deputados')">
+          🏛️ Deputados mais ativos
+        </button>
+        <button class="view-btn" id="btn-toggle-modalidades" onclick="alternarPainel('modalidades')">
+          💡 Como funciona cada emenda?
+        </button>
+      </div>
+
+      <div class="badge-filter-indicator" id="indicador-filtro">
+        <span id="texto-filtro-ativo">Filtro ativo</span>
+        <button onclick="limparFiltrosRapidos()" title="Remover filtro">&times;</button>
+      </div>
+    </div>
+
+    <!-- Painel Expansível de Insights e Rankings -->
+    <div class="insights-panel" id="insights-panel">
+      <!-- Conteúdo inserido dinamicamente via JS -->
+      <div class="insights-grid" id="insights-content"></div>
+    </div>
+
+    <!-- Filtros de Seleção -->
     <section class="filters-section">
       <div class="filter-group">
         <label for="filtro-autor">
@@ -432,7 +601,7 @@
       <div class="filter-group">
         <label for="filtro-modalidade">
           Modalidade
-          <span class="tooltip-icon" tabindex="0" data-tooltip="Transferência Especial (Pix Direto), Execução Direta (órgão estadual) ou GTV (convênios).">?</span>
+          <span class="tooltip-icon" tabindex="0" data-tooltip="Transferência Especial (Pix Direto), Execução Direta ou Convênio (GTV).">?</span>
         </label>
         <select id="filtro-modalidade">
           <option value="">Todas as modalidades</option>
@@ -445,7 +614,7 @@
       <div class="filter-group">
         <label for="filtro-status">
           Status de Execução
-          <span class="tooltip-icon" tabindex="0" data-tooltip="Situação orçamentária: Paga, Empenhada, Em Análise ou com Impedimento Técnico.">?</span>
+          <span class="tooltip-icon" tabindex="0" data-tooltip="Situação orçamentária da emenda.">?</span>
         </label>
         <select id="filtro-status">
           <option value="">Todos os status</option>
@@ -459,7 +628,7 @@
       </div>
     </section>
 
-    <!-- Tabela responsiva com rolagem protegida -->
+    <!-- Tabela -->
     <div class="table-container">
       <table>
         <thead>
@@ -502,6 +671,7 @@
     let dadosCompletos = [];
     let dadosFiltrados = [];
     let paginaAtual = 1;
+    let abaAberta = null;
     const itensPorPagina = 15;
 
     const formatarMoeda = (valor) => {
@@ -532,7 +702,7 @@
         document.getElementById('tabela-corpo').innerHTML = `
           <tr>
             <td colspan="6" style="text-align: center; color: var(--danger); padding: 30px;">
-              Erro ao carregar o arquivo dados_emendas.json.
+              Erro ao processar dados_emendas.json.
             </td>
           </tr>
         `;
@@ -562,11 +732,43 @@
       });
     }
 
+    /* FILTROS RÁPIDOS VIA CLIQUE */
+    function filtrarPorDeputado(nomeAutor) {
+      document.getElementById('filtro-autor').value = nomeAutor;
+      aplicarFiltros();
+      atualizarIndicadorFiltro(`Deputado: ${nomeAutor}`);
+    }
+
+    function filtrarPorCidade(nomeCidade) {
+      document.getElementById('filtro-municipio').value = nomeCidade;
+      aplicarFiltros();
+      atualizarIndicadorFiltro(`Cidade: ${nomeCidade}`);
+    }
+
+    function atualizarIndicadorFiltro(texto) {
+      const ind = document.getElementById('indicador-filtro');
+      document.getElementById('texto-filtro-ativo').textContent = texto;
+      ind.style.display = 'inline-flex';
+    }
+
+    function limparFiltrosRapidos() {
+      document.getElementById('filtro-autor').value = '';
+      document.getElementById('filtro-municipio').value = '';
+      document.getElementById('filtro-modalidade').value = '';
+      document.getElementById('filtro-status').value = '';
+      document.getElementById('indicador-filtro').style.display = 'none';
+      aplicarFiltros();
+    }
+
     function aplicarFiltros() {
       const autorSelecionado = document.getElementById('filtro-autor').value;
       const municipioSelecionado = document.getElementById('filtro-municipio').value;
       const modalidadeSelecionada = document.getElementById('filtro-modalidade').value;
       const statusSelecionado = document.getElementById('filtro-status').value;
+
+      if (!autorSelecionado && !municipioSelecionado && !modalidadeSelecionada && !statusSelecionado) {
+        document.getElementById('indicador-filtro').style.display = 'none';
+      }
 
       dadosFiltrados = dadosCompletos.filter(item => {
         const matchAutor = !autorSelecionado || item.autor === autorSelecionado;
@@ -585,6 +787,7 @@
       paginaAtual = 1;
       atualizarMetricas(dadosFiltrados);
       renderizarTabela();
+      if (abaAberta) renderizarPainelInsights(abaAberta);
     }
 
     function atualizarMetricas(dados) {
@@ -611,6 +814,130 @@
       document.getElementById('card-total-impedimentos').textContent = totalImpedimentos.toLocaleString('pt-BR');
     }
 
+    /* CONTROLE DO PAINEL EXPANSÍVEL DE INSIGHTS */
+    function alternarPainel(tipo) {
+      const panel = document.getElementById('insights-panel');
+      const btnCidades = document.getElementById('btn-toggle-cidades');
+      const btnDeputados = document.getElementById('btn-toggle-deputados');
+      const btnModalidades = document.getElementById('btn-toggle-modalidades');
+
+      [btnCidades, btnDeputados, btnModalidades].forEach(b => b.classList.remove('active'));
+
+      if (abaAberta === tipo) {
+        panel.classList.remove('visible');
+        abaAberta = null;
+        return;
+      }
+
+      abaAberta = tipo;
+      panel.classList.add('visible');
+      document.getElementById(`btn-toggle-${tipo}`).classList.add('active');
+      renderizarPainelInsights(tipo);
+    }
+
+    function renderizarPainelInsights(tipo) {
+      const container = document.getElementById('insights-content');
+
+      if (tipo === 'cidades') {
+        const contagem = {};
+        const valores = {};
+        dadosCompletos.forEach(d => {
+          const m = d.municipio || 'Não Informado';
+          contagem[m] = (contagem[m] || 0) + 1;
+          valores[m] = (valores[m] || 0) + (parseFloat(d.valor_pago) || 0);
+        });
+
+        const ranking = Object.entries(contagem).sort((a, b) => b[1] - a[1]).slice(0, 9);
+        const maxVal = ranking[0][1];
+
+        container.innerHTML = `
+          <div class="insight-col" style="grid-column: span 3;">
+            <h3 style="color: var(--primary);">
+              🏙️ Cidades com maior volume de emendas parlamentares 
+              <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: normal;">(Clique no município para filtrar a tabela)</span>
+            </h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px;">
+              ${ranking.map(([cidade, qtd]) => `
+                <div class="ranking-item" onclick="filtrarPorCidade('${cidade}')">
+                  <div style="width: 100%;">
+                    <div style="display: flex; justify-content: space-between;">
+                      <strong>${cidade}</strong>
+                      <span style="color: var(--primary); font-weight: 700;">${qtd} emendas</span>
+                    </div>
+                    <div class="ranking-bar" style="width: ${(qtd / maxVal) * 100}%;"></div>
+                    <small style="color: var(--success); font-size: 0.68rem;">Pago: ${formatarMoeda(valores[cidade])}</small>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      } 
+      else if (tipo === 'deputados') {
+        const contagem = {};
+        const temasPorAutor = {};
+        dadosCompletos.forEach(d => {
+          const a = d.autor || 'Não Informado';
+          contagem[a] = (contagem[a] || 0) + 1;
+          if (!temasPorAutor[a]) temasPorAutor[a] = {};
+          const t = d.tematica || 'Geral';
+          temasPorAutor[a][t] = (temasPorAutor[a][t] || 0) + 1;
+        });
+
+        const ranking = Object.entries(contagem).sort((a, b) => b[1] - a[1]).slice(0, 9);
+        const maxVal = ranking[0][1];
+
+        container.innerHTML = `
+          <div class="insight-col" style="grid-column: span 3;">
+            <h3 style="color: var(--primary);">
+              🏛️ Deputados com maior número de indicações e suas prioridades
+              <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: normal;">(Clique no deputado para ver todas as indicações)</span>
+            </h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px;">
+              ${ranking.map(([autor, qtd]) => {
+                const principalTema = Object.entries(temasPorAutor[autor] || {}).sort((a, b) => b[1] - a[1])[0];
+                return `
+                  <div class="ranking-item" onclick="filtrarPorDeputado('${autor}')">
+                    <div style="width: 100%;">
+                      <div style="display: flex; justify-content: space-between;">
+                        <strong>${autor}</strong>
+                        <span style="color: var(--primary); font-weight: 700;">${qtd} emendas</span>
+                      </div>
+                      <div class="ranking-bar" style="background: var(--primary); width: ${(qtd / maxVal) * 100}%;"></div>
+                      <small style="color: var(--text-muted); font-size: 0.68rem;">Foco principal: <strong>${principalTema ? principalTema[0] : 'Variados'}</strong></small>
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        `;
+      } 
+      else if (tipo === 'modalidades') {
+        container.innerHTML = `
+          <div class="insight-col">
+            <div class="modalidade-card m-pix">
+              <strong style="color: var(--teal);">Transferência Especial (PIX Orçamentário)</strong>
+              O dinheiro cai direto na conta da prefeitura sem exigir convênio prévio. A prefeitura tem autonomia de execução, sob fiscalização do Tribunal de Contas de Pernambuco (TCE-PE).
+            </div>
+          </div>
+          <div class="insight-col">
+            <div class="modalidade-card m-direta">
+              <strong style="color: var(--primary);">Execução / Aplicação Direta</strong>
+              O Estado é quem contrata ou adquire. O recurso financia aquisição de ambulâncias pela Secretaria de Saúde, reformas em hospitais da UPE (Procape, Oswaldo Cruz) ou maquinário pelo IPA.
+            </div>
+          </div>
+          <div class="insight-col">
+            <div class="modalidade-card m-gtv">
+              <strong style="color: var(--purple);">Convênios e Entidades (GTV)</strong>
+              Recursos transferidos a organizações sociais, hospitais filantrópicos e fundações comunitárias parceiras por meio de termos formais de colaboração ou fomento.
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    /* RENDERIZAÇÃO DA TABELA */
     function renderizarTabela() {
       const inicio = (paginaAtual - 1) * itensPorPagina;
       const fim = inicio + itensPorPagina;
@@ -631,21 +958,27 @@
           <tr>
             <td>
               <span class="mobile-label">Deputado</span>
-              <strong>${item.autor || 'Não informado'}</strong>
+              <a class="clickable-tag" onclick="filtrarPorDeputado('${item.autor}')" title="Filtrar emendas de ${item.autor}">
+                ${item.autor || 'Não informado'}
+              </a>
             </td>
             <td>
               <span class="mobile-label">Destino</span>
-              <div>${item.municipio || 'Não informado'}</div>
-              <small style="color: var(--text-muted); font-size: 0.73rem;">${item.beneficiario || ''}</small>
+              <div>
+                <a class="clickable-city" onclick="filtrarPorCidade('${item.municipio}')" title="Filtrar emendas para ${item.municipio}">
+                  <strong>${item.municipio || 'Não informado'}</strong>
+                </a>
+              </div>
+              <small style="color: var(--text-muted); font-size: 0.72rem;">${item.beneficiario || ''}</small>
             </td>
             <td>
               <span class="mobile-label">Modalidade</span>
               <span class="badge badge-modalidade">${item.modalidade || 'Emenda'}</span>
             </td>
-            <td style="max-width: 320px; font-size: 0.78rem; color: #334155;">
+            <td style="max-width: 320px; font-size: 0.77rem; color: #334155;">
               <span class="mobile-label">Objeto</span>
               ${item.objeto || 'Não informado'}
-              ${item.condicao_saneamento_impedimento_tecnico ? `<div style="margin-top: 4px; color: var(--danger); font-size: 0.72rem;"><strong>Motivo:</strong> ${item.condicao_saneamento_impedimento_tecnico}</div>` : ''}
+              ${item.condicao_saneamento_impedimento_tecnico ? `<div style="margin-top: 4px; color: var(--danger); font-size: 0.71rem;"><strong>Motivo:</strong> ${item.condicao_saneamento_impedimento_tecnico}</div>` : ''}
             </td>
             <td>
               <span class="mobile-label">Status</span>
@@ -656,7 +989,7 @@
                 <span class="mobile-label">Valor Indicado</span>
                 <strong>${formatarMoeda(vIndicado)}</strong>
               </div>
-              <div style="color: var(--success); font-size: 0.76rem; margin-top: 2px;">
+              <div style="color: var(--success); font-size: 0.75rem; margin-top: 2px;">
                 Pago: <strong>${formatarMoeda(item.valor_pago)}</strong>
               </div>
             </td>
