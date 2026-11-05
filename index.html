@@ -389,6 +389,7 @@
   <script>
     let dadosCompletos = [];
     let dadosFiltrados = [];
+    let metaExecucao = {};
     let paginaAtual = 1;
     const itensPorPagina = 20;
 
@@ -399,8 +400,8 @@
 
     const obterClasseBadgeStatus = (status) => {
       const s = (status || '').toUpperCase();
-      if (s.includes('TOTALMENTE')) return 'status-pago';
-      if (s.includes('PARCIALMENTE')) return 'status-parcial';
+      if (s.includes('TOTALMENTE') || s === 'PAGA') return 'status-pago';
+      if (s.includes('PARCIAL') || s.includes('LIQUIDADA')) return 'status-parcial';
       if (s.includes('IMPEDIMENTO')) return 'status-impedimento';
       return 'status-analise';
     };
@@ -410,15 +411,29 @@
         const resposta = await fetch('dados_emendas.json?cache=' + Date.now());
         if (!resposta.ok) throw new Error('Falha ao baixar dados_emendas.json');
         
-        dadosCompletos = await resposta.json();
+        const json = await resposta.json();
+        
+        // Trata os dois formatos: se o JSON contiver o array em "emendas" ou se for o array puro
+        if (Array.isArray(json)) {
+          dadosCompletos = json;
+        } else if (json && Array.isArray(json.emendas)) {
+          dadosCompletos = json.emendas;
+          metaExecucao = {
+            ultima_execucao: json.ultima_execucao,
+            total_atualizadas_hoje: json.total_atualizadas_hoje
+          };
+        } else {
+          dadosCompletos = [];
+        }
+
         povoarFiltrosSelect();
         aplicarFiltros();
       } catch (erro) {
-        console.error(erro);
+        console.error("Erro no carregamento:", erro);
         document.getElementById('tabela-corpo').innerHTML = `
           <tr>
             <td colspan="6" style="text-align: center; color: var(--danger); padding: 30px;">
-              Erro ao carregar dados. Verifique se o arquivo dados_emendas.json foi publicado corretamente.
+              Erro ao processar dados. Verifique a estrutura do arquivo dados_emendas.json.
             </td>
           </tr>
         `;
@@ -426,10 +441,13 @@
     }
 
     function povoarFiltrosSelect() {
-      const autores = [...new Set(dadosCompletos.map(d => d.autor).filter(Boolean))].sort();
-      const municipios = [...new Set(dadosCompletos.map(d => d.municipio).filter(Boolean))].sort();
+      // Coleta autores e municípios únicos e remove vazios/nulos
+      const autores = [...new Set(dadosCompletos.map(d => d.autor).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+      const municipios = [...new Set(dadosCompletos.map(d => d.municipio).filter(Boolean))].sort((a, b) => a.localeCompare(b));
 
       const selectAutor = document.getElementById('filtro-autor');
+      // Limpa opções antigas mantendo a primeira neutra
+      selectAutor.innerHTML = '<option value="">Todos os deputados</option>';
       autores.forEach(autor => {
         const opt = document.createElement('option');
         opt.value = autor;
@@ -438,6 +456,7 @@
       });
 
       const selectMunicipio = document.getElementById('filtro-municipio');
+      selectMunicipio.innerHTML = '<option value="">Todas as cidades</option>';
       municipios.forEach(mun => {
         const opt = document.createElement('option');
         opt.value = mun;
@@ -456,7 +475,13 @@
         const matchAutor = !autorSelecionado || item.autor === autorSelecionado;
         const matchMunicipio = !municipioSelecionado || item.municipio === municipioSelecionado;
         const matchModalidade = !modalidadeSelecionada || (item.modalidade && item.modalidade.includes(modalidadeSelecionada));
-        const matchStatus = !statusSelecionado || (item.status_calculado && item.status_calculado.includes(statusSelecionado));
+        
+        let matchStatus = true;
+        if (statusSelecionado) {
+          const statusItem = (item.status_calculado || item.status_resolucao_tce || '').toUpperCase();
+          matchStatus = statusItem.includes(statusSelecionado.toUpperCase());
+        }
+
         return matchAutor && matchMunicipio && matchModalidade && matchStatus;
       });
 
@@ -471,9 +496,15 @@
       let totalImpedimentos = 0;
 
       dados.forEach(item => {
-        totalIndicado += parseFloat(item.valor) || 0;
-        totalPago += parseFloat(item.valor_pago) || 0;
-        if (item.status_calculado && item.status_calculado.includes('IMPEDIMENTO')) {
+        // Usa o valor indicado/empenhado conforme a base da SEPLAG
+        const vIndicado = parseFloat(item.valor) || parseFloat(item.valor_empenhado) || 0;
+        const vPago = parseFloat(item.valor_pago) || 0;
+        
+        totalIndicado += vIndicado;
+        totalPago += vPago;
+
+        const st = (item.status_calculado || item.status_resolucao_tce || '').toUpperCase();
+        if (st.includes('IMPEDIMENTO')) {
           totalImpedimentos++;
         }
       });
@@ -491,27 +522,35 @@
       const corpo = document.getElementById('tabela-corpo');
 
       if (itensPagina.length === 0) {
-        corpo.innerHTML = `<tr><td colspan="6" style="text-align: center; padding: 30px;">Nenhuma emenda encontrada com esses critérios.</td></tr>`;
+        corpo.innerHTML = `<tr><td colspan="6" style="text-align: center; padding: 30px;">Nenhuma emenda encontrada para estes filtros.</td></tr>`;
         atualizarBotoesPagina(0);
         return;
       }
 
-      corpo.innerHTML = itensPagina.map(item => `
-        <tr>
-          <td><strong>${item.autor || 'Não informado'}</strong></td>
-          <td>
-            <div>${item.municipio || 'Não informado'}</div>
-            <small style="color: var(--text-muted); font-size: 0.75rem;">${item.beneficiario || ''}</small>
-          </td>
-          <td><span class="badge badge-modalidade">${item.modalidade || 'Emenda'}</span></td>
-          <td style="max-width: 300px; font-size: 0.8rem; color: #334155;">${item.objeto || 'Não informado'}</td>
-          <td><span class="badge ${obterClasseBadgeStatus(item.status_calculado)}">${item.status_calculado || 'Em Análise'}</span></td>
-          <td style="white-space: nowrap;">
-            <div><strong>${formatarMoeda(item.valor)}</strong></div>
-            <small style="color: var(--success); font-size: 0.78rem;">Pago: ${formatarMoeda(item.valor_pago)}</small>
-          </td>
-        </tr>
-      `).join('');
+      corpo.innerHTML = itensPagina.map(item => {
+        const vIndicado = parseFloat(item.valor) || parseFloat(item.valor_empenhado) || 0;
+        const statusExibido = item.status_calculado || item.status_resolucao_tce || 'Em Análise';
+        
+        return `
+          <tr>
+            <td><strong>${item.autor || 'Não informado'}</strong></td>
+            <td>
+              <div>${item.municipio || 'Não informado'}</div>
+              <small style="color: var(--text-muted); font-size: 0.75rem;">${item.beneficiario || ''}</small>
+            </td>
+            <td><span class="badge badge-modalidade">${item.modalidade || 'Transferência'}</span></td>
+            <td style="max-width: 320px; font-size: 0.8rem; color: #334155;">
+              ${item.objeto || 'Objeto não detalhado.'}
+              ${item.condicao_saneamento_impedimento_tecnico ? `<div style="margin-top: 4px; color: var(--danger); font-size: 0.72rem;"><strong>Motivo:</strong> ${item.condicao_saneamento_impedimento_tecnico}</div>` : ''}
+            </td>
+            <td><span class="badge ${obterClasseBadgeStatus(statusExibido)}">${statusExibido}</span></td>
+            <td style="white-space: nowrap;">
+              <div><strong>${formatarMoeda(vIndicado)}</strong></div>
+              <small style="color: var(--success); font-size: 0.78rem;">Pago: ${formatarMoeda(item.valor_pago)}</small>
+            </td>
+          </tr>
+        `;
+      }).join('');
 
       atualizarBotoesPagina(dadosFiltrados.length);
     }
@@ -522,12 +561,12 @@
       const btnAnt = document.getElementById('btn-anterior');
       const btnProx = document.getElementById('btn-proximo');
 
-      info.textContent = `Página ${paginaAtual} de ${totalPaginas} (${totalItens} registros)`;
+      info.textContent = `Página ${paginaAtual} de ${totalPaginas} (${totalItens.toLocaleString('pt-BR')} registros)`;
       btnAnt.disabled = paginaAtual <= 1;
       btnProx.disabled = paginaAtual >= totalPaginas;
     }
 
-    // Event listeners
+    // Registra os filtros
     document.getElementById('filtro-autor').addEventListener('change', aplicarFiltros);
     document.getElementById('filtro-municipio').addEventListener('change', aplicarFiltros);
     document.getElementById('filtro-modalidade').addEventListener('change', aplicarFiltros);
