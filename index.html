@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel de Emendas Parlamentares PE 2026 - Jamildo.com</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cor-azul: #024796;
+      --cor-azul-escuro: #012b5c;
+      --cor-laranja: #f83d03;
+      --cor-fundo: #f4f6f9;
+      --cor-cartao: #ffffff;
+      --cor-texto: #1a1e24;
+      --cor-borda: #dfe3eb;
+      --cor-sucesso: #198754;
+      --cor-atencao: #d97706;
+      --cor-perigo: #dc3545;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background-color: var(--cor-fundo); color: var(--cor-texto); line-height: 1.4; padding: 12px; }
+
+    .painel-container { max-width: 1100px; margin: 0 auto; background: var(--cor-cartao); border-radius: 10px; border: 1px solid var(--cor-borda); overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+    
+    header { background: var(--cor-azul); color: #fff; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; border-bottom: 4px solid var(--cor-laranja); }
+    .logo-box img { max-height: 38px; width: auto; display: block; }
+    .header-titulo h1 { font-size: 1.15rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+    .header-titulo p { font-size: 0.8rem; opacity: 0.85; margin-top: 2px; }
+
+    .feed-atualizacao { background: #fff3ed; border-left: 4px solid var(--cor-laranja); padding: 10px 16px; margin: 16px 20px 0; border-radius: 4px; display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem; font-weight: 600; color: #7a1e00; }
+    .feed-atualizacao .badge-hoje { background: var(--cor-laranja); color: #fff; padding: 2px 8px; border-radius: 12px; font-size: 0.72rem; text-transform: uppercase; font-weight: 700; margin-left: 8px; }
+
+    .metricas { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; padding: 16px 20px; }
+    .metrica-card { background: #fbfcfd; border: 1px solid var(--cor-borda); border-radius: 8px; padding: 12px; text-align: left; }
+    .metrica-card .rotulo { font-size: 0.75rem; text-transform: uppercase; font-weight: 600; color: #5a6474; }
+    .metrica-card .valor { font-size: 1.25rem; font-weight: 800; color: var(--cor-azul); margin-top: 4px; }
+
+    .filtros { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; padding: 0 20px 16px; }
+    .filtro-item input, .filtro-item select { width: 100%; padding: 8px 12px; border: 1px solid var(--cor-borda); border-radius: 6px; font-size: 0.85rem; outline: none; transition: border-color 0.2s; }
+    .filtro-item input:focus, .filtro-item select:focus { border-color: var(--cor-azul); }
+
+    .tabela-container { overflow-x: auto; padding: 0 20px 20px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; text-align: left; }
+    th { background: #f0f4f8; color: var(--cor-azul-escuro); padding: 10px 12px; font-weight: 700; border-bottom: 2px solid var(--cor-borda); white-space: nowrap; }
+    td { padding: 10px 12px; border-bottom: 1px solid #edf1f5; vertical-align: top; }
+    tr:hover { background-color: #fafbfc; }
+
+    .tag { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; }
+    .tag-paga { background: #e8f5e9; color: var(--cor-sucesso); border: 1px solid #c8e6c9; }
+    .tag-liquidada { background: #fff8e1; color: var(--cor-atencao); border: 1px solid #ffe082; }
+    .tag-empenhada { background: #e1f5fe; color: #0288d1; border: 1px solid #b3e5fc; }
+    .tag-indicada { background: #f5f5f5; color: #616161; border: 1px solid #e0e0e0; }
+    .tag-impedimento { background: #ffebee; color: var(--cor-perigo); border: 1px solid #ffcdd2; }
+
+    .tag-hoje { background: var(--cor-laranja); color: #fff; border-radius: 3px; padding: 1px 5px; font-size: 0.65rem; font-weight: 800; margin-left: 4px; display: inline-block; }
+    .info-secundaria { font-size: 0.72rem; color: #667085; margin-top: 2px; }
+
+    .paginacao { display: flex; justify-content: space-between; align-items: center; padding: 12px 20px 20px; font-size: 0.82rem; }
+    .paginacao button { background: var(--cor-azul); color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: 600; }
+    .paginacao button:disabled { background: #ccc; cursor: not-allowed; }
+  </style>
+</head>
+<body>
+
+<div class="painel-container">
+  <header>
+    <div class="header-titulo">
+      <h1>Rastreador de Emendas Parlamentares 2026</h1>
+      <p>Execução orçamentária dos deputados da ALEPE em tempo real</p>
+    </div>
+    <div class="logo-box">
+      <img src="https://jamildo.com/media/uploads/brancologojamildo_6xe6mA0.png" alt="Portal Jamildo.com">
+    </div>
+  </header>
+
+  <div class="feed-atualizacao" id="blocoFeed">
+    <div id="textoFeed">Carregando base de emendas atualizada...</div>
+    <div id="totalModificadas"></div>
+  </div>
+
+  <section class="metricas">
+    <div class="metrica-card">
+      <div class="rotulo">Total de Emendas</div>
+      <div class="valor" id="totalRegistros">-</div>
+    </div>
+    <div class="metrica-card">
+      <div class="rotulo">Total Empenhado</div>
+      <div class="valor" id="totalEmpenhado">-</div>
+    </div>
+    <div class="metrica-card">
+      <div class="rotulo">Total Efetivamente Pago</div>
+      <div class="valor" id="totalPago" style="color: var(--cor-laranja);">-</div>
+    </div>
+  </section>
+
+  <section class="filtros">
+    <div class="filtro-item">
+      <input type="text" id="filtroBusca" placeholder="Pesquisar cidade, deputado ou objeto...">
+    </div>
+    <div class="filtro-item">
+      <select id="filtroModalidade">
+        <option value="">Todas as Modalidades</option>
+        <option value="Transferência Especial (PIX)">Emenda PIX</option>
+        <option value="Execução Direta">Execução Direta</option>
+        <option value="Convênio/Parceria (GTV)">Convênios (GTV)</option>
+      </select>
+    </div>
+    <div class="filtro-item">
+      <select id="filtroStatus">
+        <option value="">Todos os Status</option>
+        <option value="Paga">Pagas</option>
+        <option value="Liquidada (Aguardando Pagamento)">Aguardando Pagamento</option>
+        <option value="Empenhada">Empenhadas</option>
+        <option value="Impedimento Técnico">Com Impedimento Técnico</option>
+      </select>
+    </div>
+  </section>
+
+  <div class="tabela-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Deputado / Código</th>
+          <th>Município / Beneficiário</th>
+          <th>Modalidade & Tema</th>
+          <th>Valores (Empenhado / Pago)</th>
+          <th>Situação Atual</th>
+          <th>Atualizado Em</th>
+        </tr>
+      </thead>
+      <tbody id="corpoTabela">
+        <tr><td colspan="6" style="text-align:center;">Carregando registros...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="paginacao">
+    <span id="infoPagina">Página 1</span>
+    <div>
+      <button id="btnAnterior" onclick="mudarPagina(-1)">Anterior</button>
+      <button id="btnProximo" onclick="mudarPagina(1)">Próxima</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  let dadosCompletos = [];
+  let dadosFiltrados = [];
+  let paginaAtual = 1;
+  const itensPorPagina = 25;
+
+  const formatarMoeda = (val) => Number(val || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+  async function carregarDados() {
+    try {
+      const res = await fetch('dados_emendas.json?cache=' + new Date().getTime());
+      const data = await res.json();
+      dadosCompletos = data.emendas || [];
+
+      document.getElementById('textoFeed').innerHTML = `Base atualizada em <strong>${data.ultima_execucao}</strong> via SEPLAG-PE.`;
+      if (data.total_atualizadas_hoje > 0) {
+        document.getElementById('totalModificadas').innerHTML = `<span class="badge-hoje">${data.total_atualizadas_hoje} com movimentação hoje</span>`;
+      } else {
+        document.getElementById('totalModificadas').innerHTML = `<span style="font-size:0.75rem; color:#666;">Sem novos pagamentos hoje</span>`;
+      }
+
+      aplicarFiltros();
+    } catch (err) {
+      document.getElementById('corpoTabela').innerHTML = `<tr><td colspan="6" style="text-align:center;color:red;">Erro ao carregar dados. Verifique se o arquivo dados_emendas.json foi gerado.</td></tr>`;
+    }
+  }
+
+  function aplicarFiltros() {
+    const texto = document.getElementById('filtroBusca').value.toLowerCase();
+    const modalidade = document.getElementById('filtroModalidade').value;
+    const status = document.getElementById('filtroStatus').value;
+
+    dadosFiltrados = dadosCompletos.filter(item => {
+      const matchTexto = !texto || 
+        item.autor.toLowerCase().includes(texto) ||
+        item.municipio.toLowerCase().includes(texto) ||
+        item.beneficiario.toLowerCase().includes(texto) ||
+        item.objeto.toLowerCase().includes(texto);
+
+      const matchMod = !modalidade || item.modalidade === modalidade;
+      const matchStatus = !status || item.status_calculado === status;
+
+      return matchTexto && matchMod && matchStatus;
+    });
+
+    paginaAtual = 1;
+    atualizarResumos();
+    renderizarTabela();
+  }
+
+  function atualizarResumos() {
+    document.getElementById('totalRegistros').innerText = dadosFiltrados.length.toLocaleString('pt-BR');
+    const totalEmp = dadosFiltrados.reduce((acc, cur) => acc + (cur.valor_empenhado || 0), 0);
+    const totalPg = dadosFiltrados.reduce((acc, cur) => acc + (cur.valor_pago || 0), 0);
+    document.getElementById('totalEmpenhado').innerText = formatarMoeda(totalEmp);
+    document.getElementById('totalPago').innerText = formatarMoeda(totalPg);
+  }
+
+  function renderizarTabela() {
+    const tbody = document.getElementById('corpoTabela');
+    tbody.innerHTML = '';
+
+    const inicio = (paginaAtual - 1) * itensPorPagina;
+    const fim = inicio + itensPorPagina;
+    const paginaDados = dadosFiltrados.slice(inicio, fim);
+
+    if (paginaDados.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;">Nenhuma emenda localizada com os filtros selecionados.</td></tr>`;
+      return;
+    }
+
+    paginaDados.forEach(em => {
+      let classeTag = 'tag-indicada';
+      if (em.status_calculado === 'Paga') classeTag = 'tag-paga';
+      else if (em.status_calculado.includes('Liquidada')) classeTag = 'tag-liquidada';
+      else if (em.status_calculado === 'Empenhada') classeTag = 'tag-empenhada';
+      else if (em.status_calculado === 'Impedimento Técnico') classeTag = 'tag-impedimento';
+
+      const tagHoje = em.teve_modificacao_hoje ? `<span class="tag-hoje">NOVO</span>` : '';
+
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>
+          <strong>${em.autor}</strong> ${tagHoje}
+          <div class="info-secundaria">Cód. ALEPE: ${em.codigo_alepe}</div>
+        </td>
+        <td>
+          <strong>${em.municipio}</strong>
+          <div class="info-secundaria">${em.beneficiario}</div>
+        </td>
+        <td>
+          ${em.modalidade}
+          <div class="info-secundaria">Tema: ${em.tematica}</div>
+        </td>
+        <td>
+          Emp: ${formatarMoeda(em.valor_empenhado)}<br>
+          <strong style="color:var(--cor-azul); font-size:0.85rem;">Pago: ${formatarMoeda(em.valor_pago)}</strong>
+        </td>
+        <td>
+          <span class="tag ${classeTag}">${em.status_calculado}</span>
+          ${em.condicao_saneamento_impedimento_tecnico ? `<div class="info-secundaria" style="color:red;">${em.condicao_saneamento_impedimento_tecnico}</div>` : ''}
+        </td>
+        <td>
+          ${em.data_modificacao}
+          ${em.detalhe_mudanca ? `<div class="info-secundaria" style="color:var(--cor-laranja);">${em.detalhe_mudanca}</div>` : ''}
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    const totalPaginas = Math.ceil(dadosFiltrados.length / itensPorPagina) || 1;
+    document.getElementById('infoPagina').innerText = `Página ${paginaAtual} de ${totalPaginas} (${dadosFiltrados.length} itens)`;
+    document.getElementById('btnAnterior').disabled = paginaAtual === 1;
+    document.getElementById('btnProximo').disabled = paginaAtual >= totalPaginas;
+  }
+
+  function mudarPagina(delta) {
+    paginaAtual += delta;
+    renderizarTabela();
+  }
+
+  document.getElementById('filtroBusca').addEventListener('input', aplicarFiltros);
+  document.getElementById('filtroModalidade').addEventListener('change', aplicarFiltros);
+  document.getElementById('filtroStatus').addEventListener('change', aplicarFiltros);
+
+  carregarDados();
+</script>
+
+</body>
+</html>
