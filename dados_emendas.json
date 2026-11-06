@@ -1,7 +1,7 @@
 {
   "ultima_execucao": "2026-11-06",
   "total_emendas": 2398,
-  "total_atualizadas_hoje": 107,
+  "total_atualizadas_hoje": 104,
   "emendas": [
     {
       "codigo_alepe": "1",
@@ -10739,9 +10739,9 @@
       "valor_pago": 4499000.0,
       "status_calculado": "Paga",
       "id_registro": "50114_Execução Direta_Serra Talhada",
-      "data_modificacao": "2026-11-05",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
+      "data_modificacao": "2026-11-06",
+      "teve_modificacao_hoje": true,
+      "detalhe_mudanca": "Novo status: Paga"
     },
     {
       "codigo_alepe": "50114",
@@ -10760,8 +10760,8 @@
       "status_calculado": "Paga",
       "id_registro": "50114_Execução Direta_Serra Talhada",
       "data_modificacao": "2026-11-06",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Paga"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "50131",
@@ -10979,9 +10979,9 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "517_Execução Direta_Recife",
-      "data_modificacao": "2026-11-05",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
+      "data_modificacao": "2026-11-06",
+      "teve_modificacao_hoje": true,
+      "detalhe_mudanca": "Novo status: Empenhada"
     },
     {
       "codigo_alepe": "517",
@@ -11000,8 +11000,8 @@
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "517_Execução Direta_Recife",
       "data_modificacao": "2026-11-06",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "517",
@@ -11020,8 +11020,8 @@
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "517_Execução Direta_Recife",
       "data_modificacao": "2026-11-06",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "519",
@@ -11079,9 +11079,9 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "531_Execução Direta_Recife",
-      "data_modificacao": "2026-11-05",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
+      "data_modificacao": "2026-11-06",
+      "teve_modificacao_hoje": true,
+      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
     {
       "codigo_alepe": "531",
@@ -11140,8 +11140,8 @@
       "status_calculado": "Paga",
       "id_registro": "531_Execução Direta_Recife",
       "data_modificacao": "2026-11-06",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Paga"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "542",
@@ -11159,9 +11159,9 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "542_Execução Direta_Exu",
-      "data_modificacao": "2026-11-05",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
+      "data_modificacao": "2026-11-06",
+      "teve_modificacao_hoje": true,
+      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
     {
       "codigo_alepe": "542",
@@ -11220,8 +11220,8 @@
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "542_Execução Direta_Exu",
       "data_modificacao": "2026-11-06",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "544",
@@ -14579,9 +14579,9 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "1086_Convênio/Parceria (GTV)_Itaquitinga",
-      "data_modificacao": "2026-11-05",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
+      "data_modificacao": "2026-11-06",
+      "teve_modificacao_hoje": true,
+      "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
     {
       "codigo_alepe": "1086",
@@ -14600,8 +14600,8 @@
       "status_calculado": "Paga",
       "id_registro": "1086_Convênio/Parceria (GTV)_Itaquitinga",
       "data_modificacao": "2026-11-06",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Paga"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "1087",
@@ -17960,8 +17960,28 @@
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "1298_Convênio/Parceria (GTV)_Gravata",
       "data_modificacao": "2026-11-06",
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
+    },
+    {
+      "codigo_alepe": "1298",
+      "autor": "WALDEMAR BORGES",
+      "municipio": "Gravata",
+      "beneficiario": "ENTIDADE",
+      "tematica": "CULTURA",
+      "objeto": "A emenda, no valor de R$ 100.000,00 (cem mil reais), será destinada à entidade OBRA DE DEFESA DA INFÂNCIA POBRE - ODIP, CNPJ 10.313.674/0001-08, para a manutenção do Projeto CULTURART, promovido por esta, atendendo cerca de 100 crianças, jovens e adolescentes por meio de oficinas de dança popular e música.",
+      "modalidade": "Convênio/Parceria (GTV)",
+      "status_resolucao_tce": "EM ANÁLISE",
+      "condicao_saneamento_impedimento_tecnico": "",
+      "numero_empenho": "2026NE003822",
+      "valor_empenhado": 0.0,
+      "valor_liquidado": 0.0,
+      "valor_pago": 0.0,
+      "status_calculado": "Indicada (Sem Execução)",
+      "id_registro": "1298_Convênio/Parceria (GTV)_Gravata",
+      "data_modificacao": "2026-11-06",
       "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
+      "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
     {
       "codigo_alepe": "1298",
@@ -17979,29 +17999,9 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "1298_Convênio/Parceria (GTV)_Gravata",
-      "data_modificacao": "2026-11-05",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
-    },
-    {
-      "codigo_alepe": "1298",
-      "autor": "WALDEMAR BORGES",
-      "municipio": "Gravata",
-      "beneficiario": "ENTIDADE",
-      "tematica": "CULTURA",
-      "objeto": "A emenda, no valor de R$ 100.000,00 (cem mil reais), será destinada à entidade OBRA DE DEFESA DA INFÂNCIA POBRE - ODIP, CNPJ 10.313.674/0001-08, para a manutenção do Projeto CULTURART, promovido por esta, atendendo cerca de 100 crianças, jovens e adolescentes por meio de oficinas de dança popular e música.",
-      "modalidade": "Convênio/Parceria (GTV)",
-      "status_resolucao_tce": "EM ANÁLISE",
-      "condicao_saneamento_impedimento_tecnico": "",
-      "numero_empenho": "2026NE003822",
-      "valor_empenhado": 0.0,
-      "valor_liquidado": 0.0,
-      "valor_pago": 0.0,
-      "status_calculado": "Indicada (Sem Execução)",
-      "id_registro": "1298_Convênio/Parceria (GTV)_Gravata",
-      "data_modificacao": "2026-11-05",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
+      "data_modificacao": "2026-11-06",
+      "teve_modificacao_hoje": true,
+      "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
     {
       "codigo_alepe": "1298",
@@ -18020,8 +18020,8 @@
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "1298_Convênio/Parceria (GTV)_Gravata",
       "data_modificacao": "2026-11-06",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "1299",
@@ -19820,8 +19820,8 @@
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "1392_Convênio/Parceria (GTV)_Recife",
       "data_modificacao": "2026-11-06",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "1393",
@@ -27559,9 +27559,9 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "30264_Convênio/Parceria (GTV)_Bezerros",
-      "data_modificacao": "2026-11-05",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
+      "data_modificacao": "2026-11-06",
+      "teve_modificacao_hoje": true,
+      "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
     {
       "codigo_alepe": "30264",
@@ -27580,8 +27580,8 @@
       "status_calculado": "Paga",
       "id_registro": "30264_Convênio/Parceria (GTV)_Bezerros",
       "data_modificacao": "2026-11-06",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Paga"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "30266",
@@ -38119,9 +38119,9 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "537_Convênio/Parceria (GTV)_Paulista",
-      "data_modificacao": "2026-11-05",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
+      "data_modificacao": "2026-11-06",
+      "teve_modificacao_hoje": true,
+      "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
     {
       "codigo_alepe": "537",
@@ -38140,8 +38140,8 @@
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "537_Convênio/Parceria (GTV)_Paulista",
       "data_modificacao": "2026-11-06",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "538",
@@ -44160,8 +44160,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "752_Convênio/Parceria (GTV)_Jaboatao Dos Guararapes",
       "data_modificacao": "2026-11-06",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "756",
@@ -46979,9 +46979,9 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "946_Convênio/Parceria (GTV)_Vitoria De Santo Antao",
-      "data_modificacao": "2026-11-05",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
+      "data_modificacao": "2026-11-06",
+      "teve_modificacao_hoje": true,
+      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
     {
       "codigo_alepe": "946",
@@ -47000,8 +47000,8 @@
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "946_Convênio/Parceria (GTV)_Vitoria De Santo Antao",
       "data_modificacao": "2026-11-06",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "948",
