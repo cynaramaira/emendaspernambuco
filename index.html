@@ -35,7 +35,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Em desktop: trava em 708px para o iframe de 728px */
     @media (min-width: 769px) {
       html, body {
         height: 100%;
@@ -63,16 +62,17 @@
       position: relative;
     }
 
-    /* Header */
+    /* Header Compacto com Indicador de Atualização */
     header {
       background: #ffffff;
       border-bottom: 3px solid var(--accent);
-      padding: 12px 16px;
+      padding: 10px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 10px;
       flex-shrink: 0;
+      flex-wrap: wrap;
     }
 
     .brand img {
@@ -80,21 +80,51 @@
       display: block;
     }
 
+    .header-info {
+      flex: 1;
+      min-width: 250px;
+    }
+
     .header-info h1 {
-      font-size: 1rem;
+      font-size: 0.98rem;
       font-weight: 700;
       color: var(--primary);
     }
 
-    .header-info p {
-      font-size: 0.73rem;
+    .status-sync-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 3px;
+      flex-wrap: wrap;
+      font-size: 0.72rem;
       color: var(--text-muted);
     }
 
-    /* Métricas */
+    .badge-sync-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #fff1ee;
+      color: var(--accent);
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      border: 1px solid #ffdcd6;
+    }
+
+    .sync-dot {
+      width: 6px;
+      height: 6px;
+      background-color: var(--accent);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    /* Métricas: 5 Cards */
     .metrics-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 8px;
       padding: 8px 16px;
       background: #f1f5f9;
@@ -119,7 +149,7 @@
 
     .metric-card strong {
       display: block;
-      font-size: 0.98rem;
+      font-size: 0.95rem;
       color: var(--primary);
       margin-top: 2px;
       white-space: nowrap;
@@ -147,9 +177,9 @@
     }
 
     .view-btn {
-      padding: 6px 12px;
+      padding: 5px 11px;
       border-radius: 6px;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 600;
       cursor: pointer;
       border: 1px solid var(--border);
@@ -176,7 +206,7 @@
       display: none;
       align-items: center;
       gap: 6px;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       color: var(--accent);
       font-weight: 600;
       background: #fff1ee;
@@ -191,7 +221,7 @@
       color: var(--accent);
       font-weight: 800;
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
     }
 
     /* Painel de Estatísticas */
@@ -200,7 +230,7 @@
       padding: 12px 16px;
       background: #fdfefe;
       border-bottom: 2px solid var(--border);
-      max-height: 260px;
+      max-height: 250px;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
       flex-shrink: 0;
@@ -224,7 +254,7 @@
     }
 
     .insight-col h3 {
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       text-transform: uppercase;
       font-weight: 700;
       margin-bottom: 8px;
@@ -234,7 +264,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       cursor: pointer;
       padding: 4px 6px;
       border-radius: 4px;
@@ -259,10 +289,10 @@
       margin-bottom: 8px;
       border-radius: 0 6px 6px 0;
       background: #f8fafc;
-      font-size: 0.74rem;
+      font-size: 0.73rem;
     }
 
-    .modalidade-card strong { display: block; font-size: 0.77rem; }
+    .modalidade-card strong { display: block; font-size: 0.76rem; }
     .m-pix { border-color: var(--teal); }
     .m-direta { border-color: var(--primary); }
     .m-gtv { border-color: var(--purple); }
@@ -297,7 +327,7 @@
       padding: 6px 8px;
       border: 1px solid var(--border);
       border-radius: 6px;
-      font-size: 0.8rem;
+      font-size: 0.79rem;
       color: var(--text);
       outline: none;
       background: #fff;
@@ -471,11 +501,11 @@
       cursor: not-allowed;
     }
 
-    /* CORREÇÃO CRÍTICA PARA CELULAR / IPHONE */
+    /* Mobile */
     @media (max-width: 768px) {
       html, body {
         height: auto !important;
-        overflow-y: visible !important; /* Libera a rolagem natural da página */
+        overflow-y: visible !important;
         -webkit-overflow-scrolling: touch;
       }
 
@@ -485,7 +515,7 @@
 
       .container {
         height: auto !important;
-        max-height: none !important; /* Destrava a altura fixa que bloqueava a descida */
+        max-height: none !important;
         overflow: visible !important;
       }
 
@@ -511,7 +541,6 @@
         grid-template-columns: 1fr; 
       }
 
-      /* Tabela vira cartões verticais contínuos */
       table thead { 
         display: none; 
       }
@@ -564,15 +593,26 @@
       </div>
       <div class="header-info">
         <h1>Painel de Execução das Emendas Parlamentares de Pernambuco</h1>
-        <p>Monitoramento contínuo da tramitação, impedimentos e liberações da ALEPE e SEPLAG</p>
+        <div class="status-sync-bar">
+          <span>Base oficial: ALEPE / SEPLAG-PE</span>
+          <span>•</span>
+          <span class="badge-sync-live">
+            <span class="sync-dot"></span>
+            Última atualização: <strong id="header-data-atualizacao">Carregando...</strong>
+          </span>
+        </div>
       </div>
     </header>
 
-    <!-- Cards informativos -->
+    <!-- Cards informativos (5 colunas) -->
     <section class="metrics-grid">
       <div class="metric-card">
         <span>Total de Emendas</span>
         <strong id="card-total-emendas">0</strong>
+      </div>
+      <div class="metric-card" style="border-left: 3px solid var(--accent);">
+        <span>Atualizadas Hoje</span>
+        <strong id="card-atualizadas-hoje" style="color: var(--accent);">0</strong>
       </div>
       <div class="metric-card">
         <span>Valor Indicado</span>
@@ -707,6 +747,10 @@
   <script>
     let dadosCompletos = [];
     let dadosFiltrados = [];
+    let metaExecucao = {
+      ultima_execucao: '',
+      total_atualizadas_hoje: 0
+    };
     let paginaAtual = 1;
     let abaAberta = null;
     const itensPorPagina = 15;
@@ -714,6 +758,15 @@
     const formatarMoeda = (valor) => {
       const num = parseFloat(valor) || 0;
       return num.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    };
+
+    const formatarDataBR = (dataStr) => {
+      if (!dataStr) return 'Não informada';
+      const partes = dataStr.split('-');
+      if (partes.length === 3) {
+        return `${partes[2]}/${partes[1]}/${partes[0]}`;
+      }
+      return dataStr;
     };
 
     const obterClasseBadgeStatus = (status) => {
@@ -730,7 +783,25 @@
         if (!resposta.ok) throw new Error('Falha ao baixar dados_emendas.json');
         
         const json = await resposta.json();
-        dadosCompletos = Array.isArray(json) ? json : (json.emendas || []);
+        
+        if (Array.isArray(json)) {
+          dadosCompletos = json;
+          const modificadas = json.filter(d => d.teve_modificacao_hoje).length;
+          metaExecucao.total_atualizadas_hoje = modificadas;
+          metaExecucao.ultima_execucao = json[0]?.data_modificacao || '';
+        } else if (json && Array.isArray(json.emendas)) {
+          dadosCompletos = json.emendas;
+          metaExecucao.ultima_execucao = json.ultima_execucao || '';
+          metaExecucao.total_atualizadas_hoje = typeof json.total_atualizadas_hoje !== 'undefined' 
+            ? json.total_atualizadas_hoje 
+            : json.emendas.filter(d => d.teve_modificacao_hoje).length;
+        } else {
+          dadosCompletos = [];
+        }
+
+        // Atualiza a barra de data e o card de emendas atualizadas
+        document.getElementById('header-data-atualizacao').textContent = formatarDataBR(metaExecucao.ultima_execucao);
+        document.getElementById('card-atualizadas-hoje').textContent = metaExecucao.total_atualizadas_hoje.toLocaleString('pt-BR');
 
         povoarFiltrosSelect();
         aplicarFiltros();
@@ -1013,6 +1084,7 @@
               <span class="mobile-label">Objeto</span>
               ${item.objeto || 'Não informado'}
               ${item.condicao_saneamento_impedimento_tecnico ? `<div style="margin-top: 4px; color: var(--danger); font-size: 0.71rem;"><strong>Motivo:</strong> ${item.condicao_saneamento_impedimento_tecnico}</div>` : ''}
+              ${item.detalhe_mudanca && item.teve_modificacao_hoje ? `<div style="margin-top: 3px; color: var(--accent); font-size: 0.71rem; font-weight: 600;">⚡ ${item.detalhe_mudanca}</div>` : ''}
             </td>
             <td>
               <span class="mobile-label">Status</span>
