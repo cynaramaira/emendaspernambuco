@@ -1,5 +1,5 @@
 {
-  "ultima_execucao": "2026-11-07",
+  "ultima_execucao": "2026-11-08",
   "total_emendas": 2398,
   "total_atualizadas_hoje": 104,
   "emendas": [
@@ -1059,7 +1059,7 @@
       "valor_pago": 3500000.0,
       "status_calculado": "Paga",
       "id_registro": "1224_Transferência Especial (PIX)_Casinhas",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -1479,7 +1479,7 @@
       "valor_pago": 2500000.0,
       "status_calculado": "Paga",
       "id_registro": "1404_Transferência Especial (PIX)_Inaja",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -1679,7 +1679,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "155_Transferência Especial (PIX)_Orobo",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Empenhada"
     },
@@ -1779,7 +1779,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "212_Transferência Especial (PIX)_Aracoiaba",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
@@ -1979,7 +1979,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "250_Transferência Especial (PIX)_Cedro",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
@@ -2079,7 +2079,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "268_Transferência Especial (PIX)_Santa Terezinha",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
@@ -2239,7 +2239,7 @@
       "valor_pago": 750000.0,
       "status_calculado": "Paga",
       "id_registro": "30034_Transferência Especial (PIX)_Exu",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -2279,7 +2279,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "30035_Transferência Especial (PIX)_Exu",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Empenhada"
     },
@@ -2319,7 +2319,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "30038_Transferência Especial (PIX)_Inaja",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Empenhada"
     },
@@ -3759,7 +3759,7 @@
       "valor_pago": 2000000.0,
       "status_calculado": "Paga",
       "id_registro": "354_Transferência Especial (PIX)_Sao Jose Da Coroa Grande",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -3799,7 +3799,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "355_Transferência Especial (PIX)_Jupi",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
@@ -3839,7 +3839,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "358_Transferência Especial (PIX)_Tamandare",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
@@ -4299,7 +4299,7 @@
       "valor_pago": 3500000.0,
       "status_calculado": "Paga",
       "id_registro": "50033_Transferência Especial (PIX)_Casinhas",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -4399,7 +4399,7 @@
       "valor_pago": 5000000.0,
       "status_calculado": "Paga",
       "id_registro": "50043_Transferência Especial (PIX)_Carpina",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -4619,7 +4619,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "50093_Transferência Especial (PIX)_Carpina",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Empenhada"
     },
@@ -5319,7 +5319,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "580_Transferência Especial (PIX)_Vicencia",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
@@ -5359,7 +5359,7 @@
       "valor_pago": 1500030.0,
       "status_calculado": "Paga",
       "id_registro": "584_Transferência Especial (PIX)_Goiana",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -6079,7 +6079,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "728_Transferência Especial (PIX)_Serrita",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
@@ -6159,7 +6159,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "736_Transferência Especial (PIX)_Bezerros",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
@@ -7559,7 +7559,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "1043_Execução Direta_Surubim",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -7639,7 +7639,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "1103_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Empenhada"
     },
@@ -7659,7 +7659,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "1103_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Empenhada"
     },
@@ -7779,7 +7779,7 @@
       "valor_pago": 24246683.0,
       "status_calculado": "Paga",
       "id_registro": "1130_Execução Direta_Bodoco",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -7879,7 +7879,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "1174_Execução Direta_Surubim",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -8379,7 +8379,7 @@
       "valor_pago": 257400.0,
       "status_calculado": "Paga",
       "id_registro": "143_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -8399,7 +8399,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "143_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -8459,7 +8459,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "146_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Empenhada"
     },
@@ -8499,7 +8499,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "148_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Empenhada"
     },
@@ -8519,7 +8519,7 @@
       "valor_pago": 1946989.0,
       "status_calculado": "Paga",
       "id_registro": "148_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -8539,7 +8539,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "148_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
@@ -8939,7 +8939,7 @@
       "valor_pago": 1300000.0,
       "status_calculado": "Paga",
       "id_registro": "30085_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -9439,7 +9439,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "320_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
@@ -9479,7 +9479,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "335_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Empenhada"
     },
@@ -9499,7 +9499,7 @@
       "valor_pago": 35800.0,
       "status_calculado": "Paga",
       "id_registro": "335_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -9519,7 +9519,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "335_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -9539,7 +9539,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "335_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Empenhada"
     },
@@ -9559,7 +9559,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "335_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -9579,7 +9579,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "335_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Empenhada"
     },
@@ -9599,7 +9599,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "335_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -9619,7 +9619,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "335_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Empenhada"
     },
@@ -9639,7 +9639,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "335_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -9659,7 +9659,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "335_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -9679,7 +9679,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "335_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Empenhada"
     },
@@ -9699,7 +9699,7 @@
       "valor_pago": 605226.0,
       "status_calculado": "Paga",
       "id_registro": "335_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -9719,7 +9719,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "335_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -9739,7 +9739,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "335_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -9759,7 +9759,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "335_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -9779,7 +9779,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "335_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Empenhada"
     },
@@ -9799,7 +9799,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "335_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Empenhada"
     },
@@ -9879,7 +9879,7 @@
       "valor_pago": 495600.0,
       "status_calculado": "Paga",
       "id_registro": "34_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -9899,7 +9899,7 @@
       "valor_pago": 7546695.0,
       "status_calculado": "Paga",
       "id_registro": "34_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -9919,7 +9919,7 @@
       "valor_pago": 2051125.0,
       "status_calculado": "Paga",
       "id_registro": "34_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -10319,7 +10319,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "455_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -10379,7 +10379,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "50003_Execução Direta_Tuparetama",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
@@ -10439,7 +10439,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "50036_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Empenhada"
     },
@@ -10619,7 +10619,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "50087_Execução Direta_Tabira",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -10699,7 +10699,7 @@
       "valor_pago": 325000.0,
       "status_calculado": "Paga",
       "id_registro": "50114_Execução Direta_Serra Talhada",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -10719,7 +10719,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "50114_Execução Direta_Serra Talhada",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Empenhada"
     },
@@ -10739,7 +10739,7 @@
       "valor_pago": 4499000.0,
       "status_calculado": "Paga",
       "id_registro": "50114_Execução Direta_Serra Talhada",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -10879,7 +10879,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "50187_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -10979,7 +10979,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "517_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Empenhada"
     },
@@ -11079,7 +11079,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "531_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -11099,7 +11099,7 @@
       "valor_pago": 672000.0,
       "status_calculado": "Paga",
       "id_registro": "531_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -11119,7 +11119,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "531_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -11159,7 +11159,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "542_Execução Direta_Exu",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -11179,7 +11179,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "542_Execução Direta_Exu",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Empenhada"
     },
@@ -11199,7 +11199,7 @@
       "valor_pago": 256994.0,
       "status_calculado": "Paga",
       "id_registro": "542_Execução Direta_Exu",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -11559,7 +11559,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "685_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -11579,7 +11579,7 @@
       "valor_pago": 105567.0,
       "status_calculado": "Paga",
       "id_registro": "685_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -11599,7 +11599,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "685_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -11819,7 +11819,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "70135_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -11899,7 +11899,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "70135_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
@@ -12039,7 +12039,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "746_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Empenhada"
     },
@@ -12059,7 +12059,7 @@
       "valor_pago": 70852.0,
       "status_calculado": "Paga",
       "id_registro": "746_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -12079,7 +12079,7 @@
       "valor_pago": 10200.0,
       "status_calculado": "Paga",
       "id_registro": "746_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -12099,7 +12099,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "746_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Empenhada"
     },
@@ -12119,7 +12119,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "746_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Empenhada"
     },
@@ -12139,7 +12139,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "746_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Empenhada"
     },
@@ -12159,7 +12159,7 @@
       "valor_pago": 73077.0,
       "status_calculado": "Paga",
       "id_registro": "746_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -12199,7 +12199,7 @@
       "valor_pago": 220000.0,
       "status_calculado": "Paga",
       "id_registro": "746_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -12219,7 +12219,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "746_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -12239,7 +12239,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "746_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -12259,7 +12259,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "746_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -12279,7 +12279,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "746_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Empenhada"
     },
@@ -12299,7 +12299,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "746_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -12319,7 +12319,7 @@
       "valor_pago": 21980.0,
       "status_calculado": "Paga",
       "id_registro": "746_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -12479,7 +12479,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "787_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -12499,7 +12499,7 @@
       "valor_pago": 5035656.0,
       "status_calculado": "Paga",
       "id_registro": "787_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -12539,7 +12539,7 @@
       "valor_pago": 1258914.0,
       "status_calculado": "Paga",
       "id_registro": "787_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -12599,7 +12599,7 @@
       "valor_pago": 450000.0,
       "status_calculado": "Paga",
       "id_registro": "787_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Paga"
     },
@@ -12699,7 +12699,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "8_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Empenhada"
     },
@@ -12879,7 +12879,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "872_Execução Direta_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -12999,7 +12999,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Empenhada",
       "id_registro": "94_Execução Direta_Caruaru",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Empenhada"
     },
@@ -13019,7 +13019,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "94_Execução Direta_Caruaru",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
@@ -14579,7 +14579,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "1086_Convênio/Parceria (GTV)_Itaquitinga",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
@@ -15859,7 +15859,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "1176_Convênio/Parceria (GTV)_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
@@ -17979,7 +17979,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "1298_Convênio/Parceria (GTV)_Gravata",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
@@ -17999,7 +17999,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "1298_Convênio/Parceria (GTV)_Gravata",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
@@ -27559,7 +27559,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "30264_Convênio/Parceria (GTV)_Bezerros",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
@@ -38119,7 +38119,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "537_Convênio/Parceria (GTV)_Paulista",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
@@ -44439,7 +44439,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "780_Convênio/Parceria (GTV)_Recife",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
@@ -46659,7 +46659,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "915_Convênio/Parceria (GTV)_Itambe",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
@@ -46679,7 +46679,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "915_Convênio/Parceria (GTV)_Itambe",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
@@ -46979,7 +46979,7 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "946_Convênio/Parceria (GTV)_Vitoria De Santo Antao",
-      "data_modificacao": "2026-11-07",
+      "data_modificacao": "2026-11-08",
       "teve_modificacao_hoje": true,
       "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
