@@ -1,7 +1,7 @@
 {
   "ultima_execucao": "2026-11-16",
   "total_emendas": 2400,
-  "total_atualizadas_hoje": 142,
+  "total_atualizadas_hoje": 103,
   "emendas": [
     {
       "codigo_alepe": "1",
@@ -1779,9 +1779,9 @@
       "valor_pago": 750000.0,
       "status_calculado": "Paga",
       "id_registro": "212_Transferência Especial (PIX)_Aracoiaba",
-      "data_modificacao": "2026-11-05",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
+      "data_modificacao": "2026-11-16",
+      "teve_modificacao_hoje": true,
+      "detalhe_mudanca": "Novo status: Paga"
     },
     {
       "codigo_alepe": "212",
@@ -1800,8 +1800,8 @@
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "212_Transferência Especial (PIX)_Aracoiaba",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "213",
@@ -2760,8 +2760,8 @@
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "30197_Transferência Especial (PIX)_Feira Nova",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "30198",
@@ -8440,8 +8440,8 @@
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "144_Execução Direta_Recife",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "146",
@@ -8480,8 +8480,8 @@
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "146_Execução Direta_Recife",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "148",
@@ -10339,9 +10339,9 @@
       "valor_pago": 2430000.0,
       "status_calculado": "Paga",
       "id_registro": "455_Execução Direta_Recife",
-      "data_modificacao": "2026-11-14",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
+      "data_modificacao": "2026-11-16",
+      "teve_modificacao_hoje": true,
+      "detalhe_mudanca": "Novo status: Paga"
     },
     {
       "codigo_alepe": "455",
@@ -10360,8 +10360,8 @@
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "455_Execução Direta_Recife",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "479",
@@ -10420,8 +10420,8 @@
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "50003_Execução Direta_Tuparetama",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "50004",
@@ -10459,9 +10459,9 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "50036_Execução Direta_Recife",
-      "data_modificacao": "2026-11-14",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
+      "data_modificacao": "2026-11-16",
+      "teve_modificacao_hoje": true,
+      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
     {
       "codigo_alepe": "50036",
@@ -10480,8 +10480,8 @@
       "status_calculado": "Paga",
       "id_registro": "50036_Execução Direta_Recife",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Paga"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "50046",
@@ -10620,8 +10620,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "50087_Execução Direta_Tabira",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "50087",
@@ -10639,9 +10639,9 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "50087_Execução Direta_Tabira",
-      "data_modificacao": "2026-11-14",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
+      "data_modificacao": "2026-11-16",
+      "teve_modificacao_hoje": true,
+      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
     {
       "codigo_alepe": "50087",
@@ -10660,8 +10660,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "50087_Execução Direta_Tabira",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "50098",
@@ -10899,9 +10899,9 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "50187_Execução Direta_Recife",
-      "data_modificacao": "2026-11-14",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
+      "data_modificacao": "2026-11-16",
+      "teve_modificacao_hoje": true,
+      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
     {
       "codigo_alepe": "50187",
@@ -10920,8 +10920,8 @@
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "50187_Execução Direta_Recife",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "50197",
@@ -11619,9 +11619,9 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "685_Execução Direta_Recife",
-      "data_modificacao": "2026-11-14",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
+      "data_modificacao": "2026-11-16",
+      "teve_modificacao_hoje": true,
+      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
     {
       "codigo_alepe": "685",
@@ -11640,8 +11640,8 @@
       "status_calculado": "Paga",
       "id_registro": "685_Execução Direta_Recife",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Paga"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "70",
@@ -12120,8 +12120,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "746_Execução Direta_Recife",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "746",
@@ -12160,8 +12160,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "746_Execução Direta_Recife",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "746",
@@ -12220,8 +12220,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "746_Execução Direta_Recife",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "746",
@@ -12260,8 +12260,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "746_Execução Direta_Recife",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "746",
@@ -12299,9 +12299,9 @@
       "valor_pago": 10200.0,
       "status_calculado": "Paga",
       "id_registro": "746_Execução Direta_Recife",
-      "data_modificacao": "2026-11-14",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
+      "data_modificacao": "2026-11-16",
+      "teve_modificacao_hoje": true,
+      "detalhe_mudanca": "Novo status: Paga"
     },
     {
       "codigo_alepe": "746",
@@ -12360,8 +12360,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "746_Execução Direta_Recife",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "757",
@@ -12540,8 +12540,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "787_Execução Direta_Recife",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "787",
@@ -12580,8 +12580,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "787_Execução Direta_Recife",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "787",
@@ -12600,8 +12600,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "787_Execução Direta_Recife",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "787",
@@ -12619,9 +12619,9 @@
       "valor_pago": 1258914.0,
       "status_calculado": "Paga",
       "id_registro": "787_Execução Direta_Recife",
-      "data_modificacao": "2026-11-14",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
+      "data_modificacao": "2026-11-16",
+      "teve_modificacao_hoje": true,
+      "detalhe_mudanca": "Novo status: Paga"
     },
     {
       "codigo_alepe": "787",
@@ -12640,8 +12640,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "787_Execução Direta_Recife",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "787",
@@ -12660,8 +12660,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "787_Execução Direta_Recife",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "790",
@@ -12719,9 +12719,9 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "8_Execução Direta_Recife",
-      "data_modificacao": "2026-11-14",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
+      "data_modificacao": "2026-11-16",
+      "teve_modificacao_hoje": true,
+      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
     {
       "codigo_alepe": "8",
@@ -12740,8 +12740,8 @@
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "8_Execução Direta_Recife",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "800",
@@ -12899,9 +12899,9 @@
       "valor_pago": 0.0,
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "872_Execução Direta_Recife",
-      "data_modificacao": "2026-11-14",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
+      "data_modificacao": "2026-11-16",
+      "teve_modificacao_hoje": true,
+      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
     },
     {
       "codigo_alepe": "872",
@@ -12920,8 +12920,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "872_Execução Direta_Recife",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "874",
@@ -13039,9 +13039,9 @@
       "valor_pago": 541120.0,
       "status_calculado": "Paga",
       "id_registro": "94_Execução Direta_Caruaru",
-      "data_modificacao": "2026-11-14",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
+      "data_modificacao": "2026-11-16",
+      "teve_modificacao_hoje": true,
+      "detalhe_mudanca": "Novo status: Paga"
     },
     {
       "codigo_alepe": "94",
@@ -13060,8 +13060,8 @@
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "94_Execução Direta_Caruaru",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "942",
@@ -15280,8 +15280,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "1137_Convênio/Parceria (GTV)_Belem Do Sao Francisco",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "1138",
@@ -16600,8 +16600,8 @@
       "status_calculado": "Paga",
       "id_registro": "1219_Convênio/Parceria (GTV)_Ibimirim",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Paga"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "122",
@@ -17980,8 +17980,28 @@
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "1298_Convênio/Parceria (GTV)_Gravata",
       "data_modificacao": "2026-11-16",
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
+    },
+    {
+      "codigo_alepe": "1298",
+      "autor": "WALDEMAR BORGES",
+      "municipio": "Gravata",
+      "beneficiario": "ENTIDADE",
+      "tematica": "CULTURA",
+      "objeto": "A emenda, no valor de R$ 100.000,00 (cem mil reais), será destinada à entidade OBRA DE DEFESA DA INFÂNCIA POBRE - ODIP, CNPJ 10.313.674/0001-08, para a manutenção do Projeto CULTURART, promovido por esta, atendendo cerca de 100 crianças, jovens e adolescentes por meio de oficinas de dança popular e música.",
+      "modalidade": "Convênio/Parceria (GTV)",
+      "status_resolucao_tce": "EM ANÁLISE",
+      "condicao_saneamento_impedimento_tecnico": "",
+      "numero_empenho": "2026NE003822",
+      "valor_empenhado": 0.0,
+      "valor_liquidado": 0.0,
+      "valor_pago": 0.0,
+      "status_calculado": "Indicada (Sem Execução)",
+      "id_registro": "1298_Convênio/Parceria (GTV)_Gravata",
+      "data_modificacao": "2026-11-16",
       "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
+      "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
     {
       "codigo_alepe": "1298",
@@ -17999,29 +18019,9 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "1298_Convênio/Parceria (GTV)_Gravata",
-      "data_modificacao": "2026-11-12",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
-    },
-    {
-      "codigo_alepe": "1298",
-      "autor": "WALDEMAR BORGES",
-      "municipio": "Gravata",
-      "beneficiario": "ENTIDADE",
-      "tematica": "CULTURA",
-      "objeto": "A emenda, no valor de R$ 100.000,00 (cem mil reais), será destinada à entidade OBRA DE DEFESA DA INFÂNCIA POBRE - ODIP, CNPJ 10.313.674/0001-08, para a manutenção do Projeto CULTURART, promovido por esta, atendendo cerca de 100 crianças, jovens e adolescentes por meio de oficinas de dança popular e música.",
-      "modalidade": "Convênio/Parceria (GTV)",
-      "status_resolucao_tce": "EM ANÁLISE",
-      "condicao_saneamento_impedimento_tecnico": "",
-      "numero_empenho": "2026NE003822",
-      "valor_empenhado": 0.0,
-      "valor_liquidado": 0.0,
-      "valor_pago": 0.0,
-      "status_calculado": "Indicada (Sem Execução)",
-      "id_registro": "1298_Convênio/Parceria (GTV)_Gravata",
-      "data_modificacao": "2026-11-12",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
+      "data_modificacao": "2026-11-16",
+      "teve_modificacao_hoje": true,
+      "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
     {
       "codigo_alepe": "1298",
@@ -18040,8 +18040,8 @@
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "1298_Convênio/Parceria (GTV)_Gravata",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "1299",
@@ -27900,8 +27900,8 @@
       "status_calculado": "Paga",
       "id_registro": "30282_Convênio/Parceria (GTV)_Caruaru",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Paga"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "30283",
@@ -28860,8 +28860,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "30340_Convênio/Parceria (GTV)_Calcados",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "30343",
@@ -28900,8 +28900,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "30344_Convênio/Parceria (GTV)_Betania",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "30345",
@@ -29540,8 +29540,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "30392_Convênio/Parceria (GTV)_Santa Cruz",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "30393",
@@ -30500,8 +30500,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "350_Convênio/Parceria (GTV)_Buique",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "351",
@@ -31000,8 +31000,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "381_Convênio/Parceria (GTV)_Bom Conselho",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "382",
@@ -33260,8 +33260,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "50008_Convênio/Parceria (GTV)_Paulista",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "50009",
@@ -33520,8 +33520,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "50025_Convênio/Parceria (GTV)_Camocim De Sao Felix",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "50026",
@@ -33760,8 +33760,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "50042_Convênio/Parceria (GTV)_Camaragibe",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "50044",
@@ -35359,9 +35359,9 @@
       "valor_pago": 0.0,
       "status_calculado": "Impedimento Técnico",
       "id_registro": "50152_Convênio/Parceria (GTV)_Dormentes",
-      "data_modificacao": "2026-11-05",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
+      "data_modificacao": "2026-11-16",
+      "teve_modificacao_hoje": true,
+      "detalhe_mudanca": "Novo status: Impedimento Técnico"
     },
     {
       "codigo_alepe": "50152",
@@ -35380,8 +35380,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "50152_Convênio/Parceria (GTV)_Dormentes",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "50153",
@@ -35820,8 +35820,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "50177_Convênio/Parceria (GTV)_Cabo De Santo Agostinho",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "50179",
@@ -36000,8 +36000,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "50192_Convênio/Parceria (GTV)_Olinda",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "50193",
@@ -36740,8 +36740,8 @@
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "50237_Convênio/Parceria (GTV)_Ouricuri",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "50237",
@@ -36760,8 +36760,8 @@
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "50237_Convênio/Parceria (GTV)_Ouricuri",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "50238",
@@ -36920,8 +36920,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "50246_Convênio/Parceria (GTV)_Itambe",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "50248",
@@ -38159,9 +38159,9 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "537_Convênio/Parceria (GTV)_Paulista",
-      "data_modificacao": "2026-11-10",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
+      "data_modificacao": "2026-11-16",
+      "teve_modificacao_hoje": true,
+      "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
     {
       "codigo_alepe": "537",
@@ -38180,8 +38180,8 @@
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "537_Convênio/Parceria (GTV)_Paulista",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "538",
@@ -39240,8 +39240,8 @@
       "status_calculado": "Paga",
       "id_registro": "598_Convênio/Parceria (GTV)_Macaparana",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Paga"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "599",
@@ -39500,8 +39500,8 @@
       "status_calculado": "Paga",
       "id_registro": "611_Convênio/Parceria (GTV)_Vicencia",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Paga"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "614",
@@ -39620,8 +39620,8 @@
       "status_calculado": "Paga",
       "id_registro": "621_Convênio/Parceria (GTV)_Camaragibe",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Paga"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "621",
@@ -39640,8 +39640,8 @@
       "status_calculado": "Paga",
       "id_registro": "621_Convênio/Parceria (GTV)_Camaragibe",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Paga"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "622",
@@ -41140,8 +41140,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "70006_Convênio/Parceria (GTV)_Sao Jose Do Belmonte",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "70007",
@@ -41280,8 +41280,8 @@
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "70015_Convênio/Parceria (GTV)_Olinda",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "70016",
@@ -42160,8 +42160,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "70070_Convênio/Parceria (GTV)_Recife",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "70072",
@@ -42180,8 +42180,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "70072_Convênio/Parceria (GTV)_Recife",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "70074",
@@ -43060,8 +43060,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "70126_Convênio/Parceria (GTV)_Arcoverde",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "70127",
@@ -43840,8 +43840,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "73_Convênio/Parceria (GTV)_Recife",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "731",
@@ -45440,8 +45440,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "847_Convênio/Parceria (GTV)_Recife",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "848",
@@ -46699,9 +46699,9 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "915_Convênio/Parceria (GTV)_Itambe",
-      "data_modificacao": "2026-11-10",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
+      "data_modificacao": "2026-11-16",
+      "teve_modificacao_hoje": true,
+      "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
     {
       "codigo_alepe": "915",
@@ -46719,9 +46719,9 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "915_Convênio/Parceria (GTV)_Itambe",
-      "data_modificacao": "2026-11-10",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
+      "data_modificacao": "2026-11-16",
+      "teve_modificacao_hoje": true,
+      "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
     {
       "codigo_alepe": "915",
@@ -46740,8 +46740,8 @@
       "status_calculado": "Paga",
       "id_registro": "915_Convênio/Parceria (GTV)_Itambe",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Paga"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "916",
@@ -47019,9 +47019,9 @@
       "valor_pago": 0.0,
       "status_calculado": "Indicada (Sem Execução)",
       "id_registro": "946_Convênio/Parceria (GTV)_Vitoria De Santo Antao",
-      "data_modificacao": "2026-11-06",
-      "teve_modificacao_hoje": false,
-      "detalhe_mudanca": ""
+      "data_modificacao": "2026-11-16",
+      "teve_modificacao_hoje": true,
+      "detalhe_mudanca": "Novo status: Indicada (Sem Execução)"
     },
     {
       "codigo_alepe": "946",
@@ -47040,8 +47040,8 @@
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "946_Convênio/Parceria (GTV)_Vitoria De Santo Antao",
       "data_modificacao": "2026-11-16",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "948",
