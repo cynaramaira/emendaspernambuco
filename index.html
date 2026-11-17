@@ -1,1154 +1,1733 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Painel de Emendas Parlamentares - Jamildo.com</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --primary: #024796;
-      --accent: #f83d03;
-      --bg: #f8fafc;
-      --card-bg: #ffffff;
-      --text: #0f172a;
-      --text-muted: #64748b;
-      --border: #e2e8f0;
-      --success: #16a34a;
-      --warning: #ca8a04;
-      --danger: #dc2626;
-      --purple: #7c3aed;
-      --teal: #0d9488;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      line-height: 1.4;
-      padding: 10px;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    @media (min-width: 769px) {
-      html, body {
-        height: 100%;
-        overflow: hidden;
-      }
-      .container {
-        height: 100%;
-        max-height: 708px;
-        display: flex;
-        flex-direction: column;
-      }
-      .table-container {
-        flex: 1 1 auto;
-        overflow-y: auto;
-      }
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      background: var(--card-bg);
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-      position: relative;
-    }
-
-    /* Header Compacto com Indicador de Atualização */
-    header {
-      background: #ffffff;
-      border-bottom: 3px solid var(--accent);
-      padding: 10px 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-      flex-wrap: wrap;
-    }
-
-    .brand img {
-      max-height: 32px;
-      display: block;
-    }
-
-    .header-info {
-      flex: 1;
-      min-width: 250px;
-    }
-
-    .header-info h1 {
-      font-size: 0.98rem;
-      font-weight: 700;
-      color: var(--primary);
-    }
-
-    .status-sync-bar {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 3px;
-      flex-wrap: wrap;
-      font-size: 0.72rem;
-      color: var(--text-muted);
-    }
-
-    .badge-sync-live {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      background: #fff1ee;
-      color: var(--accent);
-      font-weight: 700;
-      padding: 2px 7px;
-      border-radius: 4px;
-      border: 1px solid #ffdcd6;
-    }
-
-    .sync-dot {
-      width: 6px;
-      height: 6px;
-      background-color: var(--accent);
-      border-radius: 50%;
-      display: inline-block;
-    }
-
-    /* Métricas: 5 Cards */
-    .metrics-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 8px;
-      padding: 8px 16px;
-      background: #f1f5f9;
-      border-bottom: 1px solid var(--border);
-      flex-shrink: 0;
-    }
-
-    .metric-card {
-      background: #fff;
-      padding: 6px 10px;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-    }
-
-    .metric-card span {
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      font-weight: 600;
-      color: var(--text-muted);
-      display: block;
-    }
-
-    .metric-card strong {
-      display: block;
-      font-size: 0.95rem;
-      color: var(--primary);
-      margin-top: 2px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    /* Barra de Botões / Abas */
-    .views-toolbar {
-      padding: 8px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #ffffff;
-      border-bottom: 1px solid var(--border);
-      flex-shrink: 0;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .views-buttons {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-
-    .view-btn {
-      padding: 5px 11px;
-      border-radius: 6px;
-      font-size: 0.76rem;
-      font-weight: 600;
-      cursor: pointer;
-      border: 1px solid var(--border);
-      background: #f8fafc;
-      color: var(--text-muted);
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      transition: all 0.15s ease;
-    }
-
-    .view-btn:hover {
-      background: #e2e8f0;
-      color: var(--text);
-    }
-
-    .view-btn.active {
-      background: var(--primary);
-      color: #fff;
-      border-color: var(--primary);
-    }
-
-    .badge-filter-indicator {
-      display: none;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.74rem;
-      color: var(--accent);
-      font-weight: 600;
-      background: #fff1ee;
-      padding: 3px 8px;
-      border-radius: 4px;
-      border: 1px solid #ffdcd6;
-    }
-
-    .badge-filter-indicator button {
-      background: none;
-      border: none;
-      color: var(--accent);
-      font-weight: 800;
-      cursor: pointer;
-      font-size: 0.88rem;
-    }
-
-    /* Painel de Estatísticas */
-    .insights-panel {
-      display: none;
-      padding: 12px 16px;
-      background: #fdfefe;
-      border-bottom: 2px solid var(--border);
-      max-height: 250px;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      flex-shrink: 0;
-    }
-
-    .insights-panel.visible {
-      display: block;
-    }
-
-    .insights-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .insight-col {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 10px;
-    }
-
-    .insight-col h3 {
-      font-size: 0.76rem;
-      text-transform: uppercase;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .ranking-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.74rem;
-      cursor: pointer;
-      padding: 4px 6px;
-      border-radius: 4px;
-      transition: background 0.1s;
-    }
-
-    .ranking-item:hover {
-      background: #eef2ff;
-      color: var(--primary);
-    }
-
-    .ranking-bar {
-      height: 4px;
-      background: var(--accent);
-      border-radius: 2px;
-      margin-top: 2px;
-    }
-
-    .modalidade-card {
-      border-left: 3px solid;
-      padding: 6px 10px;
-      margin-bottom: 8px;
-      border-radius: 0 6px 6px 0;
-      background: #f8fafc;
-      font-size: 0.73rem;
-    }
-
-    .modalidade-card strong { display: block; font-size: 0.76rem; }
-    .m-pix { border-color: var(--teal); }
-    .m-direta { border-color: var(--primary); }
-    .m-gtv { border-color: var(--purple); }
-
-    /* Filtros */
-    .filters-section {
-      padding: 8px 16px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      background: #ffffff;
-      border-bottom: 1px solid var(--border);
-      flex-shrink: 0;
-    }
-
-    .filter-group {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .filter-group label {
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .filter-group select {
-      padding: 6px 8px;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      font-size: 0.79rem;
-      color: var(--text);
-      outline: none;
-      background: #fff;
-      font-family: inherit;
-      width: 100%;
-    }
-
-    .filter-group select:focus {
-      border-color: var(--primary);
-    }
-
-    /* Tooltips */
-    .tooltip-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 14px;
-      height: 14px;
-      background: #e2e8f0;
-      color: #334155;
-      font-size: 10px;
-      font-weight: 700;
-      border-radius: 50%;
-      cursor: help;
-      position: relative;
-    }
-
-    .filter-group .tooltip-icon:hover::after,
-    .filter-group .tooltip-icon:focus::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      bottom: 130%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #0f172a;
-      color: #fff;
-      padding: 8px 10px;
-      font-size: 0.72rem;
-      line-height: 1.3;
-      border-radius: 6px;
-      width: 200px;
-      z-index: 9999;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-      font-weight: 400;
-      pointer-events: none;
-    }
-
-    th .tooltip-icon:hover::after,
-    th .tooltip-icon:focus::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      top: 130%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #0f172a;
-      color: #fff;
-      padding: 8px 10px;
-      font-size: 0.72rem;
-      line-height: 1.3;
-      border-radius: 6px;
-      width: 200px;
-      z-index: 9999;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
-      font-weight: 400;
-      pointer-events: none;
-    }
-
-    /* Tabela */
-    .table-container {
-      overflow-x: auto;
-      background: #ffffff;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-      font-size: 0.8rem;
-    }
-
-    th {
-      background: #f8fafc;
-      color: #475569;
-      font-weight: 600;
-      padding: 9px 12px;
-      border-bottom: 2px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      white-space: nowrap;
-    }
-
-    td {
-      padding: 9px 12px;
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-    }
-
-    tbody tr:hover {
-      background: #f8fafc;
-    }
-
-    .clickable-tag {
-      color: var(--primary);
-      text-decoration: none;
-      cursor: pointer;
-      font-weight: 600;
-    }
-
-    .clickable-tag:hover {
-      color: var(--accent);
-      text-decoration: underline;
-    }
-
-    .clickable-city {
-      cursor: pointer;
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .clickable-city:hover {
-      color: var(--accent);
-      text-decoration: underline;
-    }
-
-    /* Badges */
-    .badge {
-      display: inline-block;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    .badge-modalidade { background: #e0f2fe; color: #0369a1; }
-    .status-pago { background: #dcfce7; color: #15803d; }
-    .status-parcial { background: #fef9c3; color: #a16207; }
-    .status-analise { background: #e0e7ff; color: #4338ca; }
-    .status-impedimento { background: #fee2e2; color: #b91c1c; }
-
-    /* Paginação */
-    .pagination {
-      padding: 8px 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1px solid var(--border);
-      background: #fff;
-      flex-shrink: 0;
-    }
-
-    .pagination-buttons {
-      display: flex;
-      gap: 6px;
-    }
-
-    .pagination-buttons button {
-      padding: 6px 14px;
-      border: 1px solid var(--border);
-      background: #fff;
-      border-radius: 4px;
-      font-size: 0.78rem;
-      cursor: pointer;
-      font-weight: 500;
-    }
-
-    .pagination-buttons button:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-
-    /* Mobile */
-    @media (max-width: 768px) {
-      html, body {
-        height: auto !important;
-        overflow-y: visible !important;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      body { 
-        padding: 6px; 
-      }
-
-      .container {
-        height: auto !important;
-        max-height: none !important;
-        overflow: visible !important;
-      }
-
-      .table-container {
-        overflow: visible !important;
-      }
-
-      header { 
-        flex-direction: column; 
-        align-items: flex-start; 
-        padding: 10px; 
-      }
-
-      .metrics-grid { 
-        grid-template-columns: repeat(2, 1fr); 
-      }
-
-      .filters-section { 
-        grid-template-columns: 1fr; 
-      }
-
-      .insights-grid { 
-        grid-template-columns: 1fr; 
-      }
-
-      table thead { 
-        display: none; 
-      }
-
-      table, tbody, tr, td { 
-        display: block; 
-        width: 100%; 
-      }
-
-      tbody tr {
-        margin: 8px 0;
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        background: #ffffff;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-        padding: 12px;
-      }
-
-      td { 
-        padding: 5px 0; 
-        border-bottom: none; 
-      }
-
-      td:last-child {
-        margin-top: 8px;
-        padding-top: 8px;
-        border-top: 1px dashed var(--border);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .mobile-label {
-        font-weight: 600;
-        color: var(--text-muted);
-        font-size: 0.7rem;
-        text-transform: uppercase;
-        display: block;
-        margin-bottom: 2px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radar das Emendas | Jamildo.com</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --azul: #0a2f5c;
+  --noite: #051529;
+  --noite-card: #081d38;
+  --laranja: #ff4d15;
+  --laranja2: #ffa05c;
+  --azulvivo: #3d8bff;
+  --verde: #2fd28a;
+  --verde-bg: rgba(47, 210, 138, 0.15);
+  --ambar: #ffbe3d;
+  --ambar-bg: rgba(255, 190, 61, 0.15);
+  --verm: #ff5d5d;
+  --verm-bg: rgba(255, 93, 93, 0.15);
+  --roxo: #a855f7;
+  --roxo-bg: rgba(168, 85, 247, 0.15);
+  --teal: #14b8a6;
+  --teal-bg: rgba(20, 184, 166, 0.15);
+  --txt: #eaf1ff;
+  --suave: #92a6c6;
+  --vidro: rgba(255, 255, 255, 0.055);
+  --vidro-hover: rgba(255, 255, 255, 0.09);
+  --borda: rgba(255, 255, 255, 0.12);
+  --borda-fina: rgba(255, 255, 255, 0.07);
+  --disp: 'Bricolage Grotesque', 'DM Sans', system-ui, sans-serif;
+  --corpo: 'DM Sans', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--noite);
+  color: var(--txt);
+  font-family: var(--corpo);
+  line-height: 1.5;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  background-image: 
+    radial-gradient(800px 500px at 90% -5%, rgba(255, 77, 21, 0.22), transparent 60%),
+    radial-gradient(900px 600px at -10% 20%, rgba(61, 139, 255, 0.18), transparent 60%),
+    linear-gradient(180deg, #07203f 0%, var(--noite) 70%);
+  background-attachment: fixed;
+}
+
+button, input, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid var(--laranja2); outline-offset: 2px; }
+
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 16px; }
+.vidro {
+  background: var(--vidro);
+  border: 1px solid var(--borda);
+  border-radius: 18px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* BARRA SUPERIOR */
+.barra {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(5, 21, 41, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--borda);
+}
+
+.barra .wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+.logo img { height: 28px; display: block; filter: brightness(0) invert(1); }
+
+.busca {
+  flex: 1;
+  min-width: 260px;
+  position: relative;
+}
+
+.busca input {
+  width: 100%;
+  background: var(--vidro);
+  border: 1.5px solid var(--borda);
+  border-radius: 99px;
+  padding: 9px 16px 9px 40px;
+  outline: 0;
+  font-size: 0.88rem;
+  transition: all 0.2s ease;
+}
+
+.busca input:focus {
+  border-color: var(--laranja);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 4px rgba(255, 77, 21, 0.18);
+}
+
+.busca::before {
+  content: "🔎";
+  position: absolute;
+  left: 14px;
+  top: 8px;
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
+
+.sug {
+  position: absolute;
+  left: 0; right: 0;
+  top: calc(100% + 8px);
+  background: #0b2748;
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  padding: 6px;
+  display: none;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  z-index: 40;
+}
+.sug.on { display: block; }
+.sug button {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border: 0;
+  background: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.84rem;
+  text-align: left;
+}
+.sug button:hover { background: rgba(255, 255, 255, 0.08); }
+.sug small { color: var(--laranja2); font-weight: 700; }
+
+/* BOTÕES DE NAVEGAÇÃO / HUB COMPACTO */
+.hub-botoes {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.hub-btn {
+  border: 1px solid var(--borda);
+  background: var(--vidro);
+  padding: 7px 13px;
+  border-radius: 99px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--suave);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.15s ease;
+}
+
+.hub-btn:hover {
+  background: var(--vidro-hover);
+  color: #fff;
+  border-color: var(--laranja2);
+}
+
+.hub-btn.ativo {
+  background: linear-gradient(135deg, var(--laranja), #ff7a3a);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 12px -3px var(--laranja);
+}
+
+.hub-btn.btn-ajuda {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+/* HERO COMPACTO */
+.hero {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 20px;
+  align-items: center;
+  padding: 24px 0 16px;
+}
+
+.hero-info h1 {
+  font-family: var(--disp);
+  font-weight: 800;
+  font-size: clamp(1.8rem, 3.8vw, 2.8rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.hero-info h1 span {
+  background: linear-gradient(90deg, var(--laranja), var(--laranja2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-info p {
+  color: var(--suave);
+  margin-top: 8px;
+  font-size: 0.88rem;
+  max-width: 58ch;
+}
+
+.hero-info p b { color: #fff; }
+
+.nums-grid {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.num-item {
+  background: var(--vidro);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 6px 12px;
+  min-width: 105px;
+}
+
+.num-item b {
+  display: block;
+  font-family: var(--disp);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.num-item small {
+  color: var(--suave);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+/* ANEL DE PORCENTAGEM COMPACTO */
+.anel-box {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.anel {
+  position: relative;
+  width: 150px;
+  aspect-ratio: 1;
+}
+
+.anel svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.anel circle {
+  fill: none;
+  stroke-width: 12;
+  stroke-linecap: round;
+}
+
+.anel .t { stroke: rgba(255, 255, 255, 0.08); }
+.anel .v {
+  stroke: url(#g);
+  stroke-dasharray: 414;
+  stroke-dashoffset: 414;
+  transition: stroke-dashoffset 1.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  filter: drop-shadow(0 0 10px rgba(255, 77, 21, 0.5));
+}
+
+.anel div {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  text-align: center;
+}
+
+.anel b {
+  font-family: var(--disp);
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.anel span {
+  color: var(--suave);
+  font-size: 0.68rem;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* PAINEL RECOLHÍVEL DO HUB */
+.hub-painel {
+  display: none;
+  background: var(--noite-card);
+  border: 1px solid var(--borda);
+  border-radius: 18px;
+  padding: 16px 20px;
+  margin: 10px 0 20px;
+  position: relative;
+  animation: deslizarAbaixo 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hub-painel.visivel { display: block; }
+
+@keyframes deslizarAbaixo {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hub-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.hub-topo h3 {
+  font-family: var(--disp);
+  font-size: 1.15rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fechar-painel {
+  border: 0;
+  background: var(--vidro);
+  color: var(--suave);
+  padding: 4px 10px;
+  border-radius: 99px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.fechar-painel:hover { color: #fff; background: rgba(255,255,255,0.12); }
+
+/* FOTOS OFICIAIS DOS DEPUTADOS */
+.avatar-foto-box {
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+}
+
+.dep-avatar-fallback {
+  color: #ffffff;
+  font-family: var(--disp);
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
+  user-select: none;
+}
+
+.foto-dep {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* GRID DE DEPUTADOS DENTRO DO HUB */
+.deps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+  max-height: 290px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.dep-mini {
+  background: var(--vidro);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  padding: 12px;
+  text-align: left;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dep-mini:hover {
+  transform: translateY(-2px);
+  border-color: var(--laranja2);
+  background: var(--vidro-hover);
+}
+
+.dep-dados-mini { flex: 1; min-width: 0; }
+.dep-dados-mini strong {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.dep-dados-mini span {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--laranja2);
+  font-weight: 700;
+}
+.dep-dados-mini small {
+  color: var(--suave);
+  font-size: 0.7rem;
+}
+
+/* GRID DE CIDADES DENTRO DO HUB */
+.cids-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+  max-height: 290px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.cid-card {
+  border: 1px solid var(--borda);
+  background: var(--vidro);
+  border-radius: 12px;
+  padding: 10px 12px;
+  text-align: left;
+  transition: 0.2s;
+}
+
+.cid-card:hover {
+  border-color: var(--azulvivo);
+  transform: translateY(-2px);
+}
+
+.cid-card b {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+  font-size: 0.82rem;
+}
+
+.cid-card b em {
+  font-style: normal;
+  color: var(--laranja2);
+  font-family: var(--mono);
+  white-space: nowrap;
+  margin-left: 6px;
+}
+
+.trilho {
+  height: 5px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  margin: 6px 0 4px;
+  overflow: hidden;
+}
+
+.trilho i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--azulvivo), var(--verde));
+  border-radius: 6px;
+}
+
+/* MODALIDADES DENTRO DO HUB */
+.mods-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.mod-card {
+  border-left: 4px solid var(--c, var(--azulvivo));
+  background: var(--vidro);
+  border-radius: 0 12px 12px 0;
+  padding: 12px;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.mod-card strong {
+  display: block;
+  font-family: var(--disp);
+  font-size: 0.95rem;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+/* GUIA "COMO USAR" DENTRO DO HUB */
+.guia-ajuda {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.ajuda-card {
+  background: var(--vidro);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.ajuda-icone {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.ajuda-card strong {
+  display: block;
+  font-family: var(--disp);
+  font-size: 0.95rem;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.ajuda-card p {
+  color: var(--suave);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+/* BARRA DE FILTROS RÁPIDOS (CHIPS) */
+.filtros {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 14px 0 10px;
+}
+
+.chip {
+  border: 1px solid var(--borda);
+  background: var(--vidro);
+  border-radius: 99px;
+  padding: 6px 13px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: 0.15s;
+}
+
+.chip:hover { border-color: var(--laranja2); }
+.chip.on { background: var(--azulvivo); border-color: var(--azulvivo); color: #fff; }
+.chip.on.al { background: var(--laranja); border-color: var(--laranja); }
+
+.sel {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--suave);
+  font-size: 0.8rem;
+}
+
+.sel select {
+  background: #0b2748;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 0.8rem;
+}
+
+.limpar {
+  border: 0;
+  background: none;
+  color: var(--laranja2);
+  font-weight: 700;
+  font-size: 0.82rem;
+}
+
+/* FILTROS AVANÇADOS INTEGRADOS */
+.filtros-avancados {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 0 0 18px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  padding: 12px 14px;
+}
+
+.f-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.f-campo label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--suave);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.tooltip-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--txt);
+  font-size: 9px;
+  font-weight: 800;
+  border-radius: 50%;
+  cursor: help;
+}
+
+.f-campo select {
+  background: #0b2748 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2392a6c6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E") no-repeat right 10px center/14px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 7px 32px 7px 11px;
+  font-size: 0.81rem;
+  color: var(--txt);
+  outline: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  width: 100%;
+}
+
+.f-campo select::-ms-expand {
+  display: none;
+}
+
+.f-campo select:focus {
+  border-color: var(--laranja);
+  box-shadow: 0 0 0 3px rgba(255, 77, 21, 0.18);
+}
+
+/* CABEÇALHO DA SEÇÃO DE EMENDAS */
+.secao-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+
+.titulo {
+  font-family: var(--disp);
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.sub {
+  color: var(--suave);
+  font-size: 0.84rem;
+}
+
+/* GRADE DE EMENDAS */
+.grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 14px;
+}
+
+.em {
+  padding: 16px 16px 16px 20px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.em:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.5);
+}
+
+.em::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 5px;
+  background: var(--c2);
+}
+
+.pago { --c2: var(--verde); }
+.parcial { --c2: var(--ambar); }
+.imp { --c2: var(--verm); }
+.analise { --c2: var(--azulvivo); }
+
+.em .quem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--suave);
+}
+
+.autor-com-foto {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.em .quem button {
+  border: 0;
+  background: none;
+  color: var(--txt);
+  font-weight: 700;
+  text-align: left;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.em .quem button:hover, .em .quem span:hover {
+  color: var(--laranja2);
+}
+
+.em-badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.08);
+  white-space: nowrap;
+}
+
+.tag.novo { background: var(--laranja); color: #fff; }
+.tag.s { background: var(--c2); color: #051529; }
+
+.obj {
+  font-size: 0.86rem;
+  color: #cbd5e1;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.obj.aberto {
+  -webkit-line-clamp: unset;
+}
+
+.alerta {
+  background: rgba(255, 93, 93, 0.12);
+  color: #ffb3b3;
+  border-left: 3px solid var(--verm);
+  border-radius: 6px;
+  padding: 6px 9px;
+  font-size: 0.76rem;
+  line-height: 1.35;
+}
+
+.din {
+  margin-top: auto;
+  border-top: 1px solid var(--borda-fina);
+  padding-top: 8px;
+}
+
+.din-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.din strong {
+  font-family: var(--disp);
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.din small {
+  color: var(--c2);
+  font-weight: 700;
+  font-size: 0.78rem;
+  font-family: var(--mono);
+}
+
+.prog {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  margin: 6px 0 2px;
+  overflow: hidden;
+}
+
+.prog i {
+  display: block;
+  height: 100%;
+  width: var(--p);
+  background: var(--c2);
+  border-radius: 6px;
+}
+
+/* BOTÃO MAIS (CORRIGIDO: NUNCA MOSTRA NÚMERO NEGATIVO) */
+.mais {
+  display: none;
+  margin: 24px auto 40px;
+  border: 0;
+  background: linear-gradient(135deg, var(--laranja), #ff7a3a);
+  color: #fff;
+  font-weight: 700;
+  padding: 12px 28px;
+  border-radius: 99px;
+  box-shadow: 0 10px 24px -8px var(--laranja);
+  transition: transform 0.15s ease;
+}
+.mais.visivel { display: block; }
+.mais:hover { transform: scale(1.03); }
+
+.vazio {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--suave);
+  padding: 40px 0;
+  font-size: 0.95rem;
+}
+
+/* GAVETA LATERAL DO DEPUTADO */
+.vel {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+  z-index: 50;
+}
+.vel.on { opacity: 1; pointer-events: auto; }
+
+.gav {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: min(500px, 100%);
+  background: linear-gradient(180deg, #0c2a50, #071d3a);
+  border-left: 1px solid var(--borda);
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 60;
+  overflow-y: auto;
+  padding: 24px;
+}
+.gav.on { transform: none; }
+
+.gav .fechar {
+  position: absolute;
+  right: 18px; top: 16px;
+  border: 0;
+  background: var(--vidro);
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  font-size: 1rem;
+  color: var(--txt);
+}
+
+.gav h2 {
+  font-family: var(--disp);
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 12px 0 4px;
+}
+
+.g3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.g3 div {
+  background: var(--vidro);
+  border-radius: 12px;
+  padding: 10px;
+}
+.g3 b { display: block; font-family: var(--disp); font-size: 1.1rem; }
+.g3 small { color: var(--suave); font-size: 0.72rem; }
+
+.gav h4 {
+  margin: 18px 0 8px;
+  font-family: var(--disp);
+  font-size: 0.95rem;
+}
+
+.emp {
+  display: flex;
+  height: 12px;
+  border-radius: 8px;
+  overflow: hidden;
+  gap: 2px;
+}
+.emp i { display: block; }
+
+.leg {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 0.75rem;
+  color: var(--suave);
+  margin-top: 6px;
+}
+
+.lin {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--borda-fina);
+  font-size: 0.84rem;
+}
+.lin span { color: var(--suave); font-size: 0.74rem; display: block; }
+.lin button { border: 0; background: none; text-align: left; color: var(--txt); font-weight: 600; }
+
+.ver {
+  width: 100%;
+  margin-top: 18px;
+  border: 0;
+  background: var(--laranja);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+@media(max-width: 860px) {
+  .hero { grid-template-columns: 1fr; padding: 18px 0 10px; }
+  .anel-box { justify-content: flex-start; order: -1; }
+  .anel { width: 130px; }
+  .anel b { font-size: 1.8rem; }
+  .mods-grid { grid-template-columns: 1fr; }
+  .filtros-avancados { grid-template-columns: repeat(2, 1fr); }
+  .sel { margin-left: 0; width: 100%; justify-content: space-between; }
+}
+
+@media(max-width: 540px) {
+  .filtros-avancados { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 <body>
 
-  <div class="container">
-    <header>
-      <div class="brand">
-        <img src="https://jamildo.com/media/uploads/logojamildo.png" alt="Jamildo.com">
-      </div>
-      <div class="header-info">
-        <h1>Painel de Execução das Emendas Parlamentares de Pernambuco</h1>
-        <div class="status-sync-bar">
-          <span>Base oficial: ALEPE / SEPLAG-PE</span>
-          <span>•</span>
-          <span class="badge-sync-live">
-            <span class="sync-dot"></span>
-            Última atualização: <strong id="header-data-atualizacao">Carregando...</strong>
-          </span>
-        </div>
-      </div>
-    </header>
-
-    <!-- Cards informativos (5 colunas) -->
-    <section class="metrics-grid">
-      <div class="metric-card">
-        <span>Total de Emendas</span>
-        <strong id="card-total-emendas">0</strong>
-      </div>
-      <div class="metric-card" style="border-left: 3px solid var(--accent);">
-        <span>Atualizadas Hoje</span>
-        <strong id="card-atualizadas-hoje" style="color: var(--accent);">0</strong>
-      </div>
-      <div class="metric-card">
-        <span>Valor Indicado</span>
-        <strong id="card-valor-total">R$ 0,00</strong>
-      </div>
-      <div class="metric-card">
-        <span>Valor Pago</span>
-        <strong id="card-valor-pago">R$ 0,00</strong>
-      </div>
-      <div class="metric-card">
-        <span>Com Impedimento</span>
-        <strong id="card-total-impedimentos" style="color: var(--danger);">0</strong>
-      </div>
-    </section>
-
-    <!-- Barra de Análises e Rankings -->
-    <div class="views-toolbar">
-      <div class="views-buttons">
-        <button class="view-btn" id="btn-toggle-cidades" onclick="alternarPainel('cidades')">
-          🏙️ Cidades com mais emendas
-        </button>
-        <button class="view-btn" id="btn-toggle-deputados" onclick="alternarPainel('deputados')">
-          🏛️ Deputados mais ativos
-        </button>
-        <button class="view-btn" id="btn-toggle-modalidades" onclick="alternarPainel('modalidades')">
-          💡 Como funciona cada emenda?
-        </button>
-      </div>
-
-      <div class="badge-filter-indicator" id="indicador-filtro">
-        <span id="texto-filtro-ativo">Filtro ativo</span>
-        <button onclick="limparFiltrosRapidos()" title="Remover filtro">&times;</button>
-      </div>
-    </div>
-
-    <!-- Painel Expansível de Insights e Rankings -->
-    <div class="insights-panel" id="insights-panel">
-      <div class="insights-grid" id="insights-content"></div>
-    </div>
-
-    <!-- Filtros de Seleção -->
-    <section class="filters-section">
-      <div class="filter-group">
-        <label for="filtro-autor">
-          Deputado Autor
-          <span class="tooltip-icon" tabindex="0" data-tooltip="Parlamentar da ALEPE responsável pela indicação da emenda.">?</span>
-        </label>
-        <select id="filtro-autor">
-          <option value="">Todos os deputados</option>
-        </select>
-      </div>
-
-      <div class="filter-group">
-        <label for="filtro-municipio">
-          Cidade / Destino
-          <span class="tooltip-icon" tabindex="0" data-tooltip="Município pernambucano ou órgão que recebe o recurso.">?</span>
-        </label>
-        <select id="filtro-municipio">
-          <option value="">Todas as cidades</option>
-        </select>
-      </div>
-
-      <div class="filter-group">
-        <label for="filtro-modalidade">
-          Modalidade
-          <span class="tooltip-icon" tabindex="0" data-tooltip="Transferência Especial (Pix Direto), Execução Direta ou Convênio (GTV).">?</span>
-        </label>
-        <select id="filtro-modalidade">
-          <option value="">Todas as modalidades</option>
-          <option value="Transferência Especial (PIX)">Transferência Especial (PIX)</option>
-          <option value="Execução Direta">Execução Direta</option>
-          <option value="Convênio/Parceria (GTV)">Convênio/Parceria (GTV)</option>
-        </select>
-      </div>
-
-      <div class="filter-group">
-        <label for="filtro-status">
-          Status de Execução
-          <span class="tooltip-icon" tabindex="0" data-tooltip="Situação orçamentária da emenda.">?</span>
-        </label>
-        <select id="filtro-status">
-          <option value="">Todos os status</option>
-          <option value="PAGA">Paga / Concluída</option>
-          <option value="LIQUIDADA">Liquidada (Aguardando Pagamento)</option>
-          <option value="EMPENHADA">Empenhada</option>
-          <option value="EM ANÁLISE">Em Análise / Tramitação</option>
-          <option value="IMPEDIMENTO">Com Impedimento Técnico</option>
-          <option value="DESCONTINUADA">Descontinuada / Cancelada</option>
-        </select>
-      </div>
-    </section>
-
-    <!-- Tabela / Cards -->
-    <div class="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>Deputado</th>
-            <th>Município / Beneficiário</th>
-            <th>
-              Modalidade
-              <span class="tooltip-icon" tabindex="0" data-tooltip="Forma do repasse (Transferência Especial, Execução Direta ou Convênio).">?</span>
-            </th>
-            <th>Objeto / Destinação</th>
-            <th>
-              Status
-              <span class="tooltip-icon" tabindex="0" data-tooltip="Fase orçamentária e financeira consolidada da emenda.">?</span>
-            </th>
-            <th>Valores (Indicado / Pago)</th>
-          </tr>
-        </thead>
-        <tbody id="tabela-corpo">
-          <tr>
-            <td colspan="6" style="text-align: center; padding: 40px; color: var(--text-muted);">
-              Carregando dados das emendas...
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Paginação -->
-    <div class="pagination">
-      <span id="paginacao-info" style="font-size: 0.78rem; color: var(--text-muted);">Mostrando 0 registros</span>
-      <div class="pagination-buttons">
-        <button id="btn-anterior" disabled>Anterior</button>
-        <button id="btn-proximo" disabled>Próximo</button>
-      </div>
-    </div>
+<header class="barra"><div class="wrap">
+  <a class="logo" href="https://jamildo.com">
+    <img src="https://jamildo.com/media/uploads/logojamildo.png" alt="Jamildo.com" onerror="this.outerHTML='<b style=&quot;font-family:var(--disp);font-size:1.25rem&quot;>Jamildo<span style=&quot;color:#ff4d15&quot;>.com</span></b>'">
+  </a>
+  
+  <div class="busca">
+    <input id="q" type="search" autocomplete="off" placeholder="Buscar deputado, cidade (ex: Caruaru, Recife), objeto..." aria-label="Buscar">
+    <div class="sug" id="sug"></div>
   </div>
 
-  <script>
-    let dadosCompletos = [];
-    let dadosFiltrados = [];
-    let metaExecucao = {
-      ultima_execucao: '',
-      total_atualizadas_hoje: 0
-    };
-    let paginaAtual = 1;
-    let abaAberta = null;
-    const itensPorPagina = 15;
+  <div class="hub-botoes">
+    <button class="hub-btn" id="btn-painel-deps" onclick="togglePainelHub('deps')">🏛️ Deputados</button>
+    <button class="hub-btn" id="btn-painel-cids" onclick="togglePainelHub('cids')">🏙️ Cidades</button>
+    <button class="hub-btn" id="btn-painel-mods" onclick="togglePainelHub('mods')">💡 Modalidades</button>
+    <button class="hub-btn btn-ajuda" id="btn-painel-ajuda" onclick="togglePainelHub('ajuda')">❓ Como Usar</button>
+  </div>
+</div></header>
 
-    const formatarMoeda = (valor) => {
-      const num = parseFloat(valor) || 0;
-      return num.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-    };
+<main class="wrap">
+  <!-- HERO COMPACTO -->
+  <section class="hero">
+    <div class="hero-info">
+      <h1>O <span>radar das emendas</span> de Pernambuco</h1>
+      <p>Acompanhe em tempo real as indicações da ALEPE, o dinheiro liberado aos municípios e bloqueios técnicos. Base oficial ALEPE/SEPLAG atualizada em <b id="atu">...</b>.</p>
+      
+      <div class="nums-grid">
+        <div class="num-item"><b id="n-em">0</b><small>emendas</small></div>
+        <div class="num-item"><b id="n-ind">0</b><small>indicados</small></div>
+        <div class="num-item"><b id="n-pago" style="color:var(--verde)">0</b><small>pagos</small></div>
+        <div class="num-item"><b id="n-imp" style="color:var(--verm)">0</b><small>com bloqueio</small></div>
+        <div class="num-item"><b id="n-hoje" style="color:var(--laranja2)">0</b><small>mudaram hoje</small></div>
+      </div>
+    </div>
 
-    const formatarDataBR = (dataStr) => {
-      if (!dataStr) return 'Não informada';
-      const partes = dataStr.split('-');
-      if (partes.length === 3) {
-        return `${partes[2]}/${partes[1]}/${partes[0]}`;
-      }
-      return dataStr;
-    };
+    <div class="anel-box">
+      <div class="anel">
+        <svg viewBox="0 0 160 160">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ff4d15"/>
+              <stop offset="1" stop-color="#ffc28a"/>
+            </linearGradient>
+          </defs>
+          <circle class="t" cx="80" cy="80" r="66"/>
+          <circle class="v" id="anel" cx="80" cy="80" r="66"/>
+        </svg>
+        <div>
+          <b id="pct">0%</b>
+          <span>do total pago</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    const obterClasseBadgeStatus = (status) => {
-      const s = (status || '').toUpperCase();
-      if (s.includes('TOTALMENTE') || s === 'PAGA') return 'status-pago';
-      if (s.includes('PARCIAL') || s.includes('LIQUIDADA')) return 'status-parcial';
-      if (s.includes('IMPEDIMENTO')) return 'status-impedimento';
-      return 'status-analise';
-    };
+  <!-- PAINEL COMPACTO INTEGRADO -->
+  <section class="hub-painel" id="hub-painel">
+    <div class="hub-topo">
+      <h3 id="hub-titulo">Painel</h3>
+      <button class="fechar-painel" onclick="fecharPainelHub()">✕ Fechar</button>
+    </div>
 
-    async function carregarDados() {
-      try {
-        const resposta = await fetch('dados_emendas.json?cache=' + Date.now());
-        if (!resposta.ok) throw new Error('Falha ao baixar dados_emendas.json');
-        
-        const json = await resposta.json();
-        
-        if (Array.isArray(json)) {
-          dadosCompletos = json;
-          const modificadas = json.filter(d => d.teve_modificacao_hoje).length;
-          metaExecucao.total_atualizadas_hoje = modificadas;
-          metaExecucao.ultima_execucao = json[0]?.data_modificacao || '';
-        } else if (json && Array.isArray(json.emendas)) {
-          dadosCompletos = json.emendas;
-          metaExecucao.ultima_execucao = json.ultima_execucao || '';
-          metaExecucao.total_atualizadas_hoje = typeof json.total_atualizadas_hoje !== 'undefined' 
-            ? json.total_atualizadas_hoje 
-            : json.emendas.filter(d => d.teve_modificacao_hoje).length;
-        } else {
-          dadosCompletos = [];
-        }
+    <!-- Subseção Deputados -->
+    <div id="sub-deps" style="display:none;">
+      <p style="color:var(--suave); font-size:0.78rem; margin-bottom:10px;">Clique em um deputado para filtrar as emendas ou ver o perfil completo:</p>
+      <div class="deps-grid" id="hub-deps-content"></div>
+    </div>
 
-        // Atualiza a barra de data e o card de emendas atualizadas
-        document.getElementById('header-data-atualizacao').textContent = formatarDataBR(metaExecucao.ultima_execucao);
-        document.getElementById('card-atualizadas-hoje').textContent = metaExecucao.total_atualizadas_hoje.toLocaleString('pt-BR');
+    <!-- Subseção Cidades -->
+    <div id="sub-cids" style="display:none;">
+      <p style="color:var(--suave); font-size:0.78rem; margin-bottom:10px;">Municípios com maior volume de recursos (clique para filtrar):</p>
+      <div class="cids-grid" id="hub-cids-content"></div>
+    </div>
 
-        povoarFiltrosSelect();
-        aplicarFiltros();
-      } catch (erro) {
-        console.error("Erro ao carregar dados:", erro);
-        document.getElementById('tabela-corpo').innerHTML = `
-          <tr>
-            <td colspan="6" style="text-align: center; color: var(--danger); padding: 30px;">
-              Erro ao processar dados_emendas.json.
-            </td>
-          </tr>
-        `;
-      }
+    <!-- Subseção Modalidades -->
+    <div id="sub-mods" style="display:none;">
+      <div class="mods-grid">
+        <div class="mod-card" style="--c:var(--teal)">
+          <strong>Transferência Especial (PIX)</strong>
+          Repasse financeiro direto ao caixa municipal sem convênio prévio. Fiscalização e prestação a posteriori via TCE-PE.
+        </div>
+        <div class="mod-card" style="--c:var(--azulvivo)">
+          <strong>Execução Direta</strong>
+          O Estado contrata diretamente: maquinários agrícolas via IPA, ambulâncias ou obras de hospitais da UPE.
+        </div>
+        <div class="mod-card" style="--c:var(--roxo)">
+          <strong>Convênios e Entidades (GTV)</strong>
+          Recursos destinados a entidades filantrópicas, hospitais conveniados ou cooperativas via parceria formal.
+        </div>
+      </div>
+    </div>
+
+    <!-- Subseção Como Usar -->
+    <div id="sub-ajuda" style="display:none;">
+      <div class="guia-ajuda">
+        <div class="ajuda-card">
+          <span class="ajuda-icone">🔍</span>
+          <strong>1. Como Pesquisar</strong>
+          <p>Digite na barra de busca qualquer palavra-chave: o nome de um deputado, município (ex: <i>Caruaru</i>, <i>Petrolina</i>) ou destinação (ex: <i>ambulância</i>, <i>hospital</i>, <i>praça</i>).</p>
+        </div>
+        <div class="ajuda-card">
+          <span class="ajuda-icone">⚡</span>
+          <strong>2. Filtros Rápidos & Avançados</strong>
+          <p>Use os botões de atalho (<i>PIX Direto</i>, <i>100% Pagas</i>, <i>Com Bloqueio</i>) ou selecione um deputado, cidade ou status específico nos menus suspensos.</p>
+        </div>
+        <div class="ajuda-card">
+          <span class="ajuda-icone">🏛️</span>
+          <strong>3. Raio-X do Parlamentar</strong>
+          <p>Clique sobre a foto ou nome de qualquer parlamentar em uma emenda para abrir o perfil lateral com foto oficial da ALEPE, histórico e cidades atendidas.</p>
+        </div>
+        <div class="ajuda-card">
+          <span class="ajuda-icone">📊</span>
+          <strong>4. Termômetro do Dinheiro</strong>
+          <p>Cada cartão exibe o valor total indicado e uma barra de progresso verde mostrando quanto daquele recurso já caiu de verdade na conta do município.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BARRA DE FILTROS RÁPIDOS (CHIPS) -->
+  <div class="filtros" id="filtros">
+    <button class="chip on" data-m="todas">🔥 Todas</button>
+    <button class="chip" data-m="pix">💸 PIX direto</button>
+    <button class="chip" data-m="pagas">✅ 100% pagas</button>
+    <button class="chip" data-m="hoje">⚡ Mudaram hoje</button>
+    <button class="chip al" data-m="imp">⚠️ Com impedimento</button>
+    <button class="limpar" id="limpar" hidden>✕ Limpar filtros</button>
+    
+    <label class="sel">
+      Ordenar por
+      <select id="ord">
+        <option value="ind">Maior valor</option>
+        <option value="pct">Maior % pago</option>
+        <option value="imp">Com impedimento primeiro</option>
+      </select>
+    </label>
+  </div>
+
+  <!-- FILTROS AVANÇADOS INTEGRADOS -->
+  <section class="filtros-avancados">
+    <div class="f-campo">
+      <label for="filtro-autor">
+        Deputado Autor
+        <span class="tooltip-icon" title="Filtrar por parlamentar da ALEPE">?</span>
+      </label>
+      <select id="filtro-autor">
+        <option value="">Todos os deputados</option>
+      </select>
+    </div>
+
+    <div class="f-campo">
+      <label for="filtro-municipio">
+        Cidade / Destino
+        <span class="tooltip-icon" title="Município ou órgão beneficiado">?</span>
+      </label>
+      <select id="filtro-municipio">
+        <option value="">Todas as cidades</option>
+      </select>
+    </div>
+
+    <div class="f-campo">
+      <label for="filtro-modalidade">
+        Modalidade
+        <span class="tooltip-icon" title="PIX, Execução Direta ou Convênio">?</span>
+      </label>
+      <select id="filtro-modalidade">
+        <option value="">Todas as modalidades</option>
+        <option value="Transferência Especial (PIX)">Transferência Especial (PIX)</option>
+        <option value="Execução Direta">Execução Direta</option>
+        <option value="Convênio/Parceria (GTV)">Convênio/Parceria (GTV)</option>
+      </select>
+    </div>
+
+    <div class="f-campo">
+      <label for="filtro-status">
+        Status de Execução
+        <span class="tooltip-icon" title="Fase orçamentária da emenda">?</span>
+      </label>
+      <select id="filtro-status">
+        <option value="">Todos os status</option>
+        <option value="PAGA">Paga / Concluída</option>
+        <option value="LIQUIDADA">Liquidada (Aguardando Pagamento)</option>
+        <option value="EMPENHADA">Empenhada</option>
+        <option value="EM ANÁLISE">Em Análise / Tramitação</option>
+        <option value="IMPEDIMENTO">Com Impedimento Técnico</option>
+        <option value="DESCONTINUADA">Descontinuada / Cancelada</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- ÁREA PRINCIPAL: GRADE DE EMENDAS -->
+  <div class="secao-header">
+    <h2 class="titulo">Emendas Parlamentares</h2>
+    <span class="sub" id="s-ems">Carregando emendas...</span>
+  </div>
+
+  <div class="grade" id="ems"></div>
+  <button class="mais" id="mais"></button>
+</main>
+
+<!-- GAVETA LATERAL DO DEPUTADO -->
+<div class="vel" id="vel"></div>
+<aside class="gav" id="gav" aria-label="Perfil do deputado"></aside>
+
+<script>
+/* ========= MAPA DE FOTOS OFICIAIS DOS DEPUTADOS (ALEPE) ========= */
+const FOTOS_DEPUTADOS = {
+  "abimaelsantos": "https://www.alepe.pe.gov.br/wp-content/uploads/2023/02/ABIMAEL-SANTOS-scaled-e1675862727585.jpg",
+  "adaltosantos": "https://www.alepe.pe.gov.br/wp-content/uploads/2015/05/ADALTO-SANTOS-V2-scaled-e1736175493765.jpg",
+  "aglailsonvictor": "https://www.alepe.pe.gov.br/wp-content/uploads/2019/02/AGLAILSON-VICTOR-scaled-e1675862920250.jpg",
+  "alvaroporto": "https://www.alepe.pe.gov.br/wp-content/uploads/2015/05/AlvaroPorto_001-scaled-e1675863047630.jpg",
+  "antoniocoelho": "https://www.alepe.pe.gov.br/wp-content/uploads/2019/02/ANTONIO-COELHO-scaled-e1675863217804.jpg",
+  "antoniomoraes": "https://www.alepe.pe.gov.br/wp-content/uploads/2015/05/Antonio-Moraes.png",
+  "claudianomartinsfilho": "https://www.alepe.pe.gov.br/wp-content/uploads/2022/04/CLAUDIANO-MARTINS-FILHO-scaled-e1675863305761.jpg",
+  "coronelalbertofeitosa": "https://www.alepe.pe.gov.br/wp-content/uploads/2018/04/AlbertoFeitosa_001-scaled-e1675863386211.jpg",
+  "albertofeitosa": "https://www.alepe.pe.gov.br/wp-content/uploads/2018/04/AlbertoFeitosa_001-scaled-e1675863386211.jpg",
+  "daniportela": "https://www.alepe.pe.gov.br/wp-content/uploads/2023/02/DANI-PORTELA-scaled-e1675863495267.jpg",
+  "dannilogodoy": "https://www.alepe.pe.gov.br/wp-content/uploads/2023/02/DANNILO-GODOY-1-scaled-e1675863555736.jpg",
+  "deboraalmeida": "https://www.alepe.pe.gov.br/wp-content/uploads/2023/02/Debora-Almeida.png",
+  "delegadagleideangelo": "https://www.alepe.pe.gov.br/wp-content/uploads/2019/02/GLEIDE-ANGELO-scaled-e1675863599809.jpg",
+  "gleideangelo": "https://www.alepe.pe.gov.br/wp-content/uploads/2019/02/GLEIDE-ANGELO-scaled-e1675863599809.jpg",
+  "diogomoraes": "https://www.alepe.pe.gov.br/wp-content/uploads/2019/02/Diogo-Moraes.png",
+  "dorielbarros": "https://www.alepe.pe.gov.br/wp-content/uploads/2019/02/DORIEL-BARROS-scaled-e1675863648402.jpg",
+  "edsonvieira": "https://www.alepe.pe.gov.br/wp-content/uploads/2023/09/Edson-Vieira-flip-2.png",
+  "eribertofilho": "https://www.alepe.pe.gov.br/wp-content/uploads/2023/02/ERIBERTO-FILHO-scaled-e1676402906319.jpg",
+  "fabrizioferraz": "https://www.alepe.pe.gov.br/wp-content/uploads/2019/02/FABRIZIO-FERRAZ-scaled-e1675863783832.jpg",
+  "francehacker": "https://www.alepe.pe.gov.br/wp-content/uploads/2023/02/FRANCE-HACKER-scaled-e1675859649895.jpg",
+  "francismarpontes": "https://www.alepe.pe.gov.br/wp-content/uploads/2015/05/03.12-FOTO_FRANCISMAR-RG-002-scaled-e1741948345928.jpg",
+  "gilmarjunior": "https://www.alepe.pe.gov.br/wp-content/uploads/2023/02/Gilmar_junior-site-e1764261451233.jpg",
+  "gustavogouveia": "https://www.alepe.pe.gov.br/wp-content/uploads/2019/02/GUSTAVO-GOUVEIA-scaled-e1675859397629.jpg",
+  "henriquequeirozfilho": "https://www.alepe.pe.gov.br/wp-content/uploads/2019/02/HenriqueQueirozFilho-scaled-e1675863870515.jpg",
+  "izaiasregis": "https://www.alepe.pe.gov.br/wp-content/uploads/2023/02/IZAIAS-REGIS-scaled-e1675859777797.jpg",
+  "jarbasfilho": "https://www.alepe.pe.gov.br/wp-content/uploads/2023/02/Jarbas-Filho.png",
+  "jefersontimoteo": "https://www.alepe.pe.gov.br/wp-content/uploads/2023/02/JEFERSON-TIMOTEO-1-scaled-e1675860179567.jpg",
+  "joaodenadegi": "https://www.alepe.pe.gov.br/wp-content/uploads/2023/02/Joao-de-Nadegi-1.png",
+  "joaopaulocosta": "https://www.alepe.pe.gov.br/wp-content/uploads/2019/02/Joao-Paulo-Costa.png",
+  "joaopaulo": "https://www.alepe.pe.gov.br/wp-content/uploads/2019/02/Joao-Paulo.png",
+  "joaozinhotenorio": "https://www.alepe.pe.gov.br/wp-content/uploads/2023/02/Joaozinho-Tenorio.png",
+  "joaquimlira": "https://www.alepe.pe.gov.br/wp-content/uploads/2015/05/JOAQUIM-LIRA-4-scaled-e1675860569922.jpg",
+  "joeldaharpa": "https://www.alepe.pe.gov.br/wp-content/uploads/2015/05/JOEL-DA-HARPA-V2-scaled-e1730987062752.jpg",
+  "juniormatuto": "https://www.alepe.pe.gov.br/wp-content/uploads/2024/09/JUNIOR-MATUTO-V2-scaled-e1730987572192.jpg",
+  "kaiomanicoba": "https://www.alepe.pe.gov.br/wp-content/uploads/2023/02/KAIO-MANICOBA-scaled-e1675860922583.jpg",
+  "lucianoduque": "https://www.alepe.pe.gov.br/wp-content/uploads/2023/02/Luciano-Duque.png",
+  "marioricardo": "https://www.alepe.pe.gov.br/wp-content/uploads/2023/02/MARIO-RICARDO-1-scaled-e1676403125673.jpg",
+  "ninodeenoque": "https://www.alepe.pe.gov.br/wp-content/uploads/2023/02/NINO-DE-ENOQUE-scaled-e1675861405733.jpg",
+  "pastorcleitoncollins": "https://www.alepe.pe.gov.br/wp-content/uploads/2015/05/PASTOR-CLEITON-COLLINS-1-scaled-e1675861489159.jpg",
+  "cleitoncollins": "https://www.alepe.pe.gov.br/wp-content/uploads/2015/05/PASTOR-CLEITON-COLLINS-1-scaled-e1675861489159.jpg",
+  "pastorjuniortercio": "https://www.alepe.pe.gov.br/wp-content/uploads/2023/02/08.09-PASTOR_JUNIOR_TERCIO-RS-002-scaled-e1691755356373.jpg",
+  "juniortercio": "https://www.alepe.pe.gov.br/wp-content/uploads/2023/02/08.09-PASTOR_JUNIOR_TERCIO-RS-002-scaled-e1691755356373.jpg",
+  "renatoantunes": "https://www.alepe.pe.gov.br/wp-content/uploads/2023/02/RENATO-ANTUNES-1-scaled-e1675861722530.jpg",
+  "rodrigofarias": "https://www.alepe.pe.gov.br/wp-content/uploads/2023/02/RODRIGO-FARIAS-scaled-e1676403276451.jpg",
+  "romerosalesfilho": "https://www.alepe.pe.gov.br/wp-content/uploads/2019/02/ROMERO-SALES-FILHO-scaled-e1675862065162.jpg",
+  "romeroalbuquerque": "https://www.alepe.pe.gov.br/wp-content/uploads/2019/02/ROMERO-ALBUQUERQUE-scaled-e1675861968676.jpg",
+  "romero": "https://www.alepe.pe.gov.br/wp-content/uploads/2019/02/ROMERO-ALBUQUERQUE-scaled-e1675861968676.jpg",
+  "rosaamorim": "https://www.alepe.pe.gov.br/wp-content/uploads/2023/02/ROSA-AMORIM-scaled-e1675862161271.jpg",
+  "silenoguedes": "https://www.alepe.pe.gov.br/wp-content/uploads/2023/02/Sileno-Guedes.png",
+  "simonesantana": "https://www.alepe.pe.gov.br/wp-content/uploads/2015/05/SIMONE-SANTANA-1-scaled-e1675862417317.jpg",
+  "socorropimentel": "https://www.alepe.pe.gov.br/wp-content/uploads/2023/01/SOCORRO-PIMENTEL-1-scaled-e1676403370709.jpg",
+  "waldemarborges": "https://www.alepe.pe.gov.br/wp-content/uploads/2015/05/WaldemarBorges_001-scaled-e1675862571749.jpg",
+  "wandersonflorencio": "https://www.alepe.pe.gov.br/wp-content/uploads/2019/02/wandersonFlorencio.jpg",
+  "williambrigido": "https://www.alepe.pe.gov.br/wp-content/uploads/2019/02/WILLIAM-BRIGIDO-scaled-e1675862649941.jpg"
+};
+
+/* ========= UTILIDADES ========= */
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const brl = v => (+v || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+const cur = v => {
+  v = +v || 0;
+  return v >= 1e9 ? 'R$ ' + (v / 1e9).toFixed(2).replace('.', ',') + ' bi' :
+         v >= 1e6 ? 'R$ ' + (v / 1e6).toFixed(1).replace('.', ',') + ' mi' :
+         v >= 1e3 ? 'R$ ' + Math.round(v / 1e3) + ' mil' : brl(v);
+};
+const norm = s => String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
+// Obter URL da foto oficial do deputado
+const obterFotoDeputado = nome => {
+  if (!nome) return '';
+  const chave = norm(nome).replace(/^(dep\.?|deputad[oa])\s+/i, '').replace(/[^a-z]/g, '');
+  return FOTOS_DEPUTADOS[chave] || '';
+};
+
+// Renderizar foto ou fallback com iniciais instantâneo
+const renderAvatar = (nome, tamanho = 36) => {
+  const foto = obterFotoDeputado(nome);
+  const iniciais = esc(ini(nome));
+  const c = corDe(nome);
+  const fSize = Math.round(tamanho * 0.38);
+  if (foto) {
+    return `
+      <div class="avatar-foto-box" style="width:${tamanho}px; height:${tamanho}px; background:linear-gradient(135deg, ${c}, #0a2f5c);">
+        <span class="dep-avatar-fallback" style="font-size:${fSize}px;">${iniciais}</span>
+        <img src="${foto}" alt="${esc(nome)}" class="foto-dep" loading="lazy" referrerpolicy="no-referrer" onload="this.previousElementSibling.style.display='none';" onerror="this.remove();">
+      </div>
+    `;
+  }
+  return `
+    <div class="avatar-foto-box" style="width:${tamanho}px; height:${tamanho}px; background:linear-gradient(135deg, ${c}, #0a2f5c);">
+      <span class="dep-avatar-fallback" style="font-size:${fSize}px;">${iniciais}</span>
+    </div>
+  `;
+};
+
+// Limpeza de mojibake UTF-8 caso o JSON venha corrompido
+const limparTexto = s => {
+  if (!s) return '';
+  return String(s)
+    .replace(/TRANSFERÃŠNCIAS/g, 'TRANSFERÊNCIAS')
+    .replace(/TransferÃªncia/g, 'Transferência')
+    .replace(/ANÃ LISE/g, 'ANÁLISE')
+    .replace(/praÃ§as/g, 'praças')
+    .replace(/municÃ­pio/g, 'município')
+    .replace(/Ã¡/g, 'á').replace(/Ã©/g, 'é').replace(/Ã­/g, 'í').replace(/Ã³/g, 'ó').replace(/Ãº/g, 'ú')
+    .replace(/Ã£/g, 'ã').replace(/Ãµ/g, 'õ').replace(/Ã§/g, 'ç').replace(/Ãª/g, 'ê');
+};
+
+const ind = d => parseFloat(d.valor) || parseFloat(d.valor_empenhado) || 0;
+const pg = d => parseFloat(d.valor_pago) || 0;
+const stat = d => limparTexto(d.status_calculado || d.status_resolucao_tce || 'Em análise');
+const cls = d => {
+  const s = stat(d).toUpperCase();
+  if (s.includes('IMPEDIMENTO')) return 'imp';
+  if (s.includes('TOTALMENTE') || s === 'PAGA') return 'pago';
+  if (s.includes('PARCIAL') || s.includes('LIQUIDADA')) return 'parcial';
+  return 'analise';
+};
+const pc = d => { const i = ind(d); return i ? Math.min(1, pg(d) / i) : 0; };
+const ini = n => String(n || '?').replace(/^(dep\.?|deputad[oa])\s+/i, '').split(/\s+/).filter(Boolean).slice(0, 2).map(p => p[0]).join('').toUpperCase();
+const dataBR = s => { const p = String(s || '').slice(0, 10).split('-'); return p.length === 3 ? `${p[2]}/${p[1]}/${p[0]}` : (s || 'sem data'); };
+const CORES = ['#ff4d15', '#3d8bff', '#2fd28a', '#ffbe3d', '#a855f7', '#ff6fb1', '#14b8a6', '#ff8a3d'];
+const corDe = n => { let h = 0; for (const c of String(n)) h = (h * 31 + c.charCodeAt(0)) % 997; return CORES[h % CORES.length]; };
+const soma = (a, f) => a.reduce((s, d) => s + f(d), 0);
+
+/* ========= ESTADO ========= */
+let todos = [];
+let L = [];
+let modo = 'todas';
+let pag = 1;
+let painelAberto = null;
+const POR = 18;
+
+/* ========= CARREGAMENTO CONECTADO AO GITHUB PAGES ========= */
+async function carregar() {
+  let ultima = '';
+  try {
+    const r = await fetch('dados_emendas.json?cache=' + Date.now());
+    if (!r.ok) throw new Error('Falha ao obter dados_emendas.json');
+    const j = await r.json();
+    if (Array.isArray(j)) {
+      todos = j;
+      ultima = j[0]?.data_modificacao || '';
+    } else {
+      todos = j.emendas || [];
+      ultima = j.ultima_execucao || '';
     }
+  } catch (e) {
+    console.error('Erro na conexão:', e);
+    todos = [];
+  }
 
-    function povoarFiltrosSelect() {
-      const autores = [...new Set(dadosCompletos.map(d => d.autor).filter(Boolean))].sort((a, b) => a.localeCompare(b));
-      const municipios = [...new Set(dadosCompletos.map(d => d.municipio).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+  $('atu').textContent = dataBR(ultima);
+  povoarFiltrosSelect();
+  filtrar();
+}
 
-      const selectAutor = document.getElementById('filtro-autor');
-      selectAutor.innerHTML = '<option value="">Todos os deputados</option>';
-      autores.forEach(autor => {
-        const opt = document.createElement('option');
-        opt.value = autor;
-        opt.textContent = autor;
-        selectAutor.appendChild(opt);
-      });
+function povoarFiltrosSelect() {
+  const autores = [...new Set(todos.map(d => d.autor).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+  const municipios = [...new Set(todos.map(d => d.municipio).filter(Boolean))].sort((a, b) => a.localeCompare(b));
 
-      const selectMunicipio = document.getElementById('filtro-municipio');
-      selectMunicipio.innerHTML = '<option value="">Todas as cidades</option>';
-      municipios.forEach(mun => {
-        const opt = document.createElement('option');
-        opt.value = mun;
-        opt.textContent = mun;
-        selectMunicipio.appendChild(opt);
-      });
-    }
+  const selectAutor = $('filtro-autor');
+  selectAutor.innerHTML = '<option value="">Todos os deputados</option>';
+  autores.forEach(autor => {
+    const opt = document.createElement('option');
+    opt.value = autor;
+    opt.textContent = autor;
+    selectAutor.appendChild(opt);
+  });
 
-    function filtrarPorDeputado(nomeAutor) {
-      document.getElementById('filtro-autor').value = nomeAutor;
-      aplicarFiltros();
-      atualizarIndicadorFiltro(`Deputado: ${nomeAutor}`);
-    }
+  const selectMunicipio = $('filtro-municipio');
+  selectMunicipio.innerHTML = '<option value="">Todas as cidades</option>';
+  municipios.forEach(mun => {
+    const opt = document.createElement('option');
+    opt.value = mun;
+    opt.textContent = mun;
+    selectMunicipio.appendChild(opt);
+  });
+}
 
-    function filtrarPorCidade(nomeCidade) {
-      document.getElementById('filtro-municipio').value = nomeCidade;
-      aplicarFiltros();
-      atualizarIndicadorFiltro(`Cidade: ${nomeCidade}`);
-    }
+/* ========= PIPELINE DE FILTROS (CHIPS + BUSCA + 4 SELECTS) ========= */
+function filtrar() {
+  const toks = norm($('q').value).split(/\s+/).filter(Boolean);
+  const autorSel = $('filtro-autor').value;
+  const munSel = $('filtro-municipio').value;
+  const modSel = $('filtro-modalidade').value;
+  const statSel = $('filtro-status').value;
 
-    function atualizarIndicadorFiltro(texto) {
-      const ind = document.getElementById('indicador-filtro');
-      document.getElementById('texto-filtro-ativo').textContent = texto;
-      ind.style.display = 'inline-flex';
-    }
+  L = todos.filter(d => {
+    // Chips rápidos
+    if (modo === 'pix' && !norm(d.modalidade).includes('pix')) return false;
+    if (modo === 'pagas' && cls(d) !== 'pago') return false;
+    if (modo === 'hoje' && !d.teve_modificacao_hoje) return false;
+    if (modo === 'imp' && cls(d) !== 'imp') return false;
 
-    function limparFiltrosRapidos() {
-      document.getElementById('filtro-autor').value = '';
-      document.getElementById('filtro-municipio').value = '';
-      document.getElementById('filtro-modalidade').value = '';
-      document.getElementById('filtro-status').value = '';
-      document.getElementById('indicador-filtro').style.display = 'none';
-      aplicarFiltros();
-    }
+    // 4 Filtros dropdown avançados
+    if (autorSel && d.autor !== autorSel) return false;
+    if (munSel && d.municipio !== munSel) return false;
+    if (modSel && !norm(d.modalidade).includes(norm(modSel))) return false;
+    if (statSel && !norm(stat(d)).includes(norm(statSel))) return false;
 
-    function aplicarFiltros() {
-      const autorSelecionado = document.getElementById('filtro-autor').value;
-      const municipioSelecionado = document.getElementById('filtro-municipio').value;
-      const modalidadeSelecionada = document.getElementById('filtro-modalidade').value;
-      const statusSelecionado = document.getElementById('filtro-status').value;
+    // Busca por texto
+    if (!toks.length) return true;
+    const alvo = norm([d.autor, d.municipio, d.beneficiario, d.objeto, d.modalidade, d.tematica, stat(d)].join(' '));
+    return toks.every(t => alvo.includes(t));
+  });
 
-      if (!autorSelecionado && !municipioSelecionado && !modalidadeSelecionada && !statusSelecionado) {
-        document.getElementById('indicador-filtro').style.display = 'none';
-      }
+  pag = 1;
+  const i = soma(L, ind);
+  const p = soma(L, pg);
+  const pr = i ? p / i : 0;
+  const impedidos = L.filter(d => cls(d) === 'imp').length;
 
-      dadosFiltrados = dadosCompletos.filter(item => {
-        const matchAutor = !autorSelecionado || item.autor === autorSelecionado;
-        const matchMunicipio = !municipioSelecionado || item.municipio === municipioSelecionado;
-        const matchModalidade = !modalidadeSelecionada || (item.modalidade && item.modalidade.includes(modalidadeSelecionada));
-        
-        let matchStatus = true;
-        if (statusSelecionado) {
-          const statusItem = (item.status_calculado || item.status_resolucao_tce || '').toUpperCase();
-          matchStatus = statusItem.includes(statusSelecionado.toUpperCase());
-        }
+  $('n-em').textContent = L.length.toLocaleString('pt-BR');
+  $('n-ind').textContent = cur(i);
+  $('n-pago').textContent = cur(p);
+  $('n-imp').textContent = impedidos.toLocaleString('pt-BR');
+  $('n-hoje').textContent = L.filter(d => d.teve_modificacao_hoje).length.toLocaleString('pt-BR');
+  $('pct').textContent = Math.round(pr * 100) + '%';
+  $('anel').style.strokeDashoffset = 414 * (1 - pr);
 
-        return matchAutor && matchMunicipio && matchModalidade && matchStatus;
-      });
+  const temFiltroAtivo = toks.length || modo !== 'todas' || autorSel || munSel || modSel || statSel;
+  $('limpar').hidden = !temFiltroAtivo;
 
-      paginaAtual = 1;
-      atualizarMetricas(dadosFiltrados);
-      renderizarTabela();
-      if (abaAberta) renderizarPainelInsights(abaAberta);
-    }
+  desenharEmendas();
+  if (painelAberto) renderizarConteudoHub(painelAberto);
+}
 
-    function atualizarMetricas(dados) {
-      let totalIndicado = 0;
-      let totalPago = 0;
-      let totalImpedimentos = 0;
+/* ========= RENDERIZAÇÃO DAS EMENDAS ========= */
+function desenharEmendas() {
+  const o = $('ord').value;
+  let ordenadas = L.slice();
+  if (o === 'ind') ordenadas.sort((a, b) => ind(b) - ind(a));
+  else if (o === 'pct') ordenadas.sort((a, b) => pc(b) - pc(a));
+  else if (o === 'imp') ordenadas.sort((a, b) => (cls(b) === 'imp' ? 1 : 0) - (cls(a) === 'imp' ? 1 : 0));
 
-      dados.forEach(item => {
-        const vIndicado = parseFloat(item.valor) || parseFloat(item.valor_empenhado) || 0;
-        const vPago = parseFloat(item.valor_pago) || 0;
-        
-        totalIndicado += vIndicado;
-        totalPago += vPago;
+  const parte = ordenadas.slice(0, pag * POR);
+  $('s-ems').textContent = `${L.length.toLocaleString('pt-BR')} emendas encontradas.`;
 
-        const st = (item.status_calculado || item.status_resolucao_tce || '').toUpperCase();
-        if (st.includes('IMPEDIMENTO')) {
-          totalImpedimentos++;
-        }
-      });
-
-      document.getElementById('card-total-emendas').textContent = dados.length.toLocaleString('pt-BR');
-      document.getElementById('card-valor-total').textContent = formatarMoeda(totalIndicado);
-      document.getElementById('card-valor-pago').textContent = formatarMoeda(totalPago);
-      document.getElementById('card-total-impedimentos').textContent = totalImpedimentos.toLocaleString('pt-BR');
-    }
-
-    function alternarPainel(tipo) {
-      const panel = document.getElementById('insights-panel');
-      const btnCidades = document.getElementById('btn-toggle-cidades');
-      const btnDeputados = document.getElementById('btn-toggle-deputados');
-      const btnModalidades = document.getElementById('btn-toggle-modalidades');
-
-      [btnCidades, btnDeputados, btnModalidades].forEach(b => b.classList.remove('active'));
-
-      if (abaAberta === tipo) {
-        panel.classList.remove('visible');
-        abaAberta = null;
-        return;
-      }
-
-      abaAberta = tipo;
-      panel.classList.add('visible');
-      document.getElementById(`btn-toggle-${tipo}`).classList.add('active');
-      renderizarPainelInsights(tipo);
-    }
-
-    function renderizarPainelInsights(tipo) {
-      const container = document.getElementById('insights-content');
-
-      if (tipo === 'cidades') {
-        const contagem = {};
-        const valores = {};
-        dadosCompletos.forEach(d => {
-          const m = d.municipio || 'Não Informado';
-          contagem[m] = (contagem[m] || 0) + 1;
-          valores[m] = (valores[m] || 0) + (parseFloat(d.valor_pago) || 0);
-        });
-
-        const ranking = Object.entries(contagem).sort((a, b) => b[1] - a[1]).slice(0, 9);
-        const maxVal = ranking[0][1];
-
-        container.innerHTML = `
-          <div class="insight-col" style="grid-column: span 3;">
-            <h3 style="color: var(--primary);">
-              🏙️ Cidades com maior volume de emendas parlamentares 
-              <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: normal;">(Clique para filtrar)</span>
-            </h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px;">
-              ${ranking.map(([cidade, qtd]) => `
-                <div class="ranking-item" onclick="filtrarPorCidade('${cidade}')">
-                  <div style="width: 100%;">
-                    <div style="display: flex; justify-content: space-between;">
-                      <strong>${cidade}</strong>
-                      <span style="color: var(--primary); font-weight: 700;">${qtd} emendas</span>
-                    </div>
-                    <div class="ranking-bar" style="width: ${(qtd / maxVal) * 100}%;"></div>
-                    <small style="color: var(--success); font-size: 0.68rem;">Pago: ${formatarMoeda(valores[cidade])}</small>
-                  </div>
-                </div>
-              `).join('')}
-            </div>
+  $('ems').innerHTML = parte.length ? parte.map(d => {
+    const p = pc(d);
+    const modLimpa = limparTexto(d.modalidade || 'Emenda');
+    const objLimpo = limparTexto(d.objeto || 'Objeto não informado');
+    return `
+      <article class="em vidro ${cls(d)}">
+        <div class="quem">
+          <div class="autor-com-foto">
+            ${renderAvatar(d.autor, 32)}
+            <button data-dep="${esc(d.autor)}" title="Ver detalhes do deputado">${esc(d.autor)}</button>
           </div>
-        `;
-      } 
-      else if (tipo === 'deputados') {
-        const contagem = {};
-        const temasPorAutor = {};
-        dadosCompletos.forEach(d => {
-          const a = d.autor || 'Não Informado';
-          contagem[a] = (contagem[a] || 0) + 1;
-          if (!temasPorAutor[a]) temasPorAutor[a] = {};
-          const t = d.tematica || 'Geral';
-          temasPorAutor[a][t] = (temasPorAutor[a][t] || 0) + 1;
-        });
+          <span style="cursor:pointer; white-space:nowrap;" data-cid="${esc(d.municipio)}" title="Filtrar por esta cidade">📍 ${esc(d.municipio)}</span>
+        </div>
 
-        const ranking = Object.entries(contagem).sort((a, b) => b[1] - a[1]).slice(0, 9);
-        const maxVal = ranking[0][1];
+        <div class="em-badges">
+          <span class="tag s">${esc(stat(d))}</span>
+          <span class="tag">${esc(modLimpa)}</span>
+          ${d.teve_modificacao_hoje ? `<span class="tag novo" title="${esc(d.detalhe_mudanca || '')}">⚡ Mudou hoje</span>` : ''}
+        </div>
 
-        container.innerHTML = `
-          <div class="insight-col" style="grid-column: span 3;">
-            <h3 style="color: var(--primary);">
-              🏛️ Deputados com maior número de indicações
-              <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: normal;">(Clique para filtrar)</span>
-            </h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px;">
-              ${ranking.map(([autor, qtd]) => {
-                const principalTema = Object.entries(temasPorAutor[autor] || {}).sort((a, b) => b[1] - a[1])[0];
-                return `
-                  <div class="ranking-item" onclick="filtrarPorDeputado('${autor}')">
-                    <div style="width: 100%;">
-                      <div style="display: flex; justify-content: space-between;">
-                        <strong>${autor}</strong>
-                        <span style="color: var(--primary); font-weight: 700;">${qtd} emendas</span>
-                      </div>
-                      <div class="ranking-bar" style="background: var(--primary); width: ${(qtd / maxVal) * 100}%;"></div>
-                      <small style="color: var(--text-muted); font-size: 0.68rem;">Principal: <strong>${principalTema ? principalTema[0] : 'Variados'}</strong></small>
-                    </div>
-                  </div>
-                `;
-              }).join('')}
-            </div>
+        <p class="obj" title="Clique para expandir o texto">${esc(objLimpo)}</p>
+
+        ${d.condicao_saneamento_impedimento_tecnico ? `
+          <div class="alerta">
+            <b>Bloqueio Técnico:</b> ${esc(d.condicao_saneamento_impedimento_tecnico)}
           </div>
-        `;
-      } 
-      else if (tipo === 'modalidades') {
-        container.innerHTML = `
-          <div class="insight-col">
-            <div class="modalidade-card m-pix">
-              <strong style="color: var(--teal);">Transferência Especial (PIX)</strong>
-              Repasse direto ao caixa da prefeitura sem burocracia prévia de convênio. Execução municipal sob controle do TCE-PE.
-            </div>
+        ` : ''}
+
+        <div class="din">
+          <div class="din-header">
+            <strong>${brl(ind(d))}</strong>
+            <small>${brl(pg(d))} (${Math.round(p * 100)}% pago)</small>
           </div>
-          <div class="insight-col">
-            <div class="modalidade-card m-direta">
-              <strong style="color: var(--primary);">Execução Direta</strong>
-              O próprio governo estadual compra ou contrata: maquinários pelo IPA, ambulâncias ou reformas nos hospitais da UPE.
-            </div>
+          <div class="prog"><i style="--p:${p * 100}%"></i></div>
+        </div>
+      </article>
+    `;
+  }).join('') : '<div class="vazio">Nenhuma emenda encontrada. Tente outra combinação de filtros.</div>';
+
+  // Controle seguro da paginação (NUNCA fica negativo)
+  const falta = Math.max(0, L.length - pag * POR);
+  const btnMais = $('mais');
+  if (falta > 0) {
+    btnMais.classList.add('visivel');
+    btnMais.textContent = `Carregar mais emendas (${falta} restantes)`;
+  } else {
+    btnMais.classList.remove('visivel');
+  }
+}
+
+/* ========= HUB COMPACTO RECOLHÍVEL ========= */
+function togglePainelHub(tipo) {
+  const painel = $('hub-painel');
+  const btnDeps = $('btn-painel-deps');
+  const btnCids = $('btn-painel-cids');
+  const btnMods = $('btn-painel-mods');
+  const btnAjuda = $('btn-painel-ajuda');
+
+  [btnDeps, btnCids, btnMods, btnAjuda].forEach(b => b.classList.remove('ativo'));
+
+  if (painelAberto === tipo) {
+    fecharPainelHub();
+    return;
+  }
+
+  painelAberto = tipo;
+  painel.classList.add('visivel');
+  $(`btn-painel-${tipo}`).classList.add('ativo');
+
+  $('sub-deps').style.display = tipo === 'deps' ? 'block' : 'none';
+  $('sub-cids').style.display = tipo === 'cids' ? 'block' : 'none';
+  $('sub-mods').style.display = tipo === 'mods' ? 'block' : 'none';
+  $('sub-ajuda').style.display = tipo === 'ajuda' ? 'block' : 'none';
+
+  const titulos = {
+    deps: '🏛️ Deputados com mais emendas indicadas',
+    cids: '🏙️ Cidades com maior repasse',
+    mods: '💡 Como funciona cada tipo de emenda?',
+    ajuda: '❓ Como usar este radar de emendas?'
+  };
+  $('hub-titulo').textContent = titulos[tipo];
+
+  renderizarConteudoHub(tipo);
+}
+
+function fecharPainelHub() {
+  $('hub-painel').classList.remove('visivel');
+  document.querySelectorAll('.hub-btn').forEach(b => b.classList.remove('ativo'));
+  painelAberto = null;
+}
+
+function agrupar(campo) {
+  const m = {};
+  L.forEach(d => {
+    const k = d[campo] || 'Não informado';
+    const x = m[k] || (m[k] = { nome: k, n: 0, ind: 0, pago: 0, imp: 0, hoje: 0 });
+    x.n++;
+    x.ind += ind(d);
+    x.pago += pg(d);
+    if (cls(d) === 'imp') x.imp++;
+    if (d.teve_modificacao_hoje) x.hoje++;
+  });
+  return Object.values(m);
+}
+
+function renderizarConteudoHub(tipo) {
+  if (tipo === 'deps') {
+    const D = agrupar('autor').sort((a, b) => (b.n - a.n) || (b.ind - a.ind)).slice(0, 16);
+    $('hub-deps-content').innerHTML = D.map(x => {
+      const c = corDe(x.nome);
+      return `
+        <button class="dep-mini" style="--c:${c}" data-dep="${esc(x.nome)}">
+          ${renderAvatar(x.nome, 44)}
+          <div class="dep-dados-mini">
+            <strong title="${esc(x.nome)}">${esc(x.nome)}</strong>
+            <span>${x.n} emendas</span>
+            <small>${cur(x.ind)} · ${Math.round(x.ind ? x.pago / x.ind * 100 : 0)}% pago</small>
           </div>
-          <div class="insight-col">
-            <div class="modalidade-card m-gtv">
-              <strong style="color: var(--purple);">Convênios e Entidades (GTV)</strong>
-              Recursos transferidos a entidades sem fins lucrativos, hospitais filantrópicos ou cooperativas via parceria formal.
-            </div>
-          </div>
-        `;
-      }
-    }
+        </button>
+      `;
+    }).join('');
+  } else if (tipo === 'cids') {
+    const C = agrupar('municipio').sort((a, b) => b.ind - a.ind).slice(0, 18);
+    const max = Math.max(1, ...C.map(x => x.ind));
+    $('hub-cids-content').innerHTML = C.map(x => `
+      <button class="cid-card" data-cid="${esc(x.nome)}">
+        <b>${esc(x.nome)} <em>${cur(x.ind)}</em></b>
+        <div class="trilho"><i style="width:${(x.ind / max) * 100}%"></i></div>
+        <small style="color:var(--suave); font-size:0.7rem;">${x.n} emendas · ${Math.round(x.ind ? x.pago / x.ind * 100 : 0)}% pago</small>
+      </button>
+    `).join('');
+  }
+}
 
-    function renderizarTabela() {
-      const inicio = (paginaAtual - 1) * itensPorPagina;
-      const fim = inicio + itensPorPagina;
-      const itensPagina = dadosFiltrados.slice(inicio, fim);
-      const corpo = document.getElementById('tabela-corpo');
+/* ========= PERFIL DO DEPUTADO (GAVETA LATERAL) ========= */
+function abrirDep(nome) {
+  const A = todos.filter(d => d.autor === nome);
+  const i = soma(A, ind);
+  const p = soma(A, pg);
 
-      if (itensPagina.length === 0) {
-        corpo.innerHTML = `<tr><td colspan="6" style="text-align: center; padding: 30px;">Nenhuma emenda encontrada.</td></tr>`;
-        atualizarBotoesPagina(0);
-        return;
-      }
+  const mods = {};
+  A.forEach(d => { const m = limparTexto(d.modalidade || 'Outras'); mods[m] = (mods[m] || 0) + ind(d); });
+  const cids = {};
+  A.forEach(d => cids[d.municipio] = (cids[d.municipio] || 0) + ind(d));
+  const topc = Object.entries(cids).sort((a, b) => b[1] - a[1]).slice(0, 5);
+  const mc = topc[0] ? topc[0][1] : 1;
+  const cm = ['#3d8bff', '#ff4d15', '#a855f7', '#2fd28a'];
 
-      corpo.innerHTML = itensPagina.map(item => {
-        const vIndicado = parseFloat(item.valor) || parseFloat(item.valor_empenhado) || 0;
-        const statusExibido = item.status_calculado || item.status_resolucao_tce || 'Em Análise';
-        
-        return `
-          <tr>
-            <td>
-              <span class="mobile-label">Deputado</span>
-              <a class="clickable-tag" onclick="filtrarPorDeputado('${item.autor}')" title="Filtrar emendas de ${item.autor}">
-                ${item.autor || 'Não informado'}
-              </a>
-            </td>
-            <td>
-              <span class="mobile-label">Destino</span>
-              <div>
-                <a class="clickable-city" onclick="filtrarPorCidade('${item.municipio}')" title="Filtrar emendas para ${item.municipio}">
-                  <strong>${item.municipio || 'Não informado'}</strong>
-                </a>
-              </div>
-              <small style="color: var(--text-muted); font-size: 0.72rem;">${item.beneficiario || ''}</small>
-            </td>
-            <td>
-              <span class="mobile-label">Modalidade</span>
-              <span class="badge badge-modalidade">${item.modalidade || 'Emenda'}</span>
-            </td>
-            <td style="max-width: 320px; font-size: 0.77rem; color: #334155;">
-              <span class="mobile-label">Objeto</span>
-              ${item.objeto || 'Não informado'}
-              ${item.condicao_saneamento_impedimento_tecnico ? `<div style="margin-top: 4px; color: var(--danger); font-size: 0.71rem;"><strong>Motivo:</strong> ${item.condicao_saneamento_impedimento_tecnico}</div>` : ''}
-              ${item.detalhe_mudanca && item.teve_modificacao_hoje ? `<div style="margin-top: 3px; color: var(--accent); font-size: 0.71rem; font-weight: 600;">⚡ ${item.detalhe_mudanca}</div>` : ''}
-            </td>
-            <td>
-              <span class="mobile-label">Status</span>
-              <span class="badge ${obterClasseBadgeStatus(statusExibido)}">${statusExibido}</span>
-            </td>
-            <td style="white-space: nowrap;">
-              <div>
-                <span class="mobile-label">Valor Indicado</span>
-                <strong>${formatarMoeda(vIndicado)}</strong>
-              </div>
-              <div style="color: var(--success); font-size: 0.75rem; margin-top: 2px;">
-                Pago: <strong>${formatarMoeda(item.valor_pago)}</strong>
-              </div>
-            </td>
-          </tr>
-        `;
-      }).join('');
+  $('gav').innerHTML = `
+    <button class="fechar" id="fechar" aria-label="Fechar">✕</button>
+    <div style="display:flex; align-items:center; gap:14px; margin-top:8px;">
+      ${renderAvatar(nome, 64)}
+      <div>
+        <h2>${esc(nome)}</h2>
+        <small style="color:var(--suave)">Parlamentar da ALEPE</small>
+      </div>
+    </div>
 
-      atualizarBotoesPagina(dadosFiltrados.length);
-    }
+    <div class="g3">
+      <div><b>${A.length}</b><small>emendas</small></div>
+      <div><b>${cur(i)}</b><small>indicados</small></div>
+      <div><b style="color:var(--verde)">${Math.round(i ? p / i * 100 : 0)}%</b><small>pagos</small></div>
+    </div>
 
-    function atualizarBotoesPagina(totalItens) {
-      const totalPaginas = Math.ceil(totalItens / itensPorPagina) || 1;
-      const info = document.getElementById('paginacao-info');
-      const btnAnt = document.getElementById('btn-anterior');
-      const btnProx = document.getElementById('btn-proximo');
+    <h4>Como o recurso é repassado</h4>
+    <div class="emp">${Object.values(mods).map((v, k) => `<i style="width:${v / i * 100}%; background:${cm[k % 4]}"></i>`).join('')}</div>
+    <div class="leg">${Object.entries(mods).map(([m, v], k) => `<span><b style="color:${cm[k % 4]}">●</b> ${esc(m)} (${Math.round(v / i * 100)}%)</span>`).join('')}</div>
 
-      info.textContent = `Pág. ${paginaAtual} de ${totalPaginas} (${totalItens.toLocaleString('pt-BR')} emendas)`;
-      btnAnt.disabled = paginaAtual <= 1;
-      btnProx.disabled = paginaAtual >= totalPaginas;
-    }
+    <h4>Cidades mais beneficiadas</h4>
+    ${topc.map(([n, v]) => `
+      <div style="margin-bottom:8px">
+        <div style="display:flex; justify-content:space-between; font-size:0.84rem">
+          <span>${esc(n)}</span>
+          <b>${cur(v)}</b>
+        </div>
+        <div class="trilho"><i style="width:${(v / mc) * 100}%"></i></div>
+      </div>
+    `).join('')}
 
-    function scrollAteTopo() {
-      if (window.innerWidth <= 768) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        const tc = document.querySelector('.table-container');
-        if (tc) tc.scrollTop = 0;
-      }
-    }
+    <h4>Maiores emendas do parlamentar</h4>
+    ${A.slice().sort((a, b) => ind(b) - ind(a)).slice(0, 5).map(d => `
+      <div class="lin">
+        <div>
+          <button data-cid="${esc(d.municipio)}">${esc(limparTexto(d.objeto))}</button>
+          <span>${esc(d.municipio)} · ${esc(stat(d))}</span>
+        </div>
+        <b style="font-family:var(--mono); font-size:0.82rem;">${cur(ind(d))}</b>
+      </div>
+    `).join('')}
 
-    document.getElementById('filtro-autor').addEventListener('change', aplicarFiltros);
-    document.getElementById('filtro-municipio').addEventListener('change', aplicarFiltros);
-    document.getElementById('filtro-modalidade').addEventListener('change', aplicarFiltros);
-    document.getElementById('filtro-status').addEventListener('change', aplicarFiltros);
+    <button class="ver" data-ver="${esc(nome)}">Filtrar todas as emendas deste deputado</button>
+  `;
 
-    document.getElementById('btn-anterior').addEventListener('click', () => {
-      if (paginaAtual > 1) {
-        paginaAtual--;
-        renderizarTabela();
-        scrollAteTopo();
-      }
-    });
+  $('gav').classList.add('on');
+  $('vel').classList.add('on');
+  $('gav').scrollTop = 0;
+}
 
-    document.getElementById('btn-proximo').addEventListener('click', () => {
-      const totalPaginas = Math.ceil(dadosFiltrados.length / itensPorPagina);
-      if (paginaAtual < totalPaginas) {
-        paginaAtual++;
-        renderizarTabela();
-        scrollAteTopo();
-      }
-    });
+const fechar = () => {
+  $('gav').classList.remove('on');
+  $('vel').classList.remove('on');
+};
 
-    carregarDados();
-  </script>
+/* ========= BUSCA COM SUGESTÕES RÁPIDAS ========= */
+function sugerir() {
+  const t = norm($('q').value).trim();
+  if (t.length < 2) {
+    $('sug').classList.remove('on');
+    return;
+  }
+  const grupos = [['Deputado', 'autor'], ['Cidade', 'municipio']];
+  const itens = [];
+  grupos.forEach(([rot, c]) => {
+    const v = [...new Set(todos.map(d => d[c]).filter(Boolean))].filter(x => norm(x).includes(t)).slice(0, 4);
+    v.forEach(x => itens.push([rot, x]));
+  });
+  $('sug').innerHTML = itens.map(([r, x]) => `<button data-sug="${esc(x)}">${esc(x)}<small>${r}</small></button>`).join('');
+  $('sug').classList.toggle('on', itens.length > 0);
+}
+
+/* ========= EVENTOS ========= */
+let tm;
+$('q').addEventListener('input', () => {
+  clearTimeout(tm);
+  tm = setTimeout(() => { filtrar(); sugerir(); }, 160);
+});
+$('ord').addEventListener('change', desenharEmendas);
+
+$('filtro-autor').addEventListener('change', filtrar);
+$('filtro-municipio').addEventListener('change', filtrar);
+$('filtro-modalidade').addEventListener('change', filtrar);
+$('filtro-status').addEventListener('change', filtrar);
+
+$('filtros').addEventListener('click', e => {
+  const b = e.target.closest('.chip');
+  if (!b) return;
+  modo = b.dataset.m;
+  document.querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c === b));
+  filtrar();
+});
+
+$('limpar').onclick = () => {
+  $('q').value = '';
+  $('filtro-autor').value = '';
+  $('filtro-municipio').value = '';
+  $('filtro-modalidade').value = '';
+  $('filtro-status').value = '';
+  modo = 'todas';
+  document.querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c.dataset.m === 'todas'));
+  filtrar();
+};
+
+$('mais').onclick = () => {
+  pag++;
+  desenharEmendas();
+};
+
+$('vel').onclick = fechar;
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { fechar(); fecharPainelHub(); } });
+
+document.addEventListener('click', e => {
+  const t = e.target;
+  let x;
+  if (t.closest('#fechar')) return fechar();
+  if (x = t.closest('[data-sug]')) {
+    $('q').value = x.dataset.sug;
+    $('sug').classList.remove('on');
+    filtrar();
+    return;
+  }
+  if (x = t.closest('[data-ver]')) {
+    fechar();
+    $('filtro-autor').value = x.dataset.ver;
+    filtrar();
+    return;
+  }
+  if (x = t.closest('[data-dep]')) {
+    abrirDep(x.dataset.dep);
+    return;
+  }
+  if (x = t.closest('[data-cid]')) {
+    fechar();
+    fecharPainelHub();
+    $('filtro-municipio').value = x.dataset.cid;
+    filtrar();
+    return;
+  }
+  if (x = t.closest('.obj')) {
+    x.classList.toggle('aberto');
+  }
+  if (!t.closest('.busca')) $('sug').classList.remove('on');
+});
+
+carregar();
+</script>
 </body>
 </html>
