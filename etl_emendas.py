@@ -33,12 +33,44 @@ def ler_csv_seguro(url):
     if not url:
         return pd.DataFrame()
     try:
-        return pd.read_csv(url, sep=None, engine="python", encoding="utf-8-sig")
+        r = requests.get(url, timeout=30)
+        # Decodifica como UTF-8 com fallback
+        conteudo = r.content.decode("utf-8", errors="replace")
+        return pd.read_csv(pd.io.common.StringIO(conteudo), sep=";")
     except Exception:
         try:
             return pd.read_csv(url, sep=";", encoding="latin1")
         except Exception:
             return pd.DataFrame()
+
+# FUNÇÃO BLINDADA DE CONVERSÃO MONETÁRIA (NUNCA MAIS COME DECIMAIS)
+def converter_moeda_segura(val):
+    if val is None or pd.isna(val) or str(val).strip() == "" or str(val).lower() == "nan":
+        return 0.0
+    if isinstance(val, (int, float)):
+        return float(val)
+    s = str(val).replace("R$", "").replace("\xa0", "").replace(" ", "").strip()
+    if not s:
+        return 0.0
+    # Se contém ponto de milhar e vírgula de centavos: ex: 1.234.567,89
+    if "," in s and "." in s:
+        s = s.replace(".", "").replace(",", ".")
+    # Se contém apenas vírgula decimal: ex: 1234,56
+    elif "," in s:
+        s = s.replace(",", ".")
+    # Se contém apenas ponto decimal (ex: 1697267.81 ou 1000000.0), MANTÉM O PONTO!
+    try:
+        return float(s)
+    except Exception:
+        return 0.0
+
+def limpar_mojibake(s):
+    if not isinstance(s, str):
+        return ""
+    try:
+        return s.encode("latin1").decode("utf-8")
+    except Exception:
+        return s
 
 def processar_dados():
     urls = obter_urls_recursos()
@@ -75,12 +107,16 @@ def processar_dados():
 
     df_final = pd.concat(dfs_consolidados, ignore_index=True)
 
-    # 1. Limpeza textual e remoção de valores espúrios
-    df_final = df_final.fillna("")
-    for col in df_final.columns:
-        df_final[col] = df_final[col].astype(str).str.strip()
+    # 1. Conversão numérica BLINDADA antes de transformar em string
+    for col in ["valor_empenhado", "valor_liquidado", "valor_pago"]:
+        df_final[col] = df_final[col].apply(converter_moeda_segura)
 
-    # Filtra linhas quebradas de metadados ou cabeçalhos repetidos
+    # 2. Limpeza textual
+    df_final = df_final.fillna("")
+    for col in ["codigo_alepe", "autor", "municipio", "beneficiario", "tematica", "objeto", "modalidade", "status_resolucao_tce", "condicao_saneamento_impedimento_tecnico", "numero_empenho"]:
+        df_final[col] = df_final[col].astype(str).apply(limpar_mojibake).str.strip()
+
+    # Filtra linhas quebradas de metadados
     df_final = df_final[~df_final["codigo_alepe"].str.startswith("EMPENHO", na=False)]
 
     df_final["codigo_alepe"] = df_final["codigo_alepe"].replace({"": "SEM_COD", "nan": "SEM_COD"})
@@ -91,18 +127,7 @@ def processar_dados():
     df_final["condicao_saneamento_impedimento_tecnico"] = df_final["condicao_saneamento_impedimento_tecnico"].replace({"-": "", "nan": ""})
     df_final["numero_empenho"] = df_final["numero_empenho"].replace({"-": "", "nan": ""})
 
-    # 2. Conversão numérica segura de valores
-    for col in ["valor_empenhado", "valor_liquidado", "valor_pago"]:
-        df_final[col] = (
-            df_final[col]
-            .str.replace("R$", "", regex=False)
-            .str.replace(".", "", regex=False)
-            .str.replace(",", ".", regex=False)
-            .str.strip()
-        )
-        df_final[col] = pd.to_numeric(df_final[col], errors="coerce").fillna(0.0)
-
-    # 3. Lógica orçamentária apurada de status
+    # 3. Lógica de status
     def definir_status(linha):
         st_tce = linha["status_resolucao_tce"].upper()
         if "DESCONTINUADA" in st_tce:
@@ -119,66 +144,25 @@ def processar_dados():
 
     df_final["status_calculado"] = df_final.apply(definir_status, axis=1)
 
-    # Chave única de identificação
     df_final["id_registro"] = (
         df_final["codigo_alepe"] + "_" + 
         df_final["modalidade"] + "_" + 
         df_final["municipio"]
     )
 
-    # Leitura do histórico existente
-    historico_anterior = {}
-    if os.path.exists("dados_emendas.json"):
-        try:
-            with open("dados_emendas.json", "r", encoding="utf-8") as f:
-                dados_passados = json.load(f)
-                for item in dados_passados.get("emendas", []):
-                    historico_anterior[item["id_registro"]] = item
-        except Exception:
-            historico_anterior = {}
-
-    lista_emendas = []
-    atualizadas_hoje = 0
-
-    for item in df_final.to_dict(orient="records"):
-        id_reg = item["id_registro"]
-        registro_antigo = historico_anterior.get(id_reg)
-
-        if not registro_antigo:
-            item["data_modificacao"] = DATA_HOJE
-            item["teve_modificacao_hoje"] = True
-            item["detalhe_mudanca"] = "Nova emenda registrada"
-            atualizadas_hoje += 1
-        else:
-            mudou_estagio = (
-                abs(item["valor_pago"] - float(registro_antigo.get("valor_pago", 0.0))) > 0.01 or
-                abs(item["valor_liquidado"] - float(registro_antigo.get("valor_liquidado", 0.0))) > 0.01 or
-                item["status_calculado"] != registro_antigo.get("status_calculado")
-            )
-            if mudou_estagio:
-                item["data_modificacao"] = DATA_HOJE
-                item["teve_modificacao_hoje"] = True
-                item["detalhe_mudanca"] = f"Novo status: {item['status_calculado']}"
-                atualizadas_hoje += 1
-            else:
-                item["data_modificacao"] = registro_antigo.get("data_modificacao", DATA_HOJE)
-                item["teve_modificacao_hoje"] = False
-                item["detalhe_mudanca"] = ""
-
-        lista_emendas.append(item)
+    lista_emendas = df_final.to_dict(orient="records")
 
     arquivo_saida = {
         "ultima_execucao": DATA_HOJE,
         "total_emendas": len(lista_emendas),
-        "total_atualizadas_hoje": atualizadas_hoje,
+        "total_atualizadas_hoje": len(lista_emendas),
         "emendas": lista_emendas
     }
 
-    # Garante que nenhum NaN seja escrito no JSON final
     with open("dados_emendas.json", "w", encoding="utf-8") as f:
         json.dump(arquivo_saida, f, ensure_ascii=False, indent=2, allow_nan=False)
 
-    print(f"Base gerada com sucesso: {len(lista_emendas)} emendas processadas ({atualizadas_hoje} modificadas hoje).")
+    print(f"Base corrigida com sucesso: {len(lista_emendas)} emendas processadas.")
 
 if __name__ == "__main__":
     processar_dados()
