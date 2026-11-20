@@ -1,7 +1,7 @@
 {
   "ultima_execucao": "2026-11-20",
   "total_emendas": 2252,
-  "total_atualizadas_hoje": 15,
+  "total_atualizadas_hoje": 0,
   "emendas": [
     {
       "codigo_alepe": "1",
@@ -9051,8 +9051,8 @@
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "320_Execução Direta_Recife",
       "data_modificacao": "2026-11-20",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "335",
@@ -9072,8 +9072,8 @@
       "status_calculado": "Paga",
       "id_registro": "335_Execução Direta_Recife",
       "data_modificacao": "2026-11-20",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Paga"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "337",
@@ -15036,8 +15036,8 @@
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "123_Convênio/Parceria (GTV)_Escada",
       "data_modificacao": "2026-11-20",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "1232",
@@ -15939,8 +15939,8 @@
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "1281_Convênio/Parceria (GTV)_Tupanatinga",
       "data_modificacao": "2026-11-20",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "1282",
@@ -19488,8 +19488,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "186_Convênio/Parceria (GTV)_Olinda",
       "data_modificacao": "2026-11-20",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "187",
@@ -20370,8 +20370,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "228_Convênio/Parceria (GTV)_Recife",
       "data_modificacao": "2026-11-20",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "229",
@@ -29694,8 +29694,8 @@
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "381_Convênio/Parceria (GTV)_Bom Conselho",
       "data_modificacao": "2026-11-20",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "382",
@@ -31773,8 +31773,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "491_Convênio/Parceria (GTV)_Alianca",
       "data_modificacao": "2026-11-20",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "492",
@@ -34650,8 +34650,8 @@
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "50175_Convênio/Parceria (GTV)_Olinda",
       "data_modificacao": "2026-11-20",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "50176",
@@ -39963,8 +39963,8 @@
       "status_calculado": "Paga",
       "id_registro": "697_Convênio/Parceria (GTV)_Petrolina",
       "data_modificacao": "2026-11-20",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Paga"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "698",
@@ -41979,8 +41979,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "70112_Convênio/Parceria (GTV)_Agua Preta",
       "data_modificacao": "2026-11-20",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "70113",
@@ -42588,8 +42588,8 @@
       "status_calculado": "Paga",
       "id_registro": "704_Convênio/Parceria (GTV)_Petrolina",
       "data_modificacao": "2026-11-20",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Paga"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "705",
@@ -42630,8 +42630,8 @@
       "status_calculado": "Paga",
       "id_registro": "707_Convênio/Parceria (GTV)_Recife",
       "data_modificacao": "2026-11-20",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Paga"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "708",
@@ -43785,8 +43785,8 @@
       "status_calculado": "Liquidada (Aguardando Pagamento)",
       "id_registro": "784_Convênio/Parceria (GTV)_Recife",
       "data_modificacao": "2026-11-20",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Liquidada (Aguardando Pagamento)"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "786",
@@ -45003,8 +45003,8 @@
       "status_calculado": "Empenhada",
       "id_registro": "865_Convênio/Parceria (GTV)_Cumaru",
       "data_modificacao": "2026-11-20",
-      "teve_modificacao_hoje": true,
-      "detalhe_mudanca": "Novo status: Empenhada"
+      "teve_modificacao_hoje": false,
+      "detalhe_mudanca": ""
     },
     {
       "codigo_alepe": "866",
